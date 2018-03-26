@@ -1,70 +1,87 @@
-package Aplicacion;
-
 import java.util.*;
-
-/**
- * Definicion de la clase Usuario
- * 
- * @author Victoria Pelayo e Ignacio Rabunnal
- *
- */
 public class Usuario {
-	private String dni;
-	private String contrasenna;
-	private List<Rol> rol = new ArrayList<Rol>();
+	private String nick;
+	private String nombre;
+	private String apellido;
+	private String contrasenia;
+	private List<Rol> roles = new ArrayList<Rol>();
 	
-	/**
-	 * @return the rol
-	 * @author Victoria Pelayo e Ignacio Rabunnal
-	 */
-	public List<Rol> getRol() {
-		return rol;
+	public Usuario(String nick, String nombre, String apellido, String contrasenia) {
+		this.nick = nick;
+		this.nombre = nombre;
+		this.apellido = apellido;
+		this.contrasenia = contrasenia;
 	}
 
 	/**
-	 * @param rol the rol to set
-	 * @author Victoria Pelayo e Ignacio Rabunnal
+	 * @return the nick
 	 */
-	public void setRol(List<Rol> rol) {
-		this.rol = rol;
-	}
-
-	public Usuario(String dni, String contrasenna){
-		this.dni = dni;
-		this.contrasenna = contrasenna;
+	public String getNick() {
+		return nick;
 	}
 
 	/**
-	 * @return the dni
-	 * @author Victoria Pelayo e Ignacio Rabunnal
+	 * @param nick the nick to set
 	 */
-	public String getDni() {
-		return dni;
+	public void setNick(String nick) {
+		this.nick = nick;
 	}
 
 	/**
-	 * @param dni the dni to set
-	 * @author Victoria Pelayo e Ignacio Rabunnal
+	 * @return the nombre
 	 */
-	public void setDni(String dni) {
-		this.dni = dni;
+	public String getNombre() {
+		return nombre;
 	}
 
 	/**
-	 * @return the contrasenna
-	 * @author Victoria Pelayo e Ignacio Rabunnal
+	 * @param nombre the nombre to set
 	 */
-	public String getContrasenna() {
-		return contrasenna;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	/**
-	 * @param contrasenna the contrasenna to set
-	 * @author Victoria Pelayo e Ignacio Rabunnal
+	 * @return the apellido
 	 */
-	public void setContrasenna(String contrasenna) {
-		this.contrasenna = contrasenna;
+	public String getApellido() {
+		return apellido;
 	}
 
-	
+	/**
+	 * @param apellido the apellido to set
+	 */
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+
+	/**
+	 * @return the contrasenia
+	 */
+	public String getContrasenia() {
+		return contrasenia;
+	}
+
+	/**
+	 * @param contrasenia the contrasenia to set
+	 */
+	public void setContrasenia(String contrasenia) {
+		this.contrasenia = contrasenia;
+	}
+
+
+	/**
+	 * @return the roles
+	 */
+	public List<Rol> getRoles() {
+		return roles;
+	}
+
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(List<Rol> roles) {
+		this.roles = roles;
+	}
+
 }

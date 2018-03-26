@@ -1,10 +1,9 @@
 
-public class Ofertante extends Rol {
-	
+public class Demandante extends Rol{
 	private int tarjeta;
 	private boolean bloqueado;
-
-	public Ofertante(int tarjeta) {
+	
+	public Demandante(int tarjeta) {
 		this.tarjeta = tarjeta;
 		this.bloqueado = false;
 	}

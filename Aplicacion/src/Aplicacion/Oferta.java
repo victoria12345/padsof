@@ -1,4 +1,5 @@
 import java.time.*;
+import java.util.*;
 
 public class Oferta {
 	private double precio;
@@ -6,6 +7,7 @@ public class Oferta {
 	private Estado estado;
 	private Disponibilidad disp;
 	private LocalDate ini;
+	private List<Comentario> comentarios = new ArrayList<Comentario>();
 	
 	public Oferta(double precio, LocalDate ini) {
 		this.precio = precio;
@@ -75,5 +77,12 @@ public class Oferta {
 		this.disp = disp;
 	}
 	
+	public List<Comentario> getComentarios(){
+		return comentarios;
+	}
 	
+	public void setComentarios(List<Comentario> comentarios) {
+		this.comentarios = comentarios;
+	}
+
 }
