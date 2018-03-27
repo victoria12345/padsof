@@ -1,5 +1,9 @@
 import java.time.*;
 public class OfertaVacacional extends Oferta {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private LocalDate fin;
 	private double fianza;
 

@@ -1,12 +1,20 @@
 import java.time.*;
 import java.util.*;
+import java.io.*;
 
-public class Oferta {
+public class Oferta implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private double precio;
 	private double valoracion;
 	private Estado estado;
 	private Disponibilidad disp;
 	private LocalDate ini;
+	private String desc;
+	
+
 	private List<Comentario> comentarios = new ArrayList<Comentario>();
 	
 	public Oferta(double precio, LocalDate ini) {
@@ -15,18 +23,6 @@ public class Oferta {
 		this.estado = Estado.CANCELADA;
 		this.disp = Disponibilidad.DISPONIBLE;
 		this.ini = ini;
-	}
-	/**
-	 * @return the ini
-	 */
-	public LocalDate getIni() {
-		return ini;
-	}
-	/**
-	 * @param ini the ini to set
-	 */
-	public void setIni(int anio, Month mes, int dia) {
-		this.ini = LocalDate.of(anio, mes, dia);
 	}
 	/**
 	 * @return the precio
@@ -77,6 +73,33 @@ public class Oferta {
 		this.disp = disp;
 	}
 	
+	/**
+	 * @return the desc
+	 */
+	public String getDesc() {
+		return desc;
+	}
+	/**
+	 * @param desc the desc to set
+	 */
+	public void setDesc(String desc) {
+		this.desc = desc;
+	}
+	
+	/**
+	 * @return the ini
+	 */
+	public LocalDate getIni() {
+		return ini;
+	}
+	
+	/**
+	 * @param ini the ini to set
+	 */
+	public void setIni(LocalDate ini) {
+		this.ini = ini;
+	}
+
 	public List<Comentario> getComentarios(){
 		return comentarios;
 	}

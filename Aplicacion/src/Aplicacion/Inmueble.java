@@ -6,8 +6,10 @@
  */
 
 import java.util.*;
+import java.io.*;
 
-public class Inmueble {
+public class Inmueble implements Serializable {
+	private static final long serialVersionUID = 1L;
 	private String localizacion;
 	private int codigoPostal;
 	private String descripcion;
@@ -91,6 +93,16 @@ public class Inmueble {
 	public void setOfertas(List<Oferta> ofertas) {
 		this.ofertas = ofertas;
 	}
+	
+	public void aniadirCampo(String campo, String valor) {
+		CampoAbierto nuevo_campo = new CampoAbierto(campo, valor);
+		this.campos.add(nuevo_campo);
+	}
+	
+	public void asociarOferta(Oferta o) {
+		this.ofertas.add(o);
+	}
+	
 
 	
 	
