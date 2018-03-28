@@ -1,37 +1,62 @@
+/**
+ * Descripcion de la clase campo abierto
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class CampoAbierto {
 	private String clave;
 	private String valor;
 	
+	/**
+	 * Constructor de la clase campo abierto
+	 * @param clave clave del nuevo campo
+	 * @param valor el valor del campo
+	 */
 	public CampoAbierto(String clave, String valor) {
-		this.clave = clave;
-		this.valor = valor;
+		if(clave == null) {
+			this.clave = "NO CLAVE";
+		}else {
+			this.clave = clave;
+		}
+		
+		if(valor == null) {
+			this.valor = "NO VALOR";
+		}else{
+			this.valor = valor;
+		}
 	}
 	
 	/**
-	 * @return the clave
+	 * @return la clave
 	 */
 	public String getClave() {
 		return clave;
 	}
 
 	/**
-	 * @param clave the clave to set
+	 * @param clave nueva clave 
 	 */
 	public void setClave(String clave) {
+		if(clave == null) {
+			return;
+		}
 		this.clave = clave;
 	}
 
 	/**
-	 * @return the valor
+	 * @return el valor
 	 */
 	public String getValor() {
 		return valor;
 	}
 
 	/**
-	 * @param valor the valor to set
+	 * @param valor nuevo valor del campo
 	 */
 	public void setValor(String valor) {
+		if(valor == null) {
+			return;
+		}
 		this.valor = valor;
 	}
 }
