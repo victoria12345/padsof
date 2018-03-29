@@ -117,10 +117,9 @@ public class Inmueble implements Serializable {
 	 * @param campo campo que se quiere aladir
 	 * @param valor valor del nuevo campo
 	 */
-	public void addCampo(String campo, String valor) {
-		CampoAbierto nuevo_campo = new CampoAbierto(campo, valor);
+	public void addCampo(CampoAbierto c) {
 		
-		this.campos.add(nuevo_campo);
+		this.campos.add(c);
 	}
 	
 	/**

@@ -92,21 +92,16 @@ public class Sistema {
 	 * @param desc descripcion de la oferta que se busca
 	 * @return lista de las ofertas con esa descripcion
 	 */
-	public List<Oferta> buscarOferta(String desc) {
-		if(desc == null) {
-			return null;
-		}
-		
-		List<Oferta> ofs = new ArrayList<Oferta>();
-		
+	public Oferta buscarOferta(int id) {
+				
 		for(Inmueble i : this.inmuebles) {
 			for(Oferta o : i.getOfertas()) {
-				if(o.getDesc() == desc) {
-					ofs.add(o);
+				if(o.getId() == id) {
+					return o;
 				}
 			}
 		}
-		return ofs;
+		return null;
 	}
 	
 	/**

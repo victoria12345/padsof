@@ -13,6 +13,7 @@ public class CampoAbierto {
 	 * @param valor el valor del campo
 	 */
 	public CampoAbierto(String clave, String valor) {
+		
 		if(clave == null) {
 			this.clave = "NO CLAVE";
 		}else {
@@ -25,6 +26,7 @@ public class CampoAbierto {
 			this.valor = valor;
 		}
 	}
+	
 	
 	/**
 	 * @return la clave

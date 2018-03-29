@@ -1,7 +1,5 @@
 import java.io.*;
 
-import java.util.*;
-
 public class Tester {
 
 	public static void main(String[] args) throws IOException {
@@ -9,7 +7,7 @@ public class Tester {
 
 		Administracion ad= new Administracion(sist);
 
-		System.out.println(args[0]);
+		System.out.println("usuarios.txt");
 		
 		if(ad.cargarUsuarios("usuarios.txt") == true){
 			//q va bn

@@ -20,5 +20,20 @@ public class Administrador extends Rol{
 	public boolean isBloqueado() {
 		return false;
 	}
+	
+	/**
+	 * Devuelve si es ofertante
+	 * @return false
+	 */
+	public boolean isOfertante() {
+		return false;
+	}
+	
+	/**
+	 * No hace nada
+	 */
+	public void addInmueble(Inmueble i) {
+		
+	}
 
 }

@@ -125,5 +125,21 @@ public class Usuario {
 		}
 		return false;
 	}
-
+	
+	/**
+	 * Annade un inmueble al usuario si se puede
+	 * @param i inmueble que se desea annadir
+	 * @return true si se realiza correctamente y false si no es asi
+	 */
+	public boolean addInmueble(Inmueble i) {
+		for(int j = 0; j < roles.size(); j++) {
+			if(roles.get(j).isOfertante() == true) {
+				roles.get(j).addInmueble(i);
+				return true;
+			}
+		}
+		
+		return false;
+	}
+	
 }
