@@ -1,10 +1,10 @@
+import java.util.*;
+import java.io.*;
+
 /**
  * Descripcion de la clase Inmueble
  * @author Victoria Pelayo e Ignacio Rabuñal
  */
-
-import java.util.*;
-import java.io.*;
 
 public class Inmueble implements Serializable {
 	private static final long serialVersionUID = 1L;

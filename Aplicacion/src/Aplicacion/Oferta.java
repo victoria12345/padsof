@@ -1,10 +1,11 @@
+import java.time.*;
+import java.util.*;
+import java.io.*;
 /**
  * Descripcion de la clase oferta
  * @author Victoria Pelayo e Ignacio Rabunnal
  */
-import java.time.*;
-import java.util.*;
-import java.io.*;
+
 
 public abstract class Oferta implements Serializable{
 	
@@ -133,9 +134,7 @@ public abstract class Oferta implements Serializable{
 	/**
 	 * @return fecha fin de la oferta
 	 */
-	public LocalDate getFin() {
-		return null;
-	}
+	public abstract LocalDate getFin();
 	
 	/**
 	 * @param ini nuevo inicio de la oferta

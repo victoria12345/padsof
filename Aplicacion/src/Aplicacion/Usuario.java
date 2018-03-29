@@ -1,8 +1,9 @@
+import java.util.*;
 /**
  * Descripcion de la clase Usuario
  * @author Victoria Pelayo e Ignacio Rabunnal
  */
-import java.util.*;
+
 public class Usuario {
 	private String nick;
 	private String nombre;

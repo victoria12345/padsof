@@ -1,9 +1,11 @@
+import java.util.*;
+
 /**
  * Constructor de la clase Comentario
  * @author Victoria Pelayo e Ignacio Rabunnal
  * CREO QUE TENIAN QUE SER APROBADOS 
  */
-import java.util.*;
+
 public class Comentario{
 	private int id;
 	private String texto;

@@ -11,5 +11,14 @@ public class Administrador extends Rol{
 	public Administrador() {
 		// TODO Auto-generated constructor stub
 	}
+	
+	/**
+	 * Informa sobre si el usuario tipo administrador esta bloqueado
+	 * Nunca lo esta luego siempre devolvera false
+	 * @return false
+	 */
+	public boolean isBloqueado() {
+		return false;
+	}
 
 }

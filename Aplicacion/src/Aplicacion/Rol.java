@@ -15,8 +15,6 @@ public abstract class Rol {
 	/**
 	 * @return estado bloqueado, en este caso siempre false
 	 */
-	public boolean isBloqueado() {
-		return false;
-	}
+	public abstract boolean isBloqueado();
 
 }

@@ -1,10 +1,11 @@
+import java.time.*;
+import java.util.Calendar;
+import java.util.Date;
 /**
  * Descripcion clase OfertaResidencial
  * @author Victoria Pelayo e Ignacio Rabunnal
  */
-import java.time.*;
-import java.util.Calendar;
-import java.util.Date;
+
 public class OfertaResidencial extends Oferta {
 	
 	private static final long serialVersionUID = 1L;

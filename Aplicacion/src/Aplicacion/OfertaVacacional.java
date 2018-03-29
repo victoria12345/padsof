@@ -1,8 +1,9 @@
+import java.time.*;
 /**
  * Descripcion de la clase OfertaVacacional
  * @author Victoria Pelayo e Ignacio Rabunnal
  */
-import java.time.*;
+
 public class OfertaVacacional extends Oferta {
 
 	private static final long serialVersionUID = 1L;
