@@ -3,7 +3,7 @@ import java.io.*;
 
 /**
  * Descripcion de la clase Inmueble
- * @author Victoria Pelayo e Ignacio Rabuñal
+ * @author Victoria Pelayo e Ignacio Rabunnal
  */
 
 public class Inmueble implements Serializable {
@@ -113,7 +113,7 @@ public class Inmueble implements Serializable {
 	}
 	
 	/**
-	 * Se añade un campo variable al inmueble
+	 * Se annade un campo variable al inmueble
 	 * @param campo campo que se quiere aladir
 	 * @param valor valor del nuevo campo
 	 */

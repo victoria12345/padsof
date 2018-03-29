@@ -20,7 +20,7 @@ public class Administracion {
 		
 		InputStreamReader reader = new InputStreamReader(new FileInputStream(fichero));
 		BufferedReader buffer = new BufferedReader(reader);
-		buffer.close();
+		
 		
 		String linea;
 		int i = 0;
@@ -37,6 +37,7 @@ public class Administracion {
 					Usuario u ;
 					
 					String rol = tokens.nextToken();
+
 					String nick = tokens.nextToken();
 					
 					String fullname = tokens.nextToken();
@@ -58,14 +59,15 @@ public class Administracion {
 					
 					List<Rol> roles = new ArrayList<Rol>();
 					
+
 					switch(rol) {
 					case "D":
-						roles.add(new Demandante(Integer.parseInt(tarjeta)));
+						roles.add(new Demandante(Long.parseLong(tarjeta)));
 					case "O":
-						roles.add(new Ofertante(Integer.parseInt(tarjeta)));
+						roles.add(new Ofertante(Long.parseLong(tarjeta)));
 					case "OD":
-						roles.add(new Demandante(Integer.parseInt(tarjeta)));
-						roles.add(new Ofertante(Integer.parseInt(tarjeta)));
+						roles.add(new Demandante(Long.parseLong(tarjeta)));
+						roles.add(new Ofertante(Long.parseLong(tarjeta)));
 					}
 					
 					u.setRoles(roles);
@@ -75,6 +77,7 @@ public class Administracion {
 		}
 		
 		reader.close();
+		buffer.close();
 		
 		sistema.setUsuarios(usuarios);
 		

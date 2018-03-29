@@ -5,14 +5,14 @@
  */
 public class Ofertante extends Rol {
 	
-	private int tarjeta;
+	private long tarjeta;
 	private boolean bloqueado;
 
 	/**
 	 * Constructor de Ofertante
 	 * @param tarjeta tarjeta de credito del ofertante
 	 */
-	public Ofertante(int tarjeta) {
+	public Ofertante(long tarjeta) {
 		this.tarjeta = tarjeta;
 		this.bloqueado = false;
 	}
@@ -20,14 +20,14 @@ public class Ofertante extends Rol {
 	/**
 	 * @return la tarjeta
 	 */
-	public int getTarjeta() {
+	public long getTarjeta() {
 		return tarjeta;
 	}
 
 	/**
 	 * @param tarjeta nueva tarjeta de credito del ofertante
 	 */
-	public void setTarjeta(int tarjeta) {
+	public void setTarjeta(long tarjeta) {
 		this.tarjeta = tarjeta;
 	}
 

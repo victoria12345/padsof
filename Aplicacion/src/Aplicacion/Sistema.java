@@ -71,7 +71,7 @@ public class Sistema {
 	/**
 	 * Se busca un usuario en el sistema
 	 * @param nick nick del usuario que se busca
-	 * @param cont constraseña del usuario
+	 * @param cont constrasenna del usuario
 	 * @return null si no se encuentra y el usuario si lo hace
 	 */
 	public Usuario buscarUsuario(String nick, String cont){
