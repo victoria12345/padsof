@@ -7,15 +7,12 @@ public class Tester {
 
 		Administracion ad= new Administracion(sist);
 
-		System.out.println("usuarios.txt");
+		System.out.println("inmuebles.txt");
 		
-		if(ad.cargarUsuarios("usuarios.txt") == true){
-			//q va bn
-			System.out.println("CACAAAAAAAAAAAAAAAAAAAAAAAAAAA");		
-		}
+		ad.cargarInmuebles("inmuebles.txt");
 
 		for(int i = 0; i < sist.getUsuarios().size(); i++){
-			System.out.println("Usuario"+ sist.getUsuarios().get(i).getNombre());
+			System.out.println("Inmueble : "+  sist.getInmuebles().get(i).getLocalizacion());
 		}
 		String n = "5";
 		Integer.parseInt(n);
