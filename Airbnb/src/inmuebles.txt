@@ -1,0 +1,2 @@
+Localizacion;codigopostal;Descripcion;Camposabiertos(clave1|valor1,clave2|valor2);Ofertas(id1,id2);nick;contraseña
+Localizacion;12876;descrpsionnnnnnn;piscina inchable|no;NO_OFERTA;51999111X
