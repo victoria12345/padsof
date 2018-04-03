@@ -1,4 +1,15 @@
+
 import java.util.*;
+
+import Inmuebles.Inmueble;
+import Ofertas.Disponibilidad;
+import Ofertas.Oferta;
+import Usuarios.Demandante;
+import Usuarios.Ofertante;
+import Usuarios.Rol;
+import Usuarios.Usuario;
+
+import java.io.*;
 import java.time.*;
 /**
  * Definicion de la clase Sistema
@@ -6,7 +17,8 @@ import java.time.*;
  */
 
 
-public class Sistema {
+public class Sistema implements Serializable{
+	private static final long serialVersionUID = 1L;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
@@ -14,8 +26,9 @@ public class Sistema {
 	/**
 	 * Constructor de Sistema
 	 */
-	public Sistema() {
-		// TODO Auto-generated constructor stub
+	public Sistema() throws IOException{
+		File usuarios = new File("usuarios.txt");
+		this.cargarUsuarios(usuarios.getAbsolutePath());
 	}
 	
 	/**
@@ -87,19 +100,18 @@ public class Sistema {
 	}
 	
 	/**
-	 * REVISAAAAAAAAAAAAAAAR
-	 * Se busca una oferta a traves de su descripcion
+	 * se busca una oferta
 	 * @param desc descripcion de la oferta que se busca
 	 * @return lista de las ofertas con esa descripcion
 	 */
-	public Oferta buscarOferta(int id) {
+	public Oferta buscarOferta(Oferta of) {
 				
-		for(Inmueble i : this.inmuebles) {
-			for(Oferta o : i.getOfertas()) {
-				if(o.getId() == id) {
-					return o;
-				}
+		for(Oferta o : this.ofertas) {
+			
+			if(o.equals(of) == true) {
+				return o;
 			}
+			
 		}
 		return null;
 	}
@@ -264,5 +276,74 @@ public class Sistema {
 		}
 		return uss;
 	}
+	
+	/**
+	 * Carga los usuarios en el sistema leidos desde un fichero
+	 * @param fichero nombre del fichero donde estan los usuarios
+	 * @throws IOException
+	 */
+	public void cargarUsuarios(String fichero) throws IOException {
+		BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fichero)));
+		String linea;
+		String nick, rol, nombre, apellidos, tarjeta, contrasenia;
+		List<Usuario> usuarios = new ArrayList<Usuario>();
+		int i = 0;
 
+		while((linea = buffer.readLine()) != null){
+			if(i == 0){ //nos saltamos la cabecera
+				i = 1;
+			}else{
+				List<Rol> roles = new ArrayList<Rol>();
+				Usuario u;
+				String trozos[] = linea.split(";");
+				String fullname[] = trozos[2].split(", "); //Dividimos fullname en dos trozos(nombre y apellido)
+				
+				rol = trozos[0];
+				nick = trozos[1];
+				nombre = fullname[1];
+				apellidos = fullname[0];
+				contrasenia = trozos[3];
+				tarjeta = trozos[4];
+
+				u = new Usuario(nick, nombre, apellidos, contrasenia);
+
+				switch(rol) {
+				case "D":
+					roles.add(new Demandante(tarjeta));
+				case "O":
+					roles.add(new Ofertante(tarjeta));
+				case "OD":
+					roles.add(new Demandante(tarjeta));
+					roles.add(new Ofertante(tarjeta));
+				}
+				
+				u.setRoles(roles);
+				usuarios.add(u);
+			}
+
+			
+		}
+
+		buffer.close();
+		this.setUsuarios(usuarios);
+	}
+	
+	public void serializar() throws IOException{
+		FileOutputStream fsalida = new FileOutputStream("sistema.ser");
+		ObjectOutputStream objsal = new ObjectOutputStream(fsalida);
+		objsal.writeObject(this);
+		objsal.close();
+		fsalida.close();
+	}
+	
+	public Sistema deserializar() throws IOException, ClassNotFoundException{
+			Sistema sist = new Sistema();
+			FileInputStream fentrada = new FileInputStream("sistema.ser");
+			ObjectInputStream objent = new ObjectInputStream(fentrada);
+			sist = (Sistema) objent.readObject();
+			objent.close();
+			fentrada.close();
+			return sist;
+		
+	}
 }
