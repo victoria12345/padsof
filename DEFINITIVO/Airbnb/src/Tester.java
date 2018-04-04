@@ -2,12 +2,12 @@
 import java.io.*;
 import java.time.LocalDate;
 
-import Ofertas.*;
-import Usuarios.*;
+import ofertas.*;
+import usuarios.*;
 import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
 import es.uam.eps.padsof.telecard.InvalidCardNumberException;
 import es.uam.eps.padsof.telecard.OrderRejectedException;
-import Inmuebles.*;
+import inmuebles.*;
 
 public class Tester {
 

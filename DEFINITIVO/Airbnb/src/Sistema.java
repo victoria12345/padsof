@@ -2,16 +2,10 @@
 
 import java.util.*;
 
-import Inmuebles.Inmueble;
-import Ofertas.Disponibilidad;
-import Ofertas.Estado;
-import Ofertas.Oferta;
-import Ofertas.OfertaResidencial;
-import Ofertas.OfertaVacacional;
-import Usuarios.Demandante;
-import Usuarios.Ofertante;
-import Usuarios.Rol;
-import Usuarios.Usuario;
+import excepciones.ArgumentoNoValido;
+import inmuebles.Inmueble;
+import ofertas.*;
+import usuarios.*;
 
 import java.io.*;
 import java.time.*;
@@ -30,8 +24,9 @@ public class Sistema implements Serializable{
 
 	/**
 	 * Constructor de Sistema
+	 * @throws ArgumentoNoValido 
 	 */
-	public Sistema() throws IOException{
+	public Sistema() throws IOException, ArgumentoNoValido{
 		File usuarios = new File("usuarios.txt");
 		this.cargarUsuarios(usuarios.getAbsolutePath());
 	}
@@ -77,8 +72,7 @@ public class Sistema implements Serializable{
 			return;
 		}
 		pendientes.remove(o);
-		pendientes.remove(o);
-		ofertas.remove(o);
+		o.setEstado(Estado.RECHAZADA);
 	}
 	
 	/**
@@ -331,8 +325,9 @@ public class Sistema implements Serializable{
 	 * Carga los usuarios en el sistema leidos desde un fichero
 	 * @param fichero nombre del fichero donde estan los usuarios
 	 * @throws IOException
+	 * @throws ArgumentoNoValido 
 	 */
-	public void cargarUsuarios(String fichero) throws IOException {
+	public void cargarUsuarios(String fichero) throws IOException, ArgumentoNoValido {
 		BufferedReader buffer = new BufferedReader(new InputStreamReader(new FileInputStream(fichero)));
 		String linea;
 		String nick, rol, nombre, apellidos, tarjeta, contrasenia;
@@ -379,17 +374,9 @@ public class Sistema implements Serializable{
 	}
 	
 	
-	private void comprobarOfertas(LocalDate date) {
+	private void comprobarOfertas(LocalDate date) throws ArgumentoNoValido {
 		//Primero comprobamos las ofertas en estado de rectificacion
-		for(Oferta o: ofertas) {
-			LocalDate cancelacion = o.getCancelacion();
-			if(o.getEstado() == Estado.RECTIFICADA && cancelacion.isBefore(date)) {
-				if(pendientes.contains(o) == true) {
-					pendientes.remove(o);
-				}
-				ofertas.remove(o);
-			}
-		}
+		
 		for(Usuario u: usuarios) {
 			List<Rol> roles = u.getRoles();
 			for(int i = 0; i < roles.size(); i++) {
@@ -420,6 +407,21 @@ public class Sistema implements Serializable{
 						}
 					}
 				}
+				if(roles.get(i).isDemandante() == true) {
+					Ofertante rol = (Ofertante)roles.get(i);
+					for(Inmueble in: rol.getInmuebles()) {
+						for(Oferta o: in.getOfertas()) {
+							LocalDate cancelacion = o.getCancelacion();
+							if(o.getEstado() == Estado.RECTIFICADA && cancelacion.isBefore(date)) {
+								if(pendientes.contains(o) == true) {
+									pendientes.remove(o);
+								}
+								o.setEstado(Estado.RECHAZADA);
+							}	
+						
+						}
+					}
+				}
 			}
 		}
 	}
@@ -432,7 +434,7 @@ public class Sistema implements Serializable{
 		fsalida.close();
 	}
 	
-	public Sistema deserializar(LocalDate date) throws IOException, ClassNotFoundException{
+	public Sistema deserializar(LocalDate date) throws IOException, ClassNotFoundException, ArgumentoNoValido{
 			Sistema sist = new Sistema();
 			FileInputStream fentrada = new FileInputStream("sistema.ser");
 			ObjectInputStream objent = new ObjectInputStream(fentrada);
