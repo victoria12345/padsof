@@ -2,7 +2,7 @@ package Ofertas;
 import java.time.*;
 import java.util.*;
 
-import Usuarios.Usuario;
+import Usuarios.Demandante;
 import es.uam.eps.padsof.telecard.*;
 
 import java.io.*;
@@ -16,6 +16,14 @@ import java.io.*;
 public abstract class Oferta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
+	private String rectificacion;
+	public String getRectificacion() {
+		return rectificacion;
+	}
+	public void setRectificacion(String rectificacion) {
+		this.rectificacion = rectificacion;
+	}
+
 	private double precio;
 	private double valoracion;
 	private Estado estado;
@@ -24,7 +32,7 @@ public abstract class Oferta implements Serializable{
 	private LocalDate cancelacion;
 	private String desc;
 	private List<Comentario> comentarios = new ArrayList<Comentario>();
-	private List<Usuario> bloqueados = new ArrayList<Usuario>();
+	private List<Demandante> bloqueados = new ArrayList<Demandante>();
 
 	
 	/**
@@ -149,10 +157,10 @@ public abstract class Oferta implements Serializable{
 		this.cancelacion = cancelacion;
 	}
 	
-	public List<Usuario> getBloqueados() {
+	public List<Demandante> getBloqueados() {
 		return bloqueados;
 	}
-	public void setBloqueados(List<Usuario> bloqueados) {
+	public void setBloqueados(List<Demandante> bloqueados) {
 		this.bloqueados = bloqueados;
 	}
 
@@ -205,11 +213,11 @@ public abstract class Oferta implements Serializable{
 		
 	}
 
-	public void addBloqueado(Usuario u) {
-		if(bloqueados.contains(u)) {
+	public void addBloqueado(Demandante deman) {
+		if(bloqueados.contains(deman)) {
 			return;
 		}
-		bloqueados.add(u);
+		bloqueados.add(deman);
 	}
 	
 	public String toString() {

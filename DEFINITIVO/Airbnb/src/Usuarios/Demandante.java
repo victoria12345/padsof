@@ -1,10 +1,9 @@
 package Usuarios;
-import java.time.LocalDate;
 import java.util.*;
 
 import Inmuebles.Inmueble;
 import Ofertas.Disponibilidad;
-import Ofertas.Oferta;
+import Ofertas.*;
 import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
 import es.uam.eps.padsof.telecard.InvalidCardNumberException;
 import es.uam.eps.padsof.telecard.OrderRejectedException;
@@ -18,25 +17,35 @@ public class Demandante extends Rol{
 	private static final long serialVersionUID = 1L;
 	private String tarjeta;
 	private boolean bloqueado;
-	private List<Oferta> reservas = new ArrayList<Oferta>();
+	private OfertaResidencial reserva_residencial;
+	private OfertaVacacional reserva_vacacional;
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	
 	/**
-	 * @return las reservas
+	 * @return la reserva residencial
 	 */
-	public List<Oferta> getReservas() {
-		return reservas;
+	public OfertaResidencial getResidencial() {
+		return reserva_residencial;
 	}
 
+	
 	/**
-	 * @param reservas nueva lista de reservas
+	 * @return la reserva residencial
 	 */
-	public void setReservas(List<Oferta> reservas) {
-		if(reservas == null) {
-			return;
-		}
-		this.reservas = reservas;
+	public OfertaVacacional getVacacional() {
+		return reserva_vacacional;
 	}
+
+	
+	public void setResidencial(OfertaResidencial reserva_residencial) {
+		this.reserva_residencial = reserva_residencial;
+	}
+
+
+	public void setVacacional(OfertaVacacional reserva_vacacional) {
+		this.reserva_vacacional = reserva_vacacional;
+	}
+
 
 	/**
 	 * @return las ofertas contratadas
@@ -54,29 +63,14 @@ public class Demandante extends Rol{
 		}
 		this.ofertas = ofertas;
 	}
-	
-	/**
-	 * Se annade una reserva. Solo se puede reservar una oferta que no lo esta
-	 * @param o oferta que se desea reservar
-	 */
-	public void addReserva(Oferta o, LocalDate fecha) {
-		fecha.plusDays(5); //si en cinco dias no se paga se cancela
 		
-		if(o == null || o.getDisp() == Disponibilidad.RESERVADA) {
-			return;
-		}
-		reservas.add(o);
-		o.setDisp(Disponibilidad.RESERVADA);
-		o.setCancelacion(fecha);
-	}
-	
 	/**
 	 * Se annade una reserva contratada.
 	 * Solo se pueden contratar las que no lo esten por el usuario
 	 * @param o
 	 */
 	public void addOferta(Oferta o) {
-		if(o == null || (o.getDisp() == Disponibilidad.RESERVADA) && reservas.contains(o)==false){
+		if(o == null) {
 			return;
 		}
 		o.setDisp(Disponibilidad.CONTRATADA);
@@ -138,13 +132,6 @@ public class Demandante extends Rol{
 	
 	public boolean isDemandante() {
 		return true;
-	}
-	
-	public void delReserva(Oferta o) {
-		if(reservas.contains(o) == false) {
-			return;
-		}
-		reservas.remove(o);
 	}
 	
 	public void delOferta(Oferta o) {

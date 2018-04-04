@@ -1,5 +1,8 @@
 package Ofertas;
+import java.util.*;
 import java.time.*;
+
+import Usuarios.Demandante;
 /**
  * Descripcion de la clase OfertaVacacional
  * @author Victoria Pelayo e Ignacio Rabunnal
@@ -59,4 +62,45 @@ public class OfertaVacacional extends Oferta {
 		}
 		this.fianza = fianza;
 	}
+	
+	/**
+	 * Se reserva la oferta
+	 * @param deman rol de demandante de un usuario
+	 * @param date fecha en la que se realiza la reserva
+	 * @return true si se puede reservar
+	 */
+	public boolean reservar(Demandante deman, LocalDate date) {
+		List<Demandante> bloqueados = this.getBloqueados();
+		if(bloqueados.contains(deman) == true) {
+			return false;
+		}
+		if(this.getDisp() == Disponibilidad.RESERVADA) {
+			return false;
+		}
+		if(deman.getVacacional() != null) {
+			return false;
+		}
+		
+		deman.setVacacional(this);
+		this.setCancelacion(date.plusDays(5));  
+		return true;
+	}
+	
+	/**
+	 * @param deman demandante que cancela la oferta
+	 * @param valor true si hay que bloquear al usuario y false si no es asi
+	 * @return true si se realiza y false si no es asi
+	 */
+	 public boolean cancelar(Demandante deman, boolean valor) {
+		 if(this != deman.getVacacional()) {
+			 return false;
+		 }
+		 if(valor == true) {
+			 this.addBloqueado(deman);
+		 }
+		 deman.setVacacional(null);
+		 this.setDisp(Disponibilidad.DISPONIBLE);
+		 this.setCancelacion(null);
+		 return true; 
+	 }
 }

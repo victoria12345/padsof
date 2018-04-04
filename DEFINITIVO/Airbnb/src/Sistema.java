@@ -1,8 +1,10 @@
 
+
 import java.util.*;
 
 import Inmuebles.Inmueble;
 import Ofertas.Disponibilidad;
+import Ofertas.Estado;
 import Ofertas.Oferta;
 import Usuarios.Demandante;
 import Usuarios.Ofertante;
@@ -22,6 +24,7 @@ public class Sistema implements Serializable{
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
+	private List<Oferta> pendientes = new ArrayList<Oferta>();
 
 	/**
 	 * Constructor de Sistema
@@ -29,6 +32,48 @@ public class Sistema implements Serializable{
 	public Sistema() throws IOException{
 		File usuarios = new File("usuarios.txt");
 		this.cargarUsuarios(usuarios.getAbsolutePath());
+	}
+	
+	public List<Oferta> getPendientes() {
+		return pendientes;
+	}
+
+	public void setPendientes(List<Oferta> pendientes) {
+		this.pendientes = pendientes;
+	}
+	
+	public void addPendiente(Oferta o, String rectificacion, LocalDate date) {
+		if(o == null ||pendientes.contains(o) == true) {
+			return;
+		}
+		pendientes.add(o);
+		o.setEstado(Estado.RECTIFICADA);
+		o.setRectificacion(rectificacion);
+		o.setCancelacion(date);
+	}
+	
+	public void rectificar(Oferta o, String s, LocalDate date) {
+		if(o == null || pendientes.contains(o) == false || o.getEstado() == Estado.ACEPTADA) {
+			return;
+		}
+		o.setRectificacion(s);
+		o.setCancelacion(date);
+	}
+	
+	public void aceptarOferta(Oferta o) {
+		if(o == null ||pendientes.contains(o) == false) {
+			return;
+		}
+		pendientes.remove(o);
+		o.setEstado(Estado.ACEPTADA);
+	}
+	
+	public void cancelarOferta(Oferta o) {
+		if(o == null || pendientes.contains(o) == false) {
+			return;
+		}
+		pendientes.remove(o);
+		o.setEstado(Estado.CANCELADA);
 	}
 	
 	/**
@@ -328,6 +373,23 @@ public class Sistema implements Serializable{
 		this.setUsuarios(usuarios);
 	}
 	
+	
+	
+	
+	
+	
+	
+	
+	private void comprobarOfertas(LocalDate date) {
+		
+		for(Oferta o: ofertas) {
+			LocalDate cancelacion = o.getCancelacion();
+			if(o.getEstado() == Estado.RECTIFICADA && cancelacion.isBefore(date)) {
+				
+			}
+		}
+	}
+	
 	public void serializar() throws IOException{
 		FileOutputStream fsalida = new FileOutputStream("sistema.ser");
 		ObjectOutputStream objsal = new ObjectOutputStream(fsalida);
@@ -336,11 +398,12 @@ public class Sistema implements Serializable{
 		fsalida.close();
 	}
 	
-	public Sistema deserializar() throws IOException, ClassNotFoundException{
+	public Sistema deserializar(LocalDate date) throws IOException, ClassNotFoundException{
 			Sistema sist = new Sistema();
 			FileInputStream fentrada = new FileInputStream("sistema.ser");
 			ObjectInputStream objent = new ObjectInputStream(fentrada);
 			sist = (Sistema) objent.readObject();
+			sist.comprobarOfertas(date);
 			objent.close();
 			fentrada.close();
 			return sist;

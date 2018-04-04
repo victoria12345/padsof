@@ -1,8 +1,9 @@
 package Usuarios;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-import Inmuebles.Inmueble;
+import Ofertas.Estado;
 import Ofertas.Oferta;
 /**
  * Descripcion de la clase Administrador
@@ -11,8 +12,7 @@ import Ofertas.Oferta;
  */
 public class Administrador extends Rol{
 	private static final long serialVersionUID = 1L;
-	public List<Oferta> pendientes = new ArrayList<Oferta>();
-	public List<Usuario> bloqueados = new ArrayList<Usuario>();
+	private List<Usuario> bloqueados = new ArrayList<>();
 	/**
 	 * Constructor de la clase Administrador
 	 */
@@ -20,15 +20,6 @@ public class Administrador extends Rol{
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	public List<Oferta> getPendientes() {
-		return pendientes;
-	}
-
-	public void setPendientes(List<Oferta> pendientes) {
-		this.pendientes = pendientes;
-	}
-
 	public List<Usuario> getBloqueados() {
 		return bloqueados;
 	}
@@ -52,31 +43,6 @@ public class Administrador extends Rol{
 	 */
 	public boolean isOfertante() {
 		return false;
-	}
-	
-	/**
-	 * No hace nada
-	 */
-	public void addInmueble(Inmueble i) {
-		
-	}
-	
-	public boolean isDemandante() {
-		return false;
-	}
-	
-	public void addPendiente(Oferta o) {
-		if(pendientes.contains(o) == true) {
-			return;
-		}
-		pendientes.add(o);
-	}
-	
-	public void delPendiente(Oferta o) {
-		if(pendientes.contains(o) == false) {
-			return;
-		}
-		pendientes.remove(o);
 	}
 	
 	public void addBloqueado(Usuario u) {
@@ -107,6 +73,9 @@ public class Administrador extends Rol{
 	}
 
 
-	
+	public boolean isDemandante() {
+		return false;
+	}
+
 
 }
