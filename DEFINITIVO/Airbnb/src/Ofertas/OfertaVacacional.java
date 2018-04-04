@@ -74,6 +74,9 @@ public class OfertaVacacional extends Oferta {
 		if(bloqueados.contains(deman) == true) {
 			return false;
 		}
+		if(this.getEstado() != Estado.ACEPTADA) {
+			return false;
+		}
 		if(this.getDisp() == Disponibilidad.RESERVADA) {
 			return false;
 		}

@@ -72,6 +72,9 @@ public class OfertaResidencial extends Oferta {
 		if(deman.getResidencial() != null) {
 			return false;
 		}
+		if(this.getEstado() != Estado.ACEPTADA) {
+			return false;
+		}
 		
 		deman.setResidencial(this);
 		this.setCancelacion(date.plusDays(5));  

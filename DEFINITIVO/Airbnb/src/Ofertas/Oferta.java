@@ -47,7 +47,7 @@ public abstract class Oferta implements Serializable{
 			this.precio = precio;
 		}
 		this.valoracion = 0;
-		this.estado = Estado.CANCELADA;
+		this.estado = Estado.PENDIENTE;
 		this.disp = Disponibilidad.DISPONIBLE;
 		this.ini = ini;
 		this.cancelacion = null;

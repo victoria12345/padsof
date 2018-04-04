@@ -5,5 +5,5 @@ package Ofertas;
  *
  */
 public enum Estado {
-	ACEPTADA, CANCELADA, RECTIFICADA
+	ACEPTADA, RECTIFICADA, PENDIENTE
 }

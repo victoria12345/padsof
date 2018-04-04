@@ -6,6 +6,8 @@ import Inmuebles.Inmueble;
 import Ofertas.Disponibilidad;
 import Ofertas.Estado;
 import Ofertas.Oferta;
+import Ofertas.OfertaResidencial;
+import Ofertas.OfertaVacacional;
 import Usuarios.Demandante;
 import Usuarios.Ofertante;
 import Usuarios.Rol;
@@ -42,14 +44,13 @@ public class Sistema implements Serializable{
 		this.pendientes = pendientes;
 	}
 	
-	public void addPendiente(Oferta o, String rectificacion, LocalDate date) {
+	public void addPendiente(Oferta o) {
 		if(o == null ||pendientes.contains(o) == true) {
 			return;
 		}
 		pendientes.add(o);
-		o.setEstado(Estado.RECTIFICADA);
-		o.setRectificacion(rectificacion);
-		o.setCancelacion(date);
+		o.setEstado(Estado.PENDIENTE);
+		o.setCancelacion(null);
 	}
 	
 	public void rectificar(Oferta o, String s, LocalDate date) {
@@ -58,7 +59,9 @@ public class Sistema implements Serializable{
 		}
 		o.setRectificacion(s);
 		o.setCancelacion(date);
+		pendientes.remove(o);
 	}
+	
 	
 	public void aceptarOferta(Oferta o) {
 		if(o == null ||pendientes.contains(o) == false) {
@@ -66,6 +69,7 @@ public class Sistema implements Serializable{
 		}
 		pendientes.remove(o);
 		o.setEstado(Estado.ACEPTADA);
+		o.setCancelacion(null);
 	}
 	
 	public void cancelarOferta(Oferta o) {
@@ -73,7 +77,8 @@ public class Sistema implements Serializable{
 			return;
 		}
 		pendientes.remove(o);
-		o.setEstado(Estado.CANCELADA);
+		pendientes.remove(o);
+		ofertas.remove(o);
 	}
 	
 	/**
@@ -374,18 +379,47 @@ public class Sistema implements Serializable{
 	}
 	
 	
-	
-	
-	
-	
-	
-	
 	private void comprobarOfertas(LocalDate date) {
-		
+		//Primero comprobamos las ofertas en estado de rectificacion
 		for(Oferta o: ofertas) {
 			LocalDate cancelacion = o.getCancelacion();
 			if(o.getEstado() == Estado.RECTIFICADA && cancelacion.isBefore(date)) {
-				
+				if(pendientes.contains(o) == true) {
+					pendientes.remove(o);
+				}
+				ofertas.remove(o);
+			}
+		}
+		for(Usuario u: usuarios) {
+			List<Rol> roles = u.getRoles();
+			for(int i = 0; i < roles.size(); i++) {
+				if (roles.get(i).isDemandante() == true) {
+					Demandante rol = (Demandante)roles.get(i);
+					OfertaResidencial res = rol.getResidencial();
+					OfertaVacacional vac = rol.getVacacional();
+					
+					if(res != null) {
+						if(res.getCancelacion().isBefore(date) == true) {
+							//Si se bloquea la oferta se cancela el usuario
+							res.addBloqueado(rol);
+							//la oferta pasa de nuevo a disponible
+							res.setDisp(Disponibilidad.DISPONIBLE);
+							//el usuario ya no tiene esa reserva
+							rol.setResidencial(null);
+						}
+					}
+					
+					if(vac != null) {
+						if(vac.getCancelacion().isBefore(date) == true) {
+							//Si se bloquea la oferta se cancela el usuario
+							vac.addBloqueado(rol);
+							//la oferta pasa de nuevo a disponible
+							vac.setDisp(Disponibilidad.DISPONIBLE);
+							//el usuario ya no tiene esa reserva
+							rol.setResidencial(null);
+						}
+					}
+				}
 			}
 		}
 	}
