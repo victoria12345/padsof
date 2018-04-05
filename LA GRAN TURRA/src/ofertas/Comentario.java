@@ -17,6 +17,7 @@ public class Comentario implements Serializable{
 	private int id;
 	private String texto;
 	private Usuario usuario;
+	private Comentario padre = null;
 	private List<Comentario> respuestas = new ArrayList<Comentario>();
 	
 	/**
@@ -107,6 +108,7 @@ public class Comentario implements Serializable{
 			throw new ArgumentoNoValido();
 		}
 		respuestas.add(c);
+		c.setPadre(this);
 	}
 	
 	/**
@@ -118,6 +120,7 @@ public class Comentario implements Serializable{
 			throw new ArgumentoNoValido();
 		}
 		respuestas.remove(c);
+		c.setPadre(null);
 	}
 	
 	public String toString() {
@@ -125,5 +128,19 @@ public class Comentario implements Serializable{
 							"Usuario:" + this.getUsuario().toString() +
 							"Texto:" + this.getTexto();
 		return comentario;
+	}
+
+	/**
+	 * @return the padre
+	 */
+	public Comentario getPadre() {
+		return padre;
+	}
+
+	/**
+	 * @param padre the padre to set
+	 */
+	public void setPadre(Comentario padre){
+		this.padre = padre;
 	}
 }

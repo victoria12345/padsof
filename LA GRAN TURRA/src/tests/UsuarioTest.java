@@ -7,11 +7,9 @@ import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
 
-import Inmuebles.Inmueble;
-import Usuarios.Demandante;
-import Usuarios.Ofertante;
-import Usuarios.Rol;
-import Usuarios.Usuario;
+import excepciones.ArgumentoNoValido;
+import inmuebles.Inmueble;
+import usuarios.*;
 
 public class UsuarioTest {
 	
@@ -22,52 +20,47 @@ public class UsuarioTest {
 	Inmueble i;
 	
 	@Before
-	public void before() {
+	public void before() throws ArgumentoNoValido {
 		u = new Usuario("nick", "nombre", "apellido", "contrasenia");
 		u.setRoles(roles);
 		ofertante = new Ofertante("12345");
-		ofertante.setBloqueado(true);
+		
 		u.getRoles().add(ofertante);
 		
 		user = new Usuario("nick", "nombre", "apellido", "contrasenia");
-		u.setRoles(roles);
 		deman = new Demandante("12345");
 		u.getRoles().add(deman);
 	}
 	
 	
-	@Test
-	public void testSetNick() {
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetNick() throws ArgumentoNoValido {
 		u.setNick(null);
-		assertEquals(u.getNick(), "nick");
 	}
 
-	@Test
-	public void testSetNombre() {
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetNombre() throws ArgumentoNoValido {
 		u.setNombre(null);
-		assertEquals(u.getNombre(), "nombre");
 	}
 
-	@Test
-	public void testSetApellido() {
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetApellido() throws ArgumentoNoValido {
 		u.setApellido(null);
-		assertEquals(u.getApellido(), "apellido");
 	}
 
-	@Test
-	public void testSetContrasenia() {
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetContrasenia() throws ArgumentoNoValido {
 		u.setContrasenia(null);
-		assertEquals(u.getContrasenia(), "contrasenia");
 	}
 
-	@Test
-	public void testSetRoles() {
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetRoles() throws ArgumentoNoValido {
 		u.setRoles(null);
-		assertEquals(u.getRoles(), roles);
 	}
 
 	@Test
 	public void testIsBloqueado1() {
+		ofertante.setBloqueado(true);
 		assertTrue(u.isBloqueado());
 	}
 	
