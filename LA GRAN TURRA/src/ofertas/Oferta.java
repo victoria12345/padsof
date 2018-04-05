@@ -17,14 +17,6 @@ import java.io.*;
 public abstract class Oferta implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-	private String rectificacion;
-	public String getRectificacion() {
-		return rectificacion;
-	}
-	public void setRectificacion(String rectificacion) {
-		this.rectificacion = rectificacion;
-	}
-
 	private double precio;
 	private double valoracion;
 	private Estado estado;
@@ -32,6 +24,7 @@ public abstract class Oferta implements Serializable{
 	private LocalDate ini;
 	private LocalDate cancelacion;
 	private String desc;
+	private String rectificacion;
 	private List<Comentario> comentarios = new ArrayList<Comentario>();
 	private List<Demandante> bloqueados = new ArrayList<Demandante>();
 
@@ -130,6 +123,13 @@ public abstract class Oferta implements Serializable{
 			throw new ArgumentoNoValido();
 		}
 		this.desc = desc;
+	}
+	
+	public String getRectificacion() {
+		return rectificacion;
+	}
+	public void setRectificacion(String rectificacion) {
+		this.rectificacion = rectificacion;
 	}
 	
 	/**

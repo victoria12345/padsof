@@ -110,6 +110,18 @@ public class OfertaTest {
 		ores.pagar(deman.getTarjeta(), "prueba");
 	}
 	
+	@Test(expected = FailedInternetConnectionException.class)
+	public void testPagar2() throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException {
+		deman.setTarjeta("1234567891234567");
+		ores.pagar(deman.getTarjeta(), "W");
+	}
+	
+	@Test(expected = OrderRejectedException.class)
+	public void testPagar3() throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException {
+		deman.setTarjeta("1234567891234567");
+		ores.pagar(deman.getTarjeta(), "R");
+	}
+	
 	@Test(expected = ArgumentoNoValido.class)
 	public void testSetNmeses() throws ArgumentoNoValido {
 		ores.setNmeses(-1);
@@ -224,8 +236,4 @@ public class OfertaTest {
 		ores.cancelar(deman, true);
 		assertTrue(ores.getBloqueados().contains(deman));
 	}
-	
-	
-	
-
 }

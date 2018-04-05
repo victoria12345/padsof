@@ -1,8 +1,6 @@
 package usuarios;
 import java.util.*;
 
-import inmuebles.Inmueble;
-
 import ofertas.*;
 import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
 import es.uam.eps.padsof.telecard.InvalidCardNumberException;
@@ -18,15 +16,15 @@ public class Demandante extends Rol{
 	private static final long serialVersionUID = 1L;
 	private String tarjeta;
 	private boolean bloqueado;
-	private OfertaResidencial reserva_residencial;
-	private OfertaVacacional reserva_vacacional;
+	private OfertaResidencial reservaResidencial;
+	private OfertaVacacional reservaVacacional;
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	
 	/**
 	 * @return la reserva residencial
 	 */
 	public OfertaResidencial getResidencial() {
-		return reserva_residencial;
+		return reservaResidencial;
 	}
 
 	
@@ -34,17 +32,17 @@ public class Demandante extends Rol{
 	 * @return la reserva residencial
 	 */
 	public OfertaVacacional getVacacional() {
-		return reserva_vacacional;
+		return reservaVacacional;
 	}
 
 	
-	public void setResidencial(OfertaResidencial reserva_residencial) {
-		this.reserva_residencial = reserva_residencial;
+	public void setResidencial(OfertaResidencial reservaResidencial) {
+		this.reservaResidencial = reservaResidencial;
 	}
 
 
-	public void setVacacional(OfertaVacacional reserva_vacacional) {
-		this.reserva_vacacional = reserva_vacacional;
+	public void setVacacional(OfertaVacacional reservaVacacional) {
+		this.reservaVacacional = reservaVacacional;
 	}
 
 
@@ -124,12 +122,6 @@ public class Demandante extends Rol{
 		return false;
 	}
 	
-	/**
-	 * No hace nada
-	 */
-	public void addInmueble(Inmueble i) {
-		
-	}
 	
 	public boolean isDemandante() {
 		return true;
@@ -143,8 +135,9 @@ public class Demandante extends Rol{
 	}
 	
 	
-	public void pagarOferta(Oferta o, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException {
+	public void pagarOferta(Oferta o, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido {
 		o.pagar(tarjeta, concepto);
+		this.addOferta(o);
 	}
 	
 		
