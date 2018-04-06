@@ -2,7 +2,7 @@
 
 import java.util.*;
 
-import excepciones.ArgumentoNoValido;
+import excepciones.*;
 import inmuebles.Inmueble;
 import ofertas.*;
 import usuarios.*;
@@ -17,10 +17,12 @@ import java.time.*;
 
 public class Sistema implements Serializable{
 	private static final long serialVersionUID = 1L;
+	private Usuario uActual = null;
 	private List<Usuario> usuarios = new ArrayList<Usuario>();
 	private List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	private List<Oferta> pendientes = new ArrayList<Oferta>();
+	private List<Oferta> filtradas = new ArrayList<Oferta>();
 
 	/**
 	 * Constructor de Sistema
@@ -46,6 +48,13 @@ public class Sistema implements Serializable{
 		pendientes.add(o);
 		o.setEstado(Estado.PENDIENTE);
 		o.setCancelacion(null);
+	}
+	
+	public void addOferta(Oferta o) {
+		if(o == null ||ofertas.contains(o) == true) {
+			return;
+		}
+		ofertas.add(o);
 	}
 	
 	public void rectificar(Oferta o, String s, LocalDate date) {
@@ -125,6 +134,11 @@ public class Sistema implements Serializable{
 		}
 		this.ofertas = ofertas;
 	}
+	
+	public Usuario getUsuarioActual() {
+		return uActual;
+	}
+	
 	/**
 	 * Se busca un usuario en el sistema
 	 * @param nick nick del usuario que se busca
@@ -141,6 +155,34 @@ public class Sistema implements Serializable{
 			}
 		}
 		return null;
+	}
+	
+	/**
+	 * login de un usuario en el sistema
+	 * @param nick nick del usuario que hace login
+	 * @param cont contraseña del usuario que hace login
+	 */
+	public void login(String nick, String cont) throws ArgumentoNoValido, HayOtroUsuarioLogeado, UsuarioNoEncontrado {
+		if(nick == null || cont == null) {
+			throw new ArgumentoNoValido();
+		}
+		
+		if(uActual != null) {
+			throw new HayOtroUsuarioLogeado();
+		}
+		
+		uActual = this.buscarUsuario(nick, cont);
+		if(uActual == null) {
+			throw new UsuarioNoEncontrado();
+		}
+	}
+	
+	
+	/**
+	 * logout del usuario actual en el sistema
+	 */
+	public void logout() {
+		this.uActual = null;
 	}
 	
 	/**
@@ -174,7 +216,7 @@ public class Sistema implements Serializable{
 				ofs.addAll(i.getOfertas());
 			}
 		}
-			
+		this.setFiltradas(ofs);	
 		return ofs;		
 	}
 	
@@ -195,7 +237,7 @@ public class Sistema implements Serializable{
 				ofs.add(o);
 			}
 		}
-			
+		this.setFiltradas(ofs);	
 		return ofs;		
 	}
 	
@@ -212,11 +254,11 @@ public class Sistema implements Serializable{
 		List<Oferta> ofs = new ArrayList<Oferta>();
 		
 		for(Oferta o: this.ofertas) {
-			if(o.getValoracion() <=  valoracion) {
+			if(o.getValoracion() >=  valoracion) {
 				ofs.add(o);
 			}
 		}
-			
+		this.setFiltradas(ofs);	
 		return ofs;		
 	}
 	
@@ -226,7 +268,7 @@ public class Sistema implements Serializable{
 	 * @return lista de ofertas cuyo estado es el indicado
 	 * @author Victoria Pelayo e Ignacio Rabunnal
 	 */
-	public List<Oferta> filtrar_estado(Disponibilidad estado) {
+	public List<Oferta> filtrar_disp(Disponibilidad estado) {
 		List<Oferta> ofs = new ArrayList<Oferta>();
 		
 		for(Oferta o: this.ofertas) {
@@ -234,7 +276,7 @@ public class Sistema implements Serializable{
 				ofs.add(o);
 			}
 		}
-			
+		this.setFiltradas(ofs);	
 		return ofs;		
 	}
 	
@@ -252,6 +294,8 @@ public class Sistema implements Serializable{
 				ofs.add(o);
 			}
 		}
+		
+		this.setFiltradas(ofs);
 			
 		return ofs;	
 	}
@@ -263,43 +307,36 @@ public class Sistema implements Serializable{
 	 * @param orden 1 si quieres de menor a mayor y 0 si quieres de mayor a menor
 	 * @return lista de las ofertas ordenadas
 	 */
-	public List<Oferta> ordenar_precio(List<Oferta> ofertas, int orden){
-		List<Oferta> ofs = new ArrayList<Oferta>();
+	public void ordenar_precio(List<Oferta> ofertas, int orden){
 		if(orden != 0 && orden != 1) {
-			return null;
+			return;
 		}
 		
-		if (orden == 0) { //precio de mayor a menor
+		if (orden == 0) { //precio de menor a mayor
 			if(ofertas == null) {
 				ofertas = this.ofertas;
 			}
 			
 			for(int i = 0; i < ofertas.size(); i++){
-				Oferta max = ofertas.get(i);
-				for(int j = i+1; j < ofertas.size(); j++) {
-					if(max.getPrecio() < ofertas.get(j).getPrecio()) {
-						max = ofertas.get(j);
+				for(int j = 1; j < (ofertas.size()-i); j++) {
+					if(ofertas.get(j-1).getPrecio() > ofertas.get(j).getPrecio()) {
+						Collections.swap(ofertas, j-1, j);
 					}
 				}
-				ofs.add(max);
 			}
-		}else {
+		}else {//precio de mayor a menor
 			if(ofertas == null) {
 				ofertas = this.ofertas;
 			}
 			
 			for(int i = 0; i < ofertas.size(); i++){
-				Oferta min = ofertas.get(i);//de menor a mayor
-				for(int j = i+1; j < ofertas.size(); j++) {
-					if(min.getPrecio() < ofertas.get(j).getPrecio()) {
-						min = ofertas.get(j);
+				for(int j = 1; j < (ofertas.size()-i); j++) {
+					if(ofertas.get(j-1).getPrecio() < ofertas.get(j).getPrecio()) {
+						Collections.swap(ofertas, j-1, j);
 					}
 				}
-				ofs.add(min);
 			}
 		}
-		
-		return ofs;
 	}
 	
 	/**
@@ -379,9 +416,9 @@ public class Sistema implements Serializable{
 		
 		for(Usuario u: usuarios) {
 			List<Rol> roles = u.getRoles();
-			for(int i = 0; i < roles.size(); i++) {
-				if (roles.get(i).isDemandante() == true) {
-					Demandante rol = (Demandante)roles.get(i);
+			for(Rol r: roles) {
+				if (r.isDemandante() == true) {
+					Demandante rol = (Demandante) r;
 					OfertaResidencial res = rol.getResidencial();
 					OfertaVacacional vac = rol.getVacacional();
 					
@@ -407,8 +444,8 @@ public class Sistema implements Serializable{
 						}
 					}
 				}
-				if(roles.get(i).isDemandante() == true) {
-					Ofertante rol = (Ofertante)roles.get(i);
+				if(r.isOfertante() == true) {
+					Ofertante rol = (Ofertante)r;
 					for(Inmueble in: rol.getInmuebles()) {
 						for(Oferta o: in.getOfertas()) {
 							LocalDate cancelacion = o.getCancelacion();
@@ -444,5 +481,22 @@ public class Sistema implements Serializable{
 			fentrada.close();
 			return sist;
 		
+	}
+
+	/**
+	 * @return the filtradas
+	 */
+	public List<Oferta> getFiltradas() {
+		return filtradas;
+	}
+
+	/**
+	 * @param filtradas the filtradas to set
+	 */
+	public void setFiltradas(List<Oferta> filtradas) {
+		if(filtradas == null) {
+			return;
+		}
+		this.filtradas = filtradas;
 	}
 }

@@ -138,6 +138,11 @@ public class Demandante extends Rol{
 	public void pagarOferta(Oferta o, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido {
 		o.pagar(tarjeta, concepto);
 		this.addOferta(o);
+		if(this.getResidencial() == o) {
+			this.setResidencial(null);
+		}else {
+			this.setVacacional(null);
+		}
 	}
 	
 		

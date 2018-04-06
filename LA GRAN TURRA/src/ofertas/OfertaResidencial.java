@@ -77,6 +77,7 @@ public class OfertaResidencial extends Oferta {
 		}
 		
 		deman.setResidencial(this);
+		this.setDisp(Disponibilidad.RESERVADA);
 		this.setCancelacion(date.plusDays(5));  
 	}
 	
@@ -96,5 +97,4 @@ public class OfertaResidencial extends Oferta {
 		 this.setDisp(Disponibilidad.DISPONIBLE);
 		 this.setCancelacion(null);
 	 }
-
 }

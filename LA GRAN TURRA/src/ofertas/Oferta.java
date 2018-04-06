@@ -223,9 +223,7 @@ public abstract class Oferta implements Serializable{
 	}
 	
 	public String toString() {
-		String oferta = "Oferta:\n" + 
-						"Descripcion:" + this.getDesc() + "\n" +
-						"Precio:" + this.getPrecio();
+		String oferta = "Oferta->" + " Descripcion: " + this.getDesc() + " Precio: " + this.getPrecio() + " Fecha ini: " + this.getIni() + " Valoracion: " + this.getValoracion() + " Disponibilidad: " + this.getDisp();
 		return oferta;				
 	}
 }

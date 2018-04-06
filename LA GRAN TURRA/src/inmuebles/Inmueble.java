@@ -145,10 +145,10 @@ public class Inmueble implements Serializable {
 	}
 	
 	public String toString() {
-		String inmueble = "Inmueble:\n" + 
-							"Localizacion:" + this.getLocalizacion() +"\n" +
-							"Codigo postal:" + this.getCodigoPostal() + "\n" +
-							"Descripcion:" + this.getDescripcion() + "\n";
+		String inmueble = "Inmueble-> " + 
+							"Localizacion: " + this.getLocalizacion() +
+							" Codigo postal: " + this.getCodigoPostal() +
+							" Descripcion: " + this.getDescripcion();
 		return inmueble;
 	}
 	

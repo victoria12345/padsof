@@ -124,9 +124,8 @@ public class Comentario implements Serializable{
 	}
 	
 	public String toString() {
-		String comentario = "Comentario:\n" +
-							"Usuario:" + this.getUsuario().toString() +
-							"Texto:" + this.getTexto();
+		String comentario = "Comentario->" + " Usuario: " + this.getUsuario().toString() +
+							" Texto: " + this.getTexto();
 		return comentario;
 	}
 
