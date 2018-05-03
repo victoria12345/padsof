@@ -101,4 +101,8 @@ public class OfertaResidencial extends Oferta {
 		 this.setDisp(Disponibilidad.DISPONIBLE);
 		 this.setCancelacion(null);
 	 }
+	 
+	 public double calcularPrecio() {
+		 return this.getPrecio()*nmeses;
+	 }
 }

@@ -149,6 +149,13 @@ public class Inmueble implements Serializable {
 		this.ofertas.add(o);
 	}
 	
+	public void eliminarOferta(Oferta o) throws ArgumentoNoValido{
+		if(o == null) {
+			throw new ArgumentoNoValido();
+		}
+		this.ofertas.remove(o);
+	}
+	
 	/**
 	 * Crea un string con la informacion del inmueble
 	 * @return inmueble String con la informacion del inmueble

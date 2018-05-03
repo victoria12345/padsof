@@ -5,6 +5,9 @@ import java.util.*;
 import usuarios.Demandante;
 import es.uam.eps.padsof.telecard.*;
 import excepciones.ArgumentoNoValido;
+import excepciones.DemasiadasOfertasReservadas;
+import excepciones.OfertaNoDisponible;
+import excepciones.UsuarioBloqueado;
 
 import java.io.*;
 
@@ -70,18 +73,7 @@ public abstract class Oferta implements Serializable{
 	public double getValoracion() {
 		return valoracion;
 	}
-	
-	/**
-	 * @param valoracion nuevo valor de valoracion
-	 * @throws ArgumentoNoValido si la valoracion es menor que 0
-	 */
-	public void setValoracion(double valoracion) throws ArgumentoNoValido{
-		if(valoracion <0) {
-			throw new ArgumentoNoValido();
-		}
-		this.valoracion = valoracion;
-	}
-	
+
 	/**
 	 * @return el estado
 	*/
@@ -272,4 +264,8 @@ public abstract class Oferta implements Serializable{
 		String oferta = "Oferta->" + " Descripcion: " + this.getDesc() + " Precio: " + this.getPrecio() + " Fecha ini: " + this.getIni() + " Valoracion: " + this.getValoracion() + " Disponibilidad: " + this.getDisp();
 		return oferta;				
 	}
+	
+	public abstract void reservar(Demandante deman, LocalDate date)throws UsuarioBloqueado, OfertaNoDisponible, DemasiadasOfertasReservadas;
+	public abstract void cancelar(Demandante deman, boolean valor) throws ArgumentoNoValido;
+	public abstract double calcularPrecio();
 }

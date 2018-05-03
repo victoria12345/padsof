@@ -8,11 +8,13 @@ import javax.swing.JTabbedPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import controladores.ControladorLogin;
+
 public class Gui extends JFrame implements ChangeListener {
 	private static final long serialVersionUID = 1L;
 	private LoginPanel panelLogin;	
 	private JTabbedPane pestañas = new JTabbedPane();
-	private Controlador controlador;
+	private ControladorLogin controlador;
 	
 	public Gui(String titulo) {
 		super(titulo); // antes: JFrame ventana = new JFrame("Mi GUI");
@@ -49,10 +51,10 @@ public class Gui extends JFrame implements ChangeListener {
 		this.setVisible(true);	
 	}
 
-	public void setControlador(Controlador c) {
+	public void setControlador(ControladorLogin c) {
 		this.controlador = c;
 	}
-	public Controlador getControlador() {
+	public ControladorLogin getControlador() {
 		return this.controlador;
 	}
 	

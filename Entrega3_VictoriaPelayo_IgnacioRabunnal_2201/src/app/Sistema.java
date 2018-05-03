@@ -182,10 +182,10 @@ public class Sistema implements Serializable{
 		if(nick == null|| cont == null) {
 			return null;
 		}
+		
 		for(Usuario u : this.getUsuarios()) {
-			System.out.println(u);
-			if(nick == u.getNick() && cont == u.getContrasenia()) {
-				System.out.println("Holaxd");
+			System.out.println(u.getNick().equals(nick));
+			if(u.getNick().equals(nick) && cont.equals(u.getContrasenia())) {
 				return u;
 			}
 		}
@@ -420,6 +420,11 @@ public class Sistema implements Serializable{
 				List<Rol> roles = new ArrayList<Rol>();
 				Usuario u;
 				String trozos[] = linea.split(";");
+				
+				if(trozos.length < 5) {
+					buffer.close();
+					throw new ArgumentoNoValido();
+				}
 				String fullname[] = trozos[2].split(", "); //Dividimos fullname en dos trozos(nombre y apellido)
 				
 				rol = trozos[0];
@@ -441,6 +446,10 @@ public class Sistema implements Serializable{
 					roles.add(new Ofertante(tarjeta));
 				}
 				
+				if(rol.equals("D") == false && rol.equals("O") == false && rol.equals("OD") == false) {
+					buffer.close();
+					throw new ArgumentoNoValido();
+				}
 				u.setRoles(roles);
 				usuarios.add(u);
 			}
