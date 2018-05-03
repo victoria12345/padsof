@@ -10,7 +10,8 @@ public class Controlador {
 	private Sistema app;
 	
 	public Controlador(Gui gui, Sistema app) {
-		this.gui = gui; this.app = app;
+		this.gui = gui; 
+		this.app = app;
 	}
 
 	public void login(String name, String passwd) {

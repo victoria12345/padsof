@@ -182,8 +182,10 @@ public class Sistema implements Serializable{
 		if(nick == null|| cont == null) {
 			return null;
 		}
-		for(Usuario u : this.usuarios) {
-			if(u.getNick() == nick && u.getContrasenia() == cont) {
+		for(Usuario u : this.getUsuarios()) {
+			System.out.println(u);
+			if(nick == u.getNick() && cont == u.getContrasenia()) {
+				System.out.println("Holaxd");
 				return u;
 			}
 		}
