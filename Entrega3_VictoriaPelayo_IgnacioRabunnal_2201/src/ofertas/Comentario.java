@@ -89,17 +89,7 @@ public class Comentario implements Serializable{
 		return respuestas;
 	}
 	
-	/**
-	 * Cambia todo la lista de respuestas de un comentario
-	 * @param respuestas respuestas de un comentario
-	 * @throws ArgumentoNoValido si la lista de respuestas es null
-	 */
-	public void setRespuestas(List<Comentario> respuestas) throws ArgumentoNoValido{
-		if(respuestas == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.respuestas = respuestas;
-	}
+
 	
 	/**
 	 * Annade una respuesta a un comentario

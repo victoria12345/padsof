@@ -5,6 +5,7 @@ import ofertas.*;
 import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
 import es.uam.eps.padsof.telecard.InvalidCardNumberException;
 import es.uam.eps.padsof.telecard.OrderRejectedException;
+import es.uam.eps.padsof.telecard.TeleChargeAndPaySystem;
 import excepciones.ArgumentoNoValido;
 
 /**
@@ -57,16 +58,7 @@ public class Demandante extends Rol{
 		return ofertas;
 	}
 
-	/**
-	 * @param ofertas nuevo array de ofertas contratadas
-	 * @throws ArgumentoNoValido si la lista de ofertas es null
-	 */
-	public void setOfertas(List<Oferta> ofertas) throws ArgumentoNoValido{
-		if(ofertas == null ) {
-			throw new ArgumentoNoValido();
-		}
-		this.ofertas = ofertas;
-	}
+
 		
 	/**
 	 * Se annade una reserva contratada.
@@ -166,13 +158,15 @@ public class Demandante extends Rol{
 	 * @throws ArgumentoNoValido si hay algun fallo en los argumentos
 	 */
 	public void pagarOferta(Oferta o, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido {
-		o.pagar(tarjeta, concepto);
+		TeleChargeAndPaySystem.charge(tarjeta, concepto, o.getPrecio());
 		this.addOferta(o);
 		if(this.getResidencial() == o) {
 			this.setResidencial(null);
 		}else {
 			this.setVacacional(null);
 		}
+		
+		o.setDisp(Disponibilidad.CONTRATADA);;
 	}
 	
 		

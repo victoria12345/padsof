@@ -48,11 +48,11 @@ public class FreshApp {
 			OfertaResidencial ores5 = new OfertaResidencial(6, fecha4, 10);
 			
 			
-			ores.setValoracion(2);
-			ores2.setValoracion(6);
-			ores3.setValoracion(10);
-			ores4.setValoracion(4);
-			ores5.setValoracion(8);
+			ores.valorar(2);
+			ores2.valorar(6);
+			ores3.valorar(10);
+			ores4.valorar(4);
+			ores5.valorar(8);
 		
 			
 			ores.setEstado(Estado.ACEPTADA);

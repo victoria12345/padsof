@@ -96,16 +96,6 @@ public class Inmueble implements Serializable {
 		return campos;
 	}
 
-	/**
-	 * @param campos nueva lista de campos abiertos del inmueble
-	 * @throws ArgumentoNoValido si la lista de campos es null
-	 */
-	public void setCampos(List<CampoAbierto> campos) throws ArgumentoNoValido{
-		if(campos == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.campos = campos;
-	}
 	
 	/**
 	 * @return las ofertas asociadas al inmueble
@@ -113,16 +103,7 @@ public class Inmueble implements Serializable {
 	public List<Oferta> getOfertas() {
 		return ofertas;
 	}
-	/**
-	 * @param ofertas nueva lista de ofertas asociadas
-	 * @throws ArgumentoNoValido si la lista de ofertas es null
-	 */
-	public void setOfertas(List<Oferta> ofertas) throws ArgumentoNoValido{
-		if(ofertas == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.ofertas = ofertas;
-	}
+
 	
 	/**
 	 * Se annade un campo variable al inmueble

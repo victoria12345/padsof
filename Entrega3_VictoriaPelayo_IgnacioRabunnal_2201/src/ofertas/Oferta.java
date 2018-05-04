@@ -3,6 +3,7 @@ import java.time.*;
 import java.util.*;
 
 import usuarios.Demandante;
+import usuarios.Ofertante;
 import es.uam.eps.padsof.telecard.*;
 import excepciones.ArgumentoNoValido;
 import excepciones.DemasiadasOfertasReservadas;
@@ -176,34 +177,13 @@ public abstract class Oferta implements Serializable{
 	}
 	
 	/**
-	 * @param bloqueados lista de usuarios bloqueados
-	 * @throws ArgumentoNoValido si la lista de bloqueados es null
-	 */
-	public void setBloqueados(List<Demandante> bloqueados) throws ArgumentoNoValido { 
-		if(bloqueados == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.bloqueados = bloqueados;
-	}
-
-
-	/**
 	 * @return comentarios de la oferta
 	 */
 	public List<Comentario> getComentarios(){
 		return comentarios;
 	}
 	
-	/**
-	 * @param comentarios nueva lista de comentarios de la oferta
-	 * @throws ArgumentoNoValido si la lista de comentarios es null
-	 */
-	public void setComentarios(List<Comentario> comentarios) throws ArgumentoNoValido{
-		if(comentarios == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.comentarios = comentarios;
-	}
+
 	
 	/**
 	 * Annade un comentario
@@ -217,6 +197,15 @@ public abstract class Oferta implements Serializable{
 		
 		comentarios.add(c);
 	}
+	
+	public void delComentario(Comentario c) throws ArgumentoNoValido{
+		if(c == null || comentarios.contains(c) == false) {
+			throw new ArgumentoNoValido();
+		}
+		
+		comentarios.remove(c);
+	}
+	
 	
 	/**
 	 * Recalcula la valoracion de la oferta
@@ -238,10 +227,11 @@ public abstract class Oferta implements Serializable{
 	 * @throws InvalidCardNumberException si la tarjeta es erronea
 	 * @throws FailedInternetConnectionException si falla la conexion a internet
 	 * @throws OrderRejectedException si la orden de transaccion ha sido rechazada
+	 * @throws ArgumentoNoValido 
 	 */
-	public void pagar(String tarjeta, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException{
-		TeleChargeAndPaySystem.charge(tarjeta, concepto, this.getPrecio());
-		
+	public void pagar(Demandante deman, Ofertante ofer, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido{
+		deman.pagarOferta(this, concepto);
+		ofer.recibirPago(this, concepto);
 	}
 
 	/**
@@ -254,6 +244,13 @@ public abstract class Oferta implements Serializable{
 			throw new ArgumentoNoValido();
 		}
 		bloqueados.add(deman);
+	}
+	
+	public void delBloqueado(Demandante deman) throws ArgumentoNoValido {
+		if(deman == null ||bloqueados.contains(deman) == false) {
+			throw new ArgumentoNoValido();
+		}
+		bloqueados.remove(deman);
 	}
 	
 	/**

@@ -1,8 +1,13 @@
 package usuarios;
 import java.util.*;
 
+import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
+import es.uam.eps.padsof.telecard.InvalidCardNumberException;
+import es.uam.eps.padsof.telecard.OrderRejectedException;
+import es.uam.eps.padsof.telecard.TeleChargeAndPaySystem;
 import excepciones.ArgumentoNoValido;
 import inmuebles.Inmueble;
+import ofertas.Oferta;
 
 /**
  * Descripcion de la clase ofertante
@@ -12,6 +17,7 @@ import inmuebles.Inmueble;
 public class Ofertante extends Rol {
 	private static final long serialVersionUID = 1L;
 	private String tarjeta;
+	private double saldoPendiente;
 	private boolean bloqueado;
 	public List<Inmueble> inmuebles = new ArrayList<Inmueble>();
 
@@ -22,16 +28,6 @@ public class Ofertante extends Rol {
 		return inmuebles;
 	}
 
-	/**
-	 * @param inmuebles nueva lista de inmuebles del ofertante
-	 * @throws ArgumentoNoValido si la lista de inmuebles es null
-	 */
-	public void setInmuebles(List<Inmueble> inmuebles) throws ArgumentoNoValido{
-		if(inmuebles == null) {
-			throw new ArgumentoNoValido();
-		}
-		this.inmuebles = inmuebles;
-	}
 	
 	/**
 	 * Annade un inmueble al ofertante
@@ -44,6 +40,7 @@ public class Ofertante extends Rol {
 		}
 		inmuebles.add(i);
 	}
+	
 
 	/**
 	 * Constructor de Ofertante
@@ -52,6 +49,23 @@ public class Ofertante extends Rol {
 	public Ofertante(String tarjeta) {
 		this.tarjeta = tarjeta;
 		this.bloqueado = false;
+		this.saldoPendiente = 0;
+	}
+	
+	public double getSaldoPendiente() {
+		return saldoPendiente;
+	}
+	
+	public void recibirPago(Oferta o, String concepto) {
+		try {
+			TeleChargeAndPaySystem.charge(tarjeta, concepto, o.getPrecio());
+		} catch (InvalidCardNumberException e) {
+			saldoPendiente += o.getPrecio();
+		} catch (FailedInternetConnectionException e) {
+			saldoPendiente += o.getPrecio();
+		} catch (OrderRejectedException e) {
+			saldoPendiente += o.getPrecio();
+		}
 	}
 
 	/**
