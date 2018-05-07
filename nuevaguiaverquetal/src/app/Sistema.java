@@ -438,19 +438,21 @@ public class Sistema implements Serializable{
 				tarjeta = trozos[4];
 
 				u = new Usuario(nick, nombre, apellidos, contrasenia);
+
+				switch(rol) {
+				case "D":
+					roles.add(new Demandante(tarjeta));
+				case "O":
+					roles.add(new Ofertante(tarjeta));
+				case "OD":
+					roles.add(new Demandante(tarjeta));
+					roles.add(new Ofertante(tarjeta));
+				}
 				
-				if(rol.equals("D")){
-					roles.add(new Demandante(tarjeta));
-				}else if (rol.equals("O")) {
-					roles.add(new Ofertante(tarjeta));
-				}else if(rol.equals("OD")) {
-					roles.add(new Demandante(tarjeta));
-					roles.add(new Ofertante(tarjeta));
-				}else {
+				if(rol.equals("D") == false && rol.equals("O") == false && rol.equals("OD") == false) {
 					buffer.close();
 					throw new ArgumentoNoValido();
 				}
-				
 				u.setRoles(roles);
 				usuarios.add(u);
 			}
@@ -528,12 +530,6 @@ public class Sistema implements Serializable{
 		objsal.writeObject(this);
 		objsal.close();
 		fsalida.close();
-		
-		FileOutputStream fsalida1 = new FileOutputStream("usuarios.ser");
-		ObjectOutputStream objsal1 = new ObjectOutputStream(fsalida1);
-		objsal1.writeObject(this.getUsuarios());
-		objsal1.close();
-		fsalida1.close();
 	}
 	
 	/**
@@ -552,15 +548,6 @@ public class Sistema implements Serializable{
 			sist.comprobarOfertas(date);
 			objent.close();
 			fentrada.close();
-			
-			List<Usuario> usuarios;
-			FileInputStream fentrada1 = new FileInputStream("usuarios.ser");
-			ObjectInputStream objent1 = new ObjectInputStream(fentrada1);
-			usuarios = (List<Usuario>) objent1.readObject();
-			objent1.close();
-			fentrada1.close();
-			
-			sist.setUsuarios(usuarios);
 			return sist;
 		
 	}

@@ -19,12 +19,6 @@ public class OfertanteTest {
 	}
 	
 	@Test(expected = ArgumentoNoValido.class)
-	public void testSetInmuebles() throws ArgumentoNoValido {
-		ofer.setInmuebles(null);
-	}
-	
-	
-	@Test(expected = ArgumentoNoValido.class)
 	public void testAddInmueble() throws ArgumentoNoValido {
 		ofer.addInmueble(i);
 	}
