@@ -2,6 +2,7 @@ package paneles;
 
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class SubirInmueblePanel extends JPanel{
 	
 	private JButton bSubir = new JButton("Subir");
 	private JButton bAddCampo = new JButton("Añadir campo abierto");
+	private JButton bCancelar = new JButton("Cancelar");
 	private Sistema sist;
 
 	public SubirInmueblePanel(Sistema sist) {
@@ -79,6 +81,9 @@ public class SubirInmueblePanel extends JPanel{
 		cons.gridy = 2;
 		layout.setConstraints(bAddCampo, cons);
 		
+		cons.gridy = 4;
+		layout.setConstraints(bCancelar, cons);
+		
 		this.add(p1);
 		this.add(p2);
 		this.add(p3);
@@ -86,8 +91,78 @@ public class SubirInmueblePanel extends JPanel{
 		this.add(p5);
 		this.add(bSubir);
 		this.add(bAddCampo);
-		
-		
+		this.add(bCancelar);
 	}
+
+	public JButton getbCancelar() {
+		return bCancelar;
+	}
+
+	public void setbCancelar(JButton bCancelar) {
+		this.bCancelar = bCancelar;
+	}
+
+	public JTextField getCampoDesc() {
+		return campoDesc;
+	}
+
+	public void setCampoDesc(JTextField campoDesc) {
+		this.campoDesc = campoDesc;
+	}
+
+	public JTextField getCampoLoc() {
+		return campoLoc;
+	}
+
+	public void setCampoLoc(JTextField campoLoc) {
+		this.campoLoc = campoLoc;
+	}
+
+	public JTextField getCampoCP() {
+		return campoCP;
+	}
+
+	public void setCampoCP(JTextField campoCP) {
+		this.campoCP = campoCP;
+	}
+
+	public JTextField getCampoClave() {
+		return campoClave;
+	}
+
+	public void setCampoClave(JTextField campoClave) {
+		this.campoClave = campoClave;
+	}
+
+	public JTextField getCampoValor() {
+		return campoValor;
+	}
+
+	public void setCampoValor(JTextField campoValor) {
+		this.campoValor = campoValor;
+	}
+
+	public JButton getbSubir() {
+		return bSubir;
+	}
+
+	public void setbSubir(JButton bSubir) {
+		this.bSubir = bSubir;
+	}
+
+	public JButton getbAddCampo() {
+		return bAddCampo;
+	}
+
+	public void setbAddCampo(JButton bAddCampo) {
+		this.bAddCampo = bAddCampo;
+	}
+	
+	public void setControlador(ActionListener al) {
+		this.bAddCampo.addActionListener(al);
+		this.bSubir.addActionListener(al);
+		this.bCancelar.addActionListener(al);
+	}
+	
 
 }
