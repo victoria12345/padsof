@@ -35,7 +35,9 @@ public class OfertaTest {
 	
 		ovac = new OfertaVacacional(10, ini, fin, -1);
 		ovac.setEstado(Estado.ACEPTADA);
+		ores.setValoracion(10);
 		ores.setDesc("desc");
+		ores.setComentarios(coment);
 		ores.setEstado(Estado.ACEPTADA);
 		c = new Comentario(null, null, 1);
 		coment.add(c);
@@ -62,10 +64,24 @@ public class OfertaTest {
 		ovac.setPrecio(-1);
 	}
 
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetValoracion() throws ArgumentoNoValido {
+		ores.setValoracion(-1);
+	}
 
 	@Test(expected = ArgumentoNoValido.class)
 	public void testSetDesc() throws ArgumentoNoValido {
 		ores.setDesc(null);
+	}
+
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetComentarios() throws ArgumentoNoValido {
+		ores.setComentarios(null);
+	}
+	
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetBloqueados() throws ArgumentoNoValido {
+		ores.setBloqueados(null);
 	}
 
 	@Test(expected = ArgumentoNoValido.class)
@@ -88,7 +104,7 @@ public class OfertaTest {
 		ores.valorar(11);
 	}
 	
-	/*
+	
 	@Test(expected = InvalidCardNumberException.class)
 	public void testPagar() throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException {
 		ores.pagar(deman.getTarjeta(), "prueba");
@@ -104,7 +120,7 @@ public class OfertaTest {
 	public void testPagar3() throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException {
 		deman.setTarjeta("1234567891234567");
 		ores.pagar(deman.getTarjeta(), "R");
-	}*/
+	}
 	
 	@Test(expected = ArgumentoNoValido.class)
 	public void testSetNmeses() throws ArgumentoNoValido {

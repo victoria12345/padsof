@@ -105,4 +105,12 @@ public class OfertaResidencial extends Oferta {
 	 public double calcularPrecio() {
 		 return this.getPrecio()*nmeses;
 	 }
+	 
+	 public boolean isResidencial() {
+		 return true;
+	 }
+	 
+	 public boolean isVacacional() {
+		 return false;
+	 }
 }

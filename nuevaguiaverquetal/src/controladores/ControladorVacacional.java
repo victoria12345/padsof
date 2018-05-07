@@ -30,7 +30,7 @@ public class ControladorVacacional implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
-		OfertaVacacionalPanel pLogin = ventana.getPanelVacacional();
+		OfertaVacacionalPanel pLogin = ventana.getPanelOfertaVac();
 		
 		if(event.equals(pLogin.getbCancelar())){
 			pLogin.getCampoPrecio().setText("");

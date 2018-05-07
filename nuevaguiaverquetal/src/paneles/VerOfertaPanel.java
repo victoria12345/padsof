@@ -38,6 +38,7 @@ public class VerOfertaPanel extends JPanel{
 		JPanel botonera = new JPanel();
 		botonera.setLayout(new FlowLayout());
 		botonera.add(botonContratar);
+		botonera.add(botonReservar);
 		botonera.add(botonComentar);
 		botonera.add(botonValorar);
 		botonera.add(botonVolver);

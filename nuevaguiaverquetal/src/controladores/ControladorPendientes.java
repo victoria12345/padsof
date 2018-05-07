@@ -8,7 +8,6 @@ import javax.swing.JList;
 import app.Sistema;
 import gui.CustomFrame;
 import ofertas.Oferta;
-import paneles.AdminPanel;
 import paneles.PendientesPanel;
 
 public class ControladorPendientes implements ActionListener{

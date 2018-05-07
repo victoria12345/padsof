@@ -33,7 +33,7 @@ public class ControladorResidencial implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
-		OfertaResidencialPanel pLogin = ventana.getPanelResidencial();
+		OfertaResidencialPanel pLogin = ventana.getPanelOfertaRes();
 		
 		if(event.equals(pLogin.getbCancelar())){
 			pLogin.getCampoPrecio().setText("");

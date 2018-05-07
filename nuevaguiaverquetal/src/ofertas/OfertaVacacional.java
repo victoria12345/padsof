@@ -115,4 +115,12 @@ public class OfertaVacacional extends Oferta {
 	 public double calcularPrecio() {
 		 return this.getPrecio() + fianza;
 	 }
+	 
+	 public boolean isResidencial() {
+		 return false;
+	 }
+	 
+	 public boolean isVacacional() {
+		 return true;
+	 }
 }

@@ -31,6 +31,9 @@ public class ControladorRol implements ActionListener {
 		Usuario u = app.getUsuarioActual();
 		
 		if(event.equals(pRol.getbOfertante())){
+			if(u == app.getAdmin()) {
+				ventana.mostrarPanelInmuebles();
+			}
 			for(int i = 0; i< u.getRoles().size(); i++) {
 				if(u.getRoles().get(i).isOfertante() == true) {
 					ventana.mostrarPanelInmuebles();
@@ -40,6 +43,9 @@ public class ControladorRol implements ActionListener {
 			app.logout();
 			ventana.mostrarPanelLogin();
 		}else if(event.equals(pRol.getbDemandante())) {
+			if(u == app.getAdmin()) {
+				ventana.mostrarPanelOfertas();
+			}
 			for(int i = 0; i< u.getRoles().size(); i++) {
 				if(u.getRoles().get(i).isDemandante() == true) {
 					ventana.mostrarPanelOfertas();

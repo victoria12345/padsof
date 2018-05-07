@@ -22,6 +22,8 @@ public class InmuebleTest {
 	public void before() throws ArgumentoNoValido {
 		inmu = new Inmueble(null, 28040, null);
 		i = new Inmueble("loc", 28040, "desc");
+		i.setCampos(ca);
+		i.setOfertas(ofer);
 		
 	}
 
@@ -42,6 +44,16 @@ public class InmuebleTest {
 	@Test(expected = ArgumentoNoValido.class)
 	public void testSetDescripcion() throws ArgumentoNoValido {
 		i.setDescripcion(null);
+	}
+
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetCampos() throws ArgumentoNoValido {
+		i.setCampos(null);
+	}
+
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetOfertas() throws ArgumentoNoValido {
+		i.setOfertas(null);
 	}
 
 	@Test(expected = ArgumentoNoValido.class)

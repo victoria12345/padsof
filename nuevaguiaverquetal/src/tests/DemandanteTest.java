@@ -33,6 +33,13 @@ public class DemandanteTest {
 		ofer.setDisp(Disponibilidad.RESERVADA);
 	}
 
+
+	@Test(expected = ArgumentoNoValido.class)
+	public void testSetOfertas() throws ArgumentoNoValido {
+		deman.setOfertas(null);
+	}
+
+
 	@Test(expected = ArgumentoNoValido.class)
 	public void testAddOferta() throws ArgumentoNoValido {
 		deman.addOferta(null);

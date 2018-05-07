@@ -229,9 +229,8 @@ public abstract class Oferta implements Serializable{
 	 * @throws OrderRejectedException si la orden de transaccion ha sido rechazada
 	 * @throws ArgumentoNoValido 
 	 */
-	public void pagar(Demandante deman, Ofertante ofer, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido{
+	public void pagar(Demandante deman, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido{
 		deman.pagarOferta(this, concepto);
-		ofer.recibirPago(this, concepto);
 	}
 
 	/**
@@ -265,4 +264,6 @@ public abstract class Oferta implements Serializable{
 	public abstract void reservar(Demandante deman, LocalDate date)throws UsuarioBloqueado, OfertaNoDisponible, DemasiadasOfertasReservadas;
 	public abstract void cancelar(Demandante deman, boolean valor) throws ArgumentoNoValido;
 	public abstract double calcularPrecio();
+	public abstract boolean isResidencial();
+	public abstract boolean isVacacional();
 }

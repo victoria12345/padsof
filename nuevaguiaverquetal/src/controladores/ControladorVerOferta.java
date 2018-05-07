@@ -37,7 +37,10 @@ public class ControladorVerOferta implements ActionListener{
 		Demandante deman = null;
 		
 		if(event.equals(panel.getBotonContratar())) {
-			
+			System.out.println(app.getUsuarioActual() == app.getAdmin());
+			if(app.getUsuarioActual() == app.getAdmin()) {
+				return;
+			}
 			for(Rol r: app.getUsuarioActual().getRoles()) {
 				if(r.isDemandante()) {
 					deman = (Demandante)r;
@@ -60,6 +63,9 @@ public class ControladorVerOferta implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Oh! parece que ha habido un error :)");
 			}
 		}else if(event.equals(panel.getBotonReservar())) {
+			if(app.getUsuarioActual() == app.getAdmin()) {
+				return;
+			}
 			try {
 				o.reservar(deman, ventana.getFecha());
 			} catch (UsuarioBloqueado e) {
@@ -72,6 +78,9 @@ public class ControladorVerOferta implements ActionListener{
 		}else if(event.equals(panel.getBotonComentar())) {
 			
 		}else if(event.equals(panel.getBotonValorar())) {
+			if(app.getUsuarioActual() == app.getAdmin()) {
+				return;
+			}
 			int val;
 			val = Integer.parseInt(JOptionPane.showInputDialog("Introduzca una valoracion entre 1 y 10"));
 			try {

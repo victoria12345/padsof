@@ -12,46 +12,44 @@ import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
 import paneles.EleccionOfertaPanel;
 import paneles.ElegirRolPanel;
-/**
- * Descripcion de la clase controlador Eleccion
- * 
- * @author Victoria Pelayo e Ignacio Rabunnal
- */
+
 public class ControladorEleccion implements ActionListener{
-	/**
-	 * Ventana de la aplicacion 
-	 */
 	private CustomFrame ventana;
+	private Sistema app;
 	
-	/**
-	 * Constructor del controlador Eleccion
-	 * @param gui ventana de la aplicacion
-	 * @param sist sistema de la aplicacion
-	 * 
-	 * @author Victoria Pelayo e Ignacio Rabunnal
-	 */
+	
 	public ControladorEleccion(CustomFrame gui, Sistema sist) {
 		this.ventana = gui; 
+		this.app = app;
 	}
 	
-	/**
-	 * Implementa la accion tras un evento
-	 * @param arg0 evento escuchado
-	 * 
-	 * @author Victoria Pelayo e Ignacio Rabunnal
-	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
 		EleccionOfertaPanel pEleccion = ventana.getPanelEleccion();
 		
 		if(event.equals(pEleccion.getbVacacional())){
-			ventana.mostrarPanelVacacional();
+			ventana.mostrarPanelOfertaVac();
 		}else if(event.equals(pEleccion.getbResidencial())) {
-			ventana.mostrarPanelResidencial();
+			ventana.mostrarPanelOfertaRes();
 		}else if((event.equals(pEleccion.getbAtras()))){
 			ventana.mostrarPanelInmuebles();
 		}
 	}
+	
+	public CustomFrame getVentana() {
+		return ventana;
+	}
 
+	public void setVentana(CustomFrame ventana) {
+		this.ventana = ventana;
+	}
+
+	public Sistema getApp() {
+		return app;
+	}
+
+	public void setApp(Sistema app) {
+		this.app = app;
+	}
 }

@@ -158,7 +158,7 @@ public class Demandante extends Rol{
 	 * @throws ArgumentoNoValido si hay algun fallo en los argumentos
 	 */
 	public void pagarOferta(Oferta o, String concepto) throws InvalidCardNumberException, FailedInternetConnectionException, OrderRejectedException, ArgumentoNoValido {
-		TeleChargeAndPaySystem.charge(tarjeta, concepto, o.getPrecio());
+		TeleChargeAndPaySystem.charge(tarjeta, concepto, o.calcularPrecio());
 		this.addOferta(o);
 		if(this.getResidencial() == o) {
 			this.setResidencial(null);

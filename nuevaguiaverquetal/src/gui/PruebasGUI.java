@@ -15,7 +15,6 @@ public class PruebasGUI {
 
 	public static void main(String[] args) throws IOException, ArgumentoNoValido, ClassNotFoundException {
 		Sistema app = new Sistema();
-		app.serializar();
 		
 		app = app.deserializar(LocalDate.of(2000, 1, 1));
 		
