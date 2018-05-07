@@ -34,7 +34,7 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 
 	private ControladorLogin cLogin;
 	private ControladorAdmin cAdmin;
-	
+	private ControlListUsers cListUsers;
 	
 	
 	
@@ -47,7 +47,7 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		
 		
 		panelLogin = new LoginPanel();
-		panelAdmin = new AdminPanel(this);
+		panelAdmin = new AdminPanel(app);
 		panelOfertas = new OferPanel(app);
 		panelInmuebles = new InmueblesPanel(app);
 		panelAsociarOfer = new AsociarOfertaPanel(app);
@@ -55,8 +55,11 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		
 		cLogin = new ControladorLogin(this, app);
 		cAdmin = new ControladorAdmin(this, app);
+		cListUsers = new ControlListUsers(this, app);
+		
 		
 		panelLogin.setControlador(cLogin);
+		panelAdmin.setControlador(cAdmin, cListUsers);
 		
 		principal.add(panelLogin, ventanas[0]);
 		principal.add(panelAdmin, ventanas[1]);
@@ -65,14 +68,14 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		principal.add(panelAsociarOfer, ventanas[4]);
 		principal.add(panelSubirInmu, ventanas[5]);
 	
-		cards.show(principal, ventanas[0]);
+		cards.show(principal, ventanas[1]);
 		
 		Container contenedor = this.getContentPane();
 		contenedor.add(principal);
 		
 		
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(800,400); 
+		this.setSize(950, 400); 
 		this.setVisible(true);
 		this.setResizable(false);
 		

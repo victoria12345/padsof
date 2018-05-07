@@ -27,7 +27,6 @@ public class FiltrarPanel extends JPanel{
 	
 	
 	private JButton botonFiltrar = new JButton("Filtrar ofertas");
-	
 	private Sistema sist;
 ;
 	

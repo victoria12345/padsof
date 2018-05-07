@@ -141,10 +141,10 @@ public class Usuario implements Serializable {
 	 * @return usuario String con la informacion del usuario
 	 */
 	public String toString() {
-		String usuario = "Usuario-> " +
-						 "Nombre: " + this.getNombre() +
-						 " Apellido: " + this.getApellido() +
-						 " Nick: " + this.getNick();
+		String usuario = "Nombre: " + this.getNombre() +
+						 "\nApellido: " + this.getApellido() +
+						 "\nNick: " + this.getNick()+
+						 "\nBloqueado:" + this.isBloqueado();
 		return usuario;
 						
 	}
