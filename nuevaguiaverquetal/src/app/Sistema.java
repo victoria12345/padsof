@@ -442,11 +442,14 @@ public class Sistema implements Serializable{
 				switch(rol) {
 				case "D":
 					roles.add(new Demandante(tarjeta));
+					break;
 				case "O":
 					roles.add(new Ofertante(tarjeta));
+					break;
 				case "OD":
 					roles.add(new Demandante(tarjeta));
 					roles.add(new Ofertante(tarjeta));
+					break;
 				}
 				
 				if(rol.equals("D") == false && rol.equals("O") == false && rol.equals("OD") == false) {

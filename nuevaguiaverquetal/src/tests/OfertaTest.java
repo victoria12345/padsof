@@ -62,6 +62,7 @@ public class OfertaTest {
 		ovac.setPrecio(-1);
 	}
 
+
 	@Test(expected = ArgumentoNoValido.class)
 	public void testSetDesc() throws ArgumentoNoValido {
 		ores.setDesc(null);

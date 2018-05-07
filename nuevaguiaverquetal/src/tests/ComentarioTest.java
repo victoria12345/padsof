@@ -53,4 +53,6 @@ public class ComentarioTest {
 		Comentario com2 = new Comentario(u, null, 3);
 		com.delRespuesta(com2);
 	}
+
+
 }

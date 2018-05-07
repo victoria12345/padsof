@@ -5,11 +5,8 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import app.Sistema;
-/**
- * Descripcion de la clase ElegirRolPanel
- * @author victoria Pelayo e Ignacio Rabunnal
- *
- */
+
+
 public class ElegirRolPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -25,10 +22,7 @@ public class ElegirRolPanel extends JPanel {
 	private JButton bCont = new JButton("Cambiar contrasenna");
 	private Sistema sist;
 
-	/**
-	 * Constructor de la clase ElegirRolPanel
-	 * @param sist sistema de la aplicacion
-	 */
+
 	public ElegirRolPanel(Sistema sist) {
 		this.sist = sist;
 		
@@ -74,83 +68,63 @@ public class ElegirRolPanel extends JPanel {
 		this.add(bAdministrador);
 		this.add(bSalir);
 	}
-	
-	/**
-	 * @return campo Contrasenna
-	 */
+
 	public JTextField getCampoCont() {
 		return campoCont;
 	}
 
-	/**
-	 * cambio del campo sontrasenna
-	 * @param campoCont nuevo campo contrasenna
-	 */
 	public void setCampoCont(JTextField campoCont) {
 		this.campoCont = campoCont;
 	}
 
-	/**
-	 * @return boton ofertante
-	 */
 	public JButton getbOfertante() {
 		return bOfertante;
 	}
 
-	/**
-	 * Cambia boton ofertante
-	 * @param bOfertante nuevo boton
-	 */
 	public void setbOfertante(JButton bOfertante) {
 		this.bOfertante = bOfertante;
 	}
 
-	/**
-	 * @return boton demandante
-	 */
 	public JButton getbDemandante() {
 		return bDemandante;
 	}
 
-	/**
-	 * @return boton administrador
-	 */
+	public void setbDemandante(JButton bDemandante) {
+		this.bDemandante = bDemandante;
+	}
+
 	public JButton getbAdministrador() {
 		return bAdministrador;
 	}
 
+	public void setbAdministrador(JButton bAdministrador) {
+		this.bAdministrador = bAdministrador;
+	}
 
-	/**
-	 * @return boton salir
-	 */
 	public JButton getbSalir() {
 		return bSalir;
 	}
-	/**
-	 * @return boton cambiar contrasenna
-	 */
+
+	public void setbSalir(JButton bSalir) {
+		this.bSalir = bSalir;
+	}
+
 	public JButton getbCont() {
 		return bCont;
 	}
-	/**
-	 * @return sistema de la aplicacion
-	 */
+
+	public void setbCont(JButton bCont) {
+		this.bCont = bCont;
+	}
+
 	public Sistema getSist() {
 		return sist;
 	}
 
-	/**
-	 * Cabia sistema de la aplicacion
-	 * @param sist nuevo sistema
-	 */
 	public void setSist(Sistema sist) {
 		this.sist = sist;
 	}
 	
-	/**
-	 * Cambia controlador del panel
-	 * @param al nuevo controlador
-	 */
 	public void setControlador(ActionListener al) {
 		this.bOfertante.addActionListener(al);
 		this.bAdministrador.addActionListener(al);
