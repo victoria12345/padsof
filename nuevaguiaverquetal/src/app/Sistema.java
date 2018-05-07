@@ -531,7 +531,7 @@ public class Sistema implements Serializable{
 		
 		FileOutputStream fsalida1 = new FileOutputStream("usuarios.ser");
 		ObjectOutputStream objsal1 = new ObjectOutputStream(fsalida1);
-		objsal1.writeObject(this);
+		objsal1.writeObject(this.getUsuarios());
 		objsal1.close();
 		fsalida1.close();
 	}
