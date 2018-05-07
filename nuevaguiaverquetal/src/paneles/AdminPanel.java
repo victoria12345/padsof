@@ -19,7 +19,11 @@ import app.Sistema;
 import gui.CustomFrame;
 import ofertas.Oferta;
 import usuarios.Usuario;
-
+/**
+ * Descripcion clase panel administrador
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class AdminPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
@@ -34,6 +38,10 @@ public class AdminPanel extends JPanel{
 	
 	private Sistema sist;
 	
+	/**
+	 * Constructor de la clase AdminPanel
+	 * @param sist sistema de la aplicacion
+	 */
 	public AdminPanel(Sistema sist) {
 		this.sist = sist;
 		BorderLayout layout = new BorderLayout();
@@ -120,6 +128,10 @@ public class AdminPanel extends JPanel{
 		this.users = users;
 	}
 	
+	/**
+	 * Cambia el controlador de la clase AdminPanel
+	 * @param a1 controlador nuevo
+	 */
 	public void setControlador(ActionListener a1) {
 		this.botonMostrarBloq.addActionListener(a1);
 		this.botonMostrarTodos.addActionListener(a1);

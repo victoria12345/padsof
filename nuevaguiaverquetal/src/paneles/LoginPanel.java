@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Descripcion de la clase LoginPanel
+ *
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ */
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel etiquetaUsuario = new JLabel("Usuario:       ");
@@ -15,8 +20,9 @@ public class LoginPanel extends JPanel{
 	// Propuesta: AÑADIR OTRO BOTON PARA CERRAR APLICACION
 	// Proposed work: ADD A BUTTON THAT CLOSES THE APPLICATION
 	
-
-	
+	/**
+	 * Constructor de la clase LoginPanel
+	 */
 	public LoginPanel() {	
 		
 		GridBagLayout layout = new GridBagLayout();
@@ -50,32 +56,47 @@ public class LoginPanel extends JPanel{
 		
 	}
 	
-
+	/**
+	 * @return etiqueta usuario
+	 */
 	public JLabel getEtiquetaUsuario() {
 		return etiquetaUsuario;
 	}
 
-
+	/**
+	 * cambia etiqueta usuario
+	 * @param etiquetaUsuario nueva etqueta
+	 */
 	public void setEtiquetaUsuario(JLabel etiquetaUsuario) {
 		this.etiquetaUsuario = etiquetaUsuario;
 	}
 
-
+	/**
+	 * @return contrasenna
+	 */
 	public JLabel getEtiquetaContrasena() {
 		return etiquetaContrasena;
 	}
 
-
+	/**
+	 * Cambia la contrasenna
+	 * @param etiquetaContrasena nueva contrasenna
+	 */
 	public void setEtiquetaContrasena(JLabel etiquetaContrasena) {
 		this.etiquetaContrasena = etiquetaContrasena;
 	}
 
-
+	/**
+	 * @return campo usuario
+	 */
 	public JTextField getCampoUsuario() {
 		return campoUsuario;
 	}
 
-
+	/**
+	 * cambia campo usuario
+	 * @param campoUsuario nuevo campo
+	 */
 	public void setCampoUsuario(JTextField campoUsuario) {
 		this.campoUsuario = campoUsuario;
 	}
