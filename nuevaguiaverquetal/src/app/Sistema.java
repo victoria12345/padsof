@@ -183,6 +183,9 @@ public class Sistema implements Serializable{
 			return null;
 		}
 		
+		if(nick.equals(admin.getNick()) && cont.equals(admin.getContrasenia())) {
+			return admin;
+		}
 		for(Usuario u : this.getUsuarios()) {
 			System.out.println(u.getNick().equals(nick));
 			if(u.getNick().equals(nick) && cont.equals(u.getContrasenia())) {

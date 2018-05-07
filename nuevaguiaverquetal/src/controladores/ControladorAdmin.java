@@ -3,8 +3,6 @@ package controladores;
 import app.Sistema;
 import excepciones.ArgumentoNoValido;
 import gui.*;
-import javafx.application.Platform;
-import javafx.embed.swing.JFXPanel;
 import paneles.AdminPanel;
 import usuarios.Demandante;
 import usuarios.Ofertante;
@@ -150,31 +148,7 @@ public class ControladorAdmin implements ActionListener{
 					}
 					
 				});
-				JPanel botonera = new JPanel();
-				botonera.setLayout(new FlowLayout());
-				botonera.add(bloquear);
-				botonera.add(desbloquear);
-				botonera.add(cambiarCard);
 				
-				
-				
-				JDialog dialogo = new JDialog();
-				dialogo.setSize(400, 200);
-				dialogo.setResizable(false);
-				dialogo.getContentPane().add(botonera, BorderLayout.SOUTH);
-				dialogo.getContentPane().add(datos, BorderLayout.NORTH);
-				dialogo.setVisible(true);
-				
-				dialogo.addWindowListener(new WindowAdapter() {
-						@Override
-			            public void windowClosing(WindowEvent e) {
-							list.clearSelection();
-							panel.getModelo().clear();
-							for(Usuario u: app.getUsuarios()) {
-								panel.getModelo().addElement(u);
-							}
-			            }
-				});
 				
 				
 				

@@ -1,8 +1,10 @@
 package paneles;
 
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.tree.DefaultMutableTreeNode;
 
 import app.Sistema;
@@ -18,6 +20,7 @@ public class OferPanel extends JPanel{
 	private JButton botonReservar = new JButton("Reservar");
 	private JButton botonComentar = new JButton("Comentar");
 	private JButton botonValorar = new JButton("Valorar");
+	private JButton botonDemandante = new JButton("Mis reservas");
 	private JLabel rotulo = new JLabel("Oferta:"); 
 	
 	private JLabel labelOrden = new JLabel("Orden:");
@@ -46,6 +49,7 @@ public class OferPanel extends JPanel{
 		botones.add(botonReservar);
 		botones.add(botonComentar);
 		botones.add(botonValorar);
+		botones.add(botonDemandante);
 		
 		
 		
@@ -88,4 +92,152 @@ public class OferPanel extends JPanel{
 		
 	}
 
+
+	/**
+	 * @return the listaOfer
+	 */
+	public JScrollPane getListaOfer() {
+		return listaOfer;
+	}
+
+
+	/**
+	 * @param listaOfer the listaOfer to set
+	 */
+	public void setListaOfer(JScrollPane listaOfer) {
+		this.listaOfer = listaOfer;
+	}
+
+
+	/**
+	 * @return the botonContratar
+	 */
+	public JButton getBotonContratar() {
+		return botonContratar;
+	}
+
+
+	/**
+	 * @param botonContratar the botonContratar to set
+	 */
+	public void setBotonContratar(JButton botonContratar) {
+		this.botonContratar = botonContratar;
+	}
+
+
+	/**
+	 * @return the botonReservar
+	 */
+	public JButton getBotonReservar() {
+		return botonReservar;
+	}
+
+
+	/**
+	 * @param botonReservar the botonReservar to set
+	 */
+	public void setBotonReservar(JButton botonReservar) {
+		this.botonReservar = botonReservar;
+	}
+
+
+	/**
+	 * @return the botonComentar
+	 */
+	public JButton getBotonComentar() {
+		return botonComentar;
+	}
+
+
+	/**
+	 * @param botonComentar the botonComentar to set
+	 */
+	public void setBotonComentar(JButton botonComentar) {
+		this.botonComentar = botonComentar;
+	}
+
+
+	/**
+	 * @return the botonValorar
+	 */
+	public JButton getBotonValorar() {
+		return botonValorar;
+	}
+
+
+	/**
+	 * @param botonValorar the botonValorar to set
+	 */
+	public void setBotonValorar(JButton botonValorar) {
+		this.botonValorar = botonValorar;
+	}
+
+
+	/**
+	 * @return the botonDemandante
+	 */
+	public JButton getBotonDemandante() {
+		return botonDemandante;
+	}
+
+
+	/**
+	 * @param botonDemandante the botonDemandante to set
+	 */
+	public void setBotonDemandante(JButton botonDemandante) {
+		this.botonDemandante = botonDemandante;
+	}
+
+
+	/**
+	 * @return the ordenes
+	 */
+	public String[] getOrdenes() {
+		return ordenes;
+	}
+
+
+	/**
+	 * @param ordenes the ordenes to set
+	 */
+	public void setOrdenes(String[] ordenes) {
+		this.ordenes = ordenes;
+	}
+
+
+	/**
+	 * @return the comboOrdenes
+	 */
+	public JComboBox getComboOrdenes() {
+		return comboOrdenes;
+	}
+
+
+	/**
+	 * @param comboOrdenes the comboOrdenes to set
+	 */
+	public void setComboOrdenes(JComboBox comboOrdenes) {
+		this.comboOrdenes = comboOrdenes;
+	}
+
+
+	/**
+	 * @return the botonOrdenar
+	 */
+	public JButton getBotonOrdenar() {
+		return botonOrdenar;
+	}
+
+
+	/**
+	 * @param botonOrdenar the botonOrdenar to set
+	 */
+	public void setBotonOrdenar(JButton botonOrdenar) {
+		this.botonOrdenar = botonOrdenar;
+	}
+
+	
+	public void setControlador(ActionListener a1, ListSelectionListener l1) {
+		this.botonDemandante.addActionListener(a1);
+	}
 }

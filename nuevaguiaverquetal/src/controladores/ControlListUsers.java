@@ -27,10 +27,7 @@ public class ControlListUsers implements ListSelectionListener{
 		JList list = (JList)e.getSource();
 		AdminPanel panel = ventana.getPanelAdmin();
 		int index = list.getSelectedIndex();
-
-	
 		Usuario u = (Usuario)list.getModel().getElementAt(index);
-		
 		panel.getuNombre().setText("Nombre:" + u.getNombre());
 		panel.getuApellido().setText("Apellidos:" + u.getApellido());
 		panel.getuNick().setText("Nick:" + u.getNick());

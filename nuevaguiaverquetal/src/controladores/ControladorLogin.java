@@ -40,7 +40,7 @@ public class ControladorLogin implements ActionListener{
 				}
 
 		}else if(event.equals(pLogin.getBotonInvitado())) {
-			ventana.mostrarPanelRol();
+			ventana.mostrarPanelInvitado();
 		}
 		
 	}

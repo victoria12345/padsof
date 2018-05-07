@@ -84,4 +84,52 @@ public class FiltrarPanel extends JPanel{
 	
 
 	}
+	/**
+	 * @return the labelValoracion
+	 */
+	public JLabel getLabelValoracion() {
+		return labelValoracion;
+	}
+	/**
+	 * @param labelValoracion the labelValoracion to set
+	 */
+	public void setLabelValoracion(JLabel labelValoracion) {
+		this.labelValoracion = labelValoracion;
+	}
+	/**
+	 * @return the labelDisp
+	 */
+	public JLabel getLabelDisp() {
+		return labelDisp;
+	}
+	/**
+	 * @param labelDisp the labelDisp to set
+	 */
+	public void setLabelDisp(JLabel labelDisp) {
+		this.labelDisp = labelDisp;
+	}
+	/**
+	 * @return the campoValoracion
+	 */
+	public JTextField getCampoValoracion() {
+		return campoValoracion;
+	}
+	/**
+	 * @param campoValoracion the campoValoracion to set
+	 */
+	public void setCampoValoracion(JTextField campoValoracion) {
+		this.campoValoracion = campoValoracion;
+	}
+	/**
+	 * @return the comboDisp
+	 */
+	public JComboBox getComboDisp() {
+		return comboDisp;
+	}
+	/**
+	 * @param comboDisp the comboDisp to set
+	 */
+	public void setComboDisp(JComboBox comboDisp) {
+		this.comboDisp = comboDisp;
+	}
 }

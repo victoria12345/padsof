@@ -20,7 +20,7 @@ import gui.CustomFrame;
 import ofertas.Oferta;
 import usuarios.Usuario;
 
-public class AdminPanel extends JPanel implements ActionListener{
+public class AdminPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private JLabel uNombre = new JLabel();
@@ -70,26 +70,23 @@ public class AdminPanel extends JPanel implements ActionListener{
 		botones.add(bDesbloquear);
 		botones.add(bCambiar);
 		
-		/*JPanel panelDatos = new JPanel();
+		JPanel panelDatos = new JPanel();
 		panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS));
 		panelDatos.add(uNombre);
 		panelDatos.add(uApellido);
 		panelDatos.add(uNick);
-		panelDatos.add(uBloq);*/
+		panelDatos.add(uBloq);
 		
 		JPanel panelUsuario = new JPanel();
 		panelUsuario.setLayout(new BorderLayout());
 		panelUsuario.add(labelUser, BorderLayout.NORTH);
-		//panelUsuario.add(panelDatos, BorderLayout.CENTER);
+		panelUsuario.add(panelDatos, BorderLayout.CENTER);
 		panelUsuario.add(botones, BorderLayout.SOUTH);
 		
 		this.add(panelLista, BorderLayout.EAST);
 		this.add(panelUsuario, BorderLayout.WEST);
 	}
-	
-	public void actionPerformed(ActionEvent evento) {
-	
-    }
+
 
 	/**
 	 * @return the botonMostrarBloq
