@@ -30,7 +30,7 @@ public class ControladorLogin implements ActionListener{
 		if(event.equals(pLogin.getBotonLogin())) {
 				try {
 					app.login(pLogin.getCampoUsuario().getText(), String.valueOf(pLogin.getCampoContrasena().getPassword()));
-					ventana.mostrarPanelOfertas();
+					ventana.mostrarPanelRol();
 				} catch (ArgumentoNoValido e) {
 					JOptionPane.showMessageDialog(pLogin, "Los datos introducidos no son validos");
 				} catch (HayOtroUsuarioLogeado e) {
@@ -40,7 +40,7 @@ public class ControladorLogin implements ActionListener{
 				}
 
 		}else if(event.equals(pLogin.getBotonInvitado())) {
-			ventana.mostrarPanelOfertas();
+			ventana.mostrarPanelRol();
 		}
 		
 	}
