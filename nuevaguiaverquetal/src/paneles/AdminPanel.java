@@ -37,6 +37,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 	private JButton bDesbloquear = new JButton("Desbloquear");
 	private JButton bCambiar = new JButton("Cambiar tarjeta");
 	private JLabel labelUser = new JLabel("Usuario:");
+	private JButton botVerUser = new JButton("Ver usuario");
 	
 	private Sistema sist;
 	
@@ -60,6 +61,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		botones2.setLayout(new FlowLayout());
 		botones2.add(botonMostrarBloq);
 		botones2.add(botonMostrarTodos);
+		botones2.add(botVerUser);
 		panelLista.add(botones2);
 		
 		JPanel botones = new JPanel();
@@ -68,17 +70,17 @@ public class AdminPanel extends JPanel implements ActionListener{
 		botones.add(bDesbloquear);
 		botones.add(bCambiar);
 		
-		JPanel panelDatos = new JPanel();
+		/*JPanel panelDatos = new JPanel();
 		panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS));
 		panelDatos.add(uNombre);
 		panelDatos.add(uApellido);
 		panelDatos.add(uNick);
-		panelDatos.add(uBloq);
+		panelDatos.add(uBloq);*/
 		
 		JPanel panelUsuario = new JPanel();
 		panelUsuario.setLayout(new BorderLayout());
 		panelUsuario.add(labelUser, BorderLayout.NORTH);
-		panelUsuario.add(panelDatos, BorderLayout.CENTER);
+		//panelUsuario.add(panelDatos, BorderLayout.CENTER);
 		panelUsuario.add(botones, BorderLayout.SOUTH);
 		
 		this.add(panelLista, BorderLayout.EAST);
@@ -193,6 +195,7 @@ public class AdminPanel extends JPanel implements ActionListener{
 		this.bBloquear.addActionListener(a1);
 		this.bCambiar.addActionListener(a1);
 		this.bDesbloquear.addActionListener(a1);
+		this.botVerUser.addActionListener(a1);
 		this.users.addListSelectionListener(l1);
 	}
 
@@ -250,6 +253,20 @@ public class AdminPanel extends JPanel implements ActionListener{
 	 */
 	public void setuBloq(JLabel uBloq) {
 		this.uBloq = uBloq;
+	}
+
+	/**
+	 * @return the botVerUser
+	 */
+	public JButton getBotVerUser() {
+		return botVerUser;
+	}
+
+	/**
+	 * @param botVerUser the botVerUser to set
+	 */
+	public void setBotVerUser(JButton botVerUser) {
+		this.botVerUser = botVerUser;
 	}
 
 
