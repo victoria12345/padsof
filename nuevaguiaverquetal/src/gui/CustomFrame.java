@@ -5,7 +5,7 @@ import controladores.*;
 
 import java.awt.CardLayout;
 import java.awt.Container;
-
+import java.time.LocalDate;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -18,11 +18,12 @@ import app.Sistema;
 public class CustomFrame  extends JFrame implements ChangeListener{
 	private static final long serialVersionUID = 1L;
 	
-	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol", "invitado", "demandante"};
+	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol", "invitado", "demandante", "usuario", "pendientes", "oferpendiente"};
 	
 	private CardLayout cards;
 	private JPanel principal;
 	private Sistema app;
+	private LocalDate fecha;
 	
 	
 	private LoginPanel panelLogin;
@@ -34,21 +35,27 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	private ElegirRolPanel panelRol;
 	private InvitadoPanel panelInvitado;
 	private DemandantePanel panelDemandante;
+	private UsuarioPanel panelUsuario;
+	private PendientesPanel panelPendientes;
+	private OferPendientePanel panelOferPendiente;
 	
 	private ControladorLogin cLogin;
 	private ControladorAdmin cAdmin;
-	private ControlListUsers cListUsers;
 	private ControladorSubirInmueble cSubirInmu;
 	private ControladorRol cRol;
 	private ControladorInvitado cInvitado;
 	private ControladorDemandante cDeman;
 	private ControladorOfertas cOfer;
+	private ControladorUsuario cUser;
+	private ControladorOferPendiente cOferPen;
+	private ControladorPendientes cPendientes;
 	
 	
 	
 	
-	public CustomFrame(Sistema app, String titulo) {
+	public CustomFrame(Sistema app, String titulo, LocalDate fecha) {
 		super(titulo);
+		this.fecha = fecha;
 		cards = new CardLayout();
 		principal = new JPanel();
 		principal.setLayout(cards);
@@ -64,25 +71,33 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelRol = new ElegirRolPanel(app);
 		panelInvitado = new InvitadoPanel(app);
 		panelDemandante = new DemandantePanel();
+		panelUsuario = new UsuarioPanel();
+		panelPendientes = new PendientesPanel(app);
+		panelOferPendiente = new OferPendientePanel();
 		
 		cLogin = new ControladorLogin(this, app);
 		cAdmin = new ControladorAdmin(this, app);
-		cListUsers = new ControlListUsers(this, app);
 		cSubirInmu = new ControladorSubirInmueble(this,app);
 		cRol = new ControladorRol(this,app);
 		cInvitado = new ControladorInvitado(this, app);
 		cOfer = new ControladorOfertas(this, app);
 		cDeman = new ControladorDemandante(this, app);
+		cUser = new ControladorUsuario(this, app);
+		cOferPen = new ControladorOferPendiente(this, app);
+		cPendientes = new ControladorPendientes(this, app);
 		
 		
 		
 		panelLogin.setControlador(cLogin);
-		panelAdmin.setControlador(cAdmin, cListUsers);
+		panelAdmin.setControlador(cAdmin);
 		panelSubirInmu.setControlador(cSubirInmu);
 		panelRol.setControlador(cRol);
 		panelInvitado.setControlador(cInvitado, cInvitado);
 		panelDemandante.setControlador(cDeman);
 		panelOfertas.setControlador(cOfer, cOfer);
+		panelUsuario.setControlador(cUser);
+		panelPendientes.setControlador(cPendientes);
+		panelOferPendiente.setControlador(cOferPen);
 		
 		principal.add(panelLogin, ventanas[0]);
 		principal.add(panelAdmin, ventanas[1]);
@@ -93,6 +108,9 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		principal.add(panelRol, ventanas[6]);
 		principal.add(panelInvitado, ventanas[7]);
 		principal.add(panelDemandante, ventanas[8]);
+		principal.add(panelUsuario, ventanas[9]);
+		principal.add(panelPendientes, ventanas[10]);
+		principal.add(panelOferPendiente, ventanas[11]);
 	
 		cards.show(principal, ventanas[0]);
 		
@@ -272,6 +290,18 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	public void mostrarPanelDemandante() {
 		cards.show(principal, ventanas[8]);
 	}
+	
+	public void mostrarPanelUsuario() {
+		cards.show(principal, ventanas[9]);
+	}
+	
+	public void mostrarPanelPendientes(){
+		cards.show(principal, ventanas[10]);
+	}
+	
+	public void mostrarPanelOferPendiente() {
+		cards.show(principal, ventanas[11]);
+	}
 
 	/**
 	 * @return the panelInvitado
@@ -299,6 +329,62 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	 */
 	public void setPanelDemandante(DemandantePanel panelDemandante) {
 		this.panelDemandante = panelDemandante;
+	}
+
+	/**
+	 * @return the panelUsuario
+	 */
+	public UsuarioPanel getPanelUsuario() {
+		return panelUsuario;
+	}
+
+	/**
+	 * @param panelUsuario the panelUsuario to set
+	 */
+	public void setPanelUsuario(UsuarioPanel panelUsuario) {
+		this.panelUsuario = panelUsuario;
+	}
+
+	/**
+	 * @return the panelPendientes
+	 */
+	public PendientesPanel getPanelPendientes() {
+		return panelPendientes;
+	}
+
+	/**
+	 * @param panelPendientes the panelPendientes to set
+	 */
+	public void setPanelPendientes(PendientesPanel panelPendientes) {
+		this.panelPendientes = panelPendientes;
+	}
+
+	/**
+	 * @return the panelOferPendiente
+	 */
+	public OferPendientePanel getPanelOferPendiente() {
+		return panelOferPendiente;
+	}
+
+	/**
+	 * @param panelOferPendiente the panelOferPendiente to set
+	 */
+	public void setPanelOferPendiente(OferPendientePanel panelOferPendiente) {
+		this.panelOferPendiente = panelOferPendiente;
+	}
+
+	/**
+	 * @return the fecha
+	 */
+	public LocalDate getFecha() {
+		return fecha;
+	}
+
+	/**
+	 * @param fecha the fecha to set
+	 */
+	public void setFecha(LocalDate fecha) {
+		this.fecha = fecha;
 	}
 	
 	

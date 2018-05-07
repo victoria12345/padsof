@@ -22,22 +22,15 @@ import usuarios.Usuario;
 
 public class AdminPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	
-	private JLabel uNombre = new JLabel();
-	private JLabel uApellido = new JLabel();
-	private JLabel uNick = new JLabel();
-	private JLabel uBloq = new JLabel();
-	
+
 	private JList users = new JList();
 	private DefaultListModel modelo = new DefaultListModel();
 	private JScrollPane listaUser;
 	private JButton botonMostrarBloq = new JButton("Mostrar bloqueados");
 	private JButton botonMostrarTodos = new JButton("Mostrar todos");
-	private JButton bBloquear = new JButton("Bloquear");
-	private JButton bDesbloquear = new JButton("Desbloquear");
-	private JButton bCambiar = new JButton("Cambiar tarjeta");
-	private JLabel labelUser = new JLabel("Usuario:");
 	private JButton botVerUser = new JButton("Ver usuario");
+	
+	private JButton botOfertas = new JButton("Ver ofertas bloqueadas");
 	
 	private Sistema sist;
 	
@@ -64,27 +57,9 @@ public class AdminPanel extends JPanel{
 		botones2.add(botVerUser);
 		panelLista.add(botones2);
 		
-		JPanel botones = new JPanel();
-		botones.setLayout(new FlowLayout());
-		botones.add(bBloquear);
-		botones.add(bDesbloquear);
-		botones.add(bCambiar);
-		
-		JPanel panelDatos = new JPanel();
-		panelDatos.setLayout(new BoxLayout(panelDatos, BoxLayout.Y_AXIS));
-		panelDatos.add(uNombre);
-		panelDatos.add(uApellido);
-		panelDatos.add(uNick);
-		panelDatos.add(uBloq);
-		
-		JPanel panelUsuario = new JPanel();
-		panelUsuario.setLayout(new BorderLayout());
-		panelUsuario.add(labelUser, BorderLayout.NORTH);
-		panelUsuario.add(panelDatos, BorderLayout.CENTER);
-		panelUsuario.add(botones, BorderLayout.SOUTH);
-		
-		this.add(panelLista, BorderLayout.EAST);
-		this.add(panelUsuario, BorderLayout.WEST);
+		this.add(panelLista, BorderLayout.CENTER);
+		this.add(botOfertas, BorderLayout.SOUTH);
+
 	}
 
 
@@ -116,48 +91,7 @@ public class AdminPanel extends JPanel{
 		this.botonMostrarTodos = botonMostrarTodos;
 	}
 
-	/**
-	 * @return the bBloquear
-	 */
-	public JButton getbBloquear() {
-		return bBloquear;
-	}
-
-	/**
-	 * @param bBloquear the bBloquear to set
-	 */
-	public void setbBloquear(JButton bBloquear) {
-		this.bBloquear = bBloquear;
-	}
-
-	/**
-	 * @return the bDesbloquear
-	 */
-	public JButton getbDesbloquear() {
-		return bDesbloquear;
-	}
-
-	/**
-	 * @param bDesbloquear the bDesbloquear to set
-	 */
-	public void setbDesbloquear(JButton bDesbloquear) {
-		this.bDesbloquear = bDesbloquear;
-	}
-
-	/**
-	 * @return the bCambiar
-	 */
-	public JButton getbCambiar() {
-		return bCambiar;
-	}
-
-	/**
-	 * @param bCambiar the bCambiar to set
-	 */
-	public void setbCambiar(JButton bCambiar) {
-		this.bCambiar = bCambiar;
-	}
-
+	
 	/**
 	 * @return the modelo
 	 */
@@ -186,70 +120,11 @@ public class AdminPanel extends JPanel{
 		this.users = users;
 	}
 	
-	public void setControlador(ActionListener a1, ListSelectionListener l1) {
+	public void setControlador(ActionListener a1) {
 		this.botonMostrarBloq.addActionListener(a1);
 		this.botonMostrarTodos.addActionListener(a1);
-		this.bBloquear.addActionListener(a1);
-		this.bCambiar.addActionListener(a1);
-		this.bDesbloquear.addActionListener(a1);
 		this.botVerUser.addActionListener(a1);
-		this.users.addListSelectionListener(l1);
-	}
-
-	/**
-	 * @return the uNombre
-	 */
-	public JLabel getuNombre() {
-		return uNombre;
-	}
-
-	/**
-	 * @param uNombre the uNombre to set
-	 */
-	public void setuNombre(JLabel uNombre) {
-		this.uNombre = uNombre;
-	}
-
-	/**
-	 * @return the uApellido
-	 */
-	public JLabel getuApellido() {
-		return uApellido;
-	}
-
-	/**
-	 * @param uApellido the uApellido to set
-	 */
-	public void setuApellido(JLabel uApellido) {
-		this.uApellido = uApellido;
-	}
-
-	/**
-	 * @return the uNick
-	 */
-	public JLabel getuNick() {
-		return uNick;
-	}
-
-	/**
-	 * @param uNick the uNick to set
-	 */
-	public void setuNick(JLabel uNick) {
-		this.uNick = uNick;
-	}
-
-	/**
-	 * @return the uBloq
-	 */
-	public JLabel getuBloq() {
-		return uBloq;
-	}
-
-	/**
-	 * @param uBloq the uBloq to set
-	 */
-	public void setuBloq(JLabel uBloq) {
-		this.uBloq = uBloq;
+		this.botOfertas.addActionListener(a1);
 	}
 
 	/**
@@ -264,6 +139,22 @@ public class AdminPanel extends JPanel{
 	 */
 	public void setBotVerUser(JButton botVerUser) {
 		this.botVerUser = botVerUser;
+	}
+
+
+	/**
+	 * @return the botOfertas
+	 */
+	public JButton getBotOfertas() {
+		return botOfertas;
+	}
+
+
+	/**
+	 * @param botOfertas the botOfertas to set
+	 */
+	public void setBotOfertas(JButton botOfertas) {
+		this.botOfertas = botOfertas;
 	}
 
 
