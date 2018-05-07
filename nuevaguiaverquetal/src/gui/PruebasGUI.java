@@ -5,6 +5,8 @@ import java.time.LocalDate;
 import app.Sistema;
 import controladores.ControladorLogin;
 import excepciones.ArgumentoNoValido;
+import excepciones.HayOtroUsuarioLogeado;
+import excepciones.UsuarioNoEncontrado;
 import usuarios.Usuario;
 
 public class PruebasGUI {
@@ -13,9 +15,8 @@ public class PruebasGUI {
 		Sistema app = new Sistema();
 		
 		app = app.deserializar(LocalDate.of(2000, 1, 1));
+		
 		CustomFrame ventana = new CustomFrame(app, "FreshApp");
-		
-		
 		
 		Usuario user = app.buscarUsuario("51999111X", "pezEspada");
 		System.out.println(user);

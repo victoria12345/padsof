@@ -18,23 +18,58 @@ import app.Sistema;
 public class CustomFrame  extends JFrame implements ChangeListener{
 	private static final long serialVersionUID = 1L;
 	
-	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble"};
+	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol"};
 	
 	private CardLayout cards;
 	private JPanel principal;
 	private Sistema app;
 	
+	public InmueblesPanel getPanelInmuebles() {
+		return panelInmuebles;
+	}
+
+	public void setPanelInmuebles(InmueblesPanel panelInmuebles) {
+		this.panelInmuebles = panelInmuebles;
+	}
+
+	public AsociarOfertaPanel getPanelAsociarOfer() {
+		return panelAsociarOfer;
+	}
+
+	public void setPanelAsociarOfer(AsociarOfertaPanel panelAsociarOfer) {
+		this.panelAsociarOfer = panelAsociarOfer;
+	}
+
+	public SubirInmueblePanel getPanelSubirInmu() {
+		return panelSubirInmu;
+	}
+
+	public void setPanelSubirInmu(SubirInmueblePanel panelSubirInmu) {
+		this.panelSubirInmu = panelSubirInmu;
+	}
+
+	public ElegirRolPanel getPanelRol() {
+		return panelRol;
+	}
+
+	public void setPanelRol(ElegirRolPanel panelRol) {
+		this.panelRol = panelRol;
+	}
+
 	private LoginPanel panelLogin;
 	private AdminPanel panelAdmin;
 	private OferPanel panelOfertas;
 	private InmueblesPanel panelInmuebles;
 	private AsociarOfertaPanel panelAsociarOfer;
 	private SubirInmueblePanel panelSubirInmu;
+	private ElegirRolPanel panelRol;
 
 
 	private ControladorLogin cLogin;
 	private ControladorAdmin cAdmin;
 	private ControlListUsers cListUsers;
+	private ControladorSubirInmueble cSubirInmu;
+	private ControladorRol cRol;
 	
 	
 	
@@ -52,14 +87,20 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelInmuebles = new InmueblesPanel(app);
 		panelAsociarOfer = new AsociarOfertaPanel(app);
 		panelSubirInmu = new SubirInmueblePanel(app);
+		panelRol = new ElegirRolPanel(app);
 		
 		cLogin = new ControladorLogin(this, app);
 		cAdmin = new ControladorAdmin(this, app);
 		cListUsers = new ControlListUsers(this, app);
+		cSubirInmu = new ControladorSubirInmueble(this,app);
+		cRol = new ControladorRol(this,app);
 		
 		
 		panelLogin.setControlador(cLogin);
 		panelAdmin.setControlador(cAdmin, cListUsers);
+		panelSubirInmu.setControlador(cSubirInmu);
+		panelRol.setControlador(cRol);
+		
 		
 		principal.add(panelLogin, ventanas[0]);
 		principal.add(panelAdmin, ventanas[1]);
@@ -67,8 +108,9 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		principal.add(panelInmuebles, ventanas[3]);
 		principal.add(panelAsociarOfer, ventanas[4]);
 		principal.add(panelSubirInmu, ventanas[5]);
+		principal.add(panelRol, ventanas[6]);
 	
-		cards.show(principal, ventanas[1]);
+		cards.show(principal, ventanas[0]);
 		
 		Container contenedor = this.getContentPane();
 		contenedor.add(principal);
@@ -93,7 +135,9 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		return panelLogin;
 	}
 	
-	
+	public SubirInmueblePanel getSubirInmuPanel() {
+		return panelSubirInmu;
+	}
 	
 	public void setControladorAdmin(ControladorAdmin c) {
 		this.cAdmin = c;
@@ -190,6 +234,10 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		cards.show(principal, ventanas[0]);
 	}
 	
+	public void mostrarPanelRol() {
+		cards.show(principal, ventanas[6]);
+	}
+	
 	public void mostrarPanelAdmin() {
 		cards.show(principal, ventanas[1]);
 	}
@@ -201,4 +249,6 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	public void mostrarPanelInmuebles() {
 		cards.show(principal,  ventanas[3]);
 	}
+	
+	
 }
