@@ -14,7 +14,7 @@ public class OferPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JScrollPane  listaOfer;
 	private JList ofers;
-	
+	private DefaultListModel modelo = new DefaultListModel();
 	
 	
 	
@@ -32,11 +32,16 @@ public class OferPanel extends JPanel{
 	private JLabel labelPrecio = new JLabel("Precio:");
 	private JLabel labelValoracion = new JLabel("Valoración:");
 	private JLabel labelDisp = new JLabel("Disponibilidad:");
+	private JLabel labelIni = new JLabel("Fecha inicio:");
+	private JLabel labelFin = new JLabel("Fecha fin:");
 	private JTextField campoCP = new JTextField(10);
 	private JTextField campoPrecio = new JTextField(10);
 	private JTextField campoValoracion = new JTextField(10);
+	private JTextField campoIni = new JTextField(10);
+	private JTextField campoFin = new JTextField(10);
 	private JComboBox comboDisp = new JComboBox(disp);
 	private JButton botonFiltrar = new JButton("Filtrar ofertas");
+	private JButton botonMostrarTodas = new JButton("Mostrar todas");
 	
 	private Sistema sist;
 	
@@ -79,26 +84,47 @@ public class OferPanel extends JPanel{
 		JPanel panel4 = new JPanel();
 		panel4.add(labelDisp);
 		panel4.add(comboDisp);
-		cons.gridx = 1;
-		cons.gridy = 3;
+		cons.gridx = 2;
+		cons.gridy = 2;
 		layout2.setConstraints(panel4, cons);
+		
+		JPanel panel6 = new JPanel();
+		panel6.add(labelIni);
+		panel6.add(campoIni);
+		cons.gridx = 2;
+		cons.gridy = 0;
+		layout2.setConstraints(panel6, cons);
+		
+		JPanel panel7 = new JPanel();
+		panel7.add(labelFin);
+		panel7.add(campoFin);
+		cons.gridx = 2;
+		cons.gridy = 1;
+		layout2.setConstraints(panel7, cons);
 		
 		JPanel panel5 = new JPanel();
 		panel5.add(botonFiltrar);
 		cons.gridx = 1;
-		cons.gridy = 4;
+		cons.gridy = 3;
 		layout2.setConstraints(panel5, cons);
+		
+		JPanel panel8 = new JPanel();
+		panel8.add(botonMostrarTodas);
+		cons.gridx = 2;
+		cons.gridy = 3;
+		layout2.setConstraints(panel8, cons);
 		
 		pFiltrar.add(panel1);
 		pFiltrar.add(panel2);
 		pFiltrar.add(panel3);
 		pFiltrar.add(panel4);
+		pFiltrar.add(panel6);
+		pFiltrar.add(panel7);
 		pFiltrar.add(panel5);
+		pFiltrar.add(panel8);
 		
 		
 		ofers = new JList();
-		DefaultListModel modelo = new DefaultListModel();
-		
 		ofers.setModel(modelo);
 		
 		for(Oferta o: sist.getOfertas()) {
@@ -130,6 +156,7 @@ public class OferPanel extends JPanel{
 		botonVolver.addActionListener(a1);
 		botonOrdenar.addActionListener(a1);
 		botonFiltrar.addActionListener(a1);
+		botonMostrarTodas.addActionListener(a1);
 	}
 
 
@@ -433,5 +460,89 @@ public class OferPanel extends JPanel{
 	 */
 	public void setBotonFiltrar(JButton botonFiltrar) {
 		this.botonFiltrar = botonFiltrar;
+	}
+
+	/**
+	 * @return the modelo
+	 */
+	public DefaultListModel getModelo() {
+		return modelo;
+	}
+
+	/**
+	 * @param modelo the modelo to set
+	 */
+	public void setModelo(DefaultListModel modelo) {
+		this.modelo = modelo;
+	}
+
+	/**
+	 * @return the labelIni
+	 */
+	public JLabel getLabelIni() {
+		return labelIni;
+	}
+
+	/**
+	 * @param labelIni the labelIni to set
+	 */
+	public void setLabelIni(JLabel labelIni) {
+		this.labelIni = labelIni;
+	}
+
+	/**
+	 * @return the labelFin
+	 */
+	public JLabel getLabelFin() {
+		return labelFin;
+	}
+
+	/**
+	 * @param labelFin the labelFin to set
+	 */
+	public void setLabelFin(JLabel labelFin) {
+		this.labelFin = labelFin;
+	}
+
+	/**
+	 * @return the campoIni
+	 */
+	public JTextField getCampoIni() {
+		return campoIni;
+	}
+
+	/**
+	 * @param campoIni the campoIni to set
+	 */
+	public void setCampoIni(JTextField campoIni) {
+		this.campoIni = campoIni;
+	}
+
+	/**
+	 * @return the campoFin
+	 */
+	public JTextField getCampoFin() {
+		return campoFin;
+	}
+
+	/**
+	 * @param campoFin the campoFin to set
+	 */
+	public void setCampoFin(JTextField campoFin) {
+		this.campoFin = campoFin;
+	}
+
+	/**
+	 * @return the botonMostrarTodas
+	 */
+	public JButton getBotonMostrarTodas() {
+		return botonMostrarTodas;
+	}
+
+	/**
+	 * @param botonMostrarTodas the botonMostrarTodas to set
+	 */
+	public void setBotonMostrarTodas(JButton botonMostrarTodas) {
+		this.botonMostrarTodas = botonMostrarTodas;
 	}
 }

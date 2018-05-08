@@ -8,10 +8,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import app.Sistema;
+import inmuebles.Inmueble;
 
 public class EleccionOfertaPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
-	
+	Inmueble i;
 	Sistema app;
 	
 	private JButton bVacacional = new JButton("Oferta Vacacional");
@@ -44,6 +45,17 @@ public class EleccionOfertaPanel extends JPanel{
 		this.add(bAtras);
 	}
 
+	public Inmueble getInmueble() {
+		return this.i;
+	}
+
+	/**
+	 * @param app the app to set
+	 */
+	public void setApp(Sistema app) {
+		this.app = app;
+	}
+
 	public JButton getbAtras() {
 		return bAtras;
 	}
@@ -72,6 +84,10 @@ public class EleccionOfertaPanel extends JPanel{
 		this.bResidencial.addActionListener(al);
 		this.bVacacional.addActionListener(al);
 		this.bAtras.addActionListener(al);
+	}
+	
+	public void iniciar(Inmueble i) {
+		this.i= i;
 	}
 	
 }

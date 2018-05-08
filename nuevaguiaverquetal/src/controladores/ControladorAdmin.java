@@ -1,29 +1,20 @@
 package controladores;
 
 import app.Sistema;
-import excepciones.ArgumentoNoValido;
 import gui.*;
 import paneles.AdminPanel;
-import usuarios.Demandante;
-import usuarios.Ofertante;
-import usuarios.Rol;
+
 import usuarios.Usuario;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+
 import java.util.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
+
 import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
+
 
 
 
@@ -40,6 +31,7 @@ public class ControladorAdmin implements ActionListener{
 		return app.getUsuarios();
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
@@ -72,6 +64,8 @@ public class ControladorAdmin implements ActionListener{
 			
 		}else if(event.equals(panel.getBotOfertas())) {
 			ventana.mostrarPanelPendientes();
+		}else if(event.equals(panel.getBotVolver())) {
+			ventana.mostrarPanelRol();
 		}
 	}
 

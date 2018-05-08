@@ -6,17 +6,20 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import app.Sistema;
+import inmuebles.Inmueble;
 
 public class OfertaResidencialPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel labelPrecio = new JLabel("Precio:");
 	private JTextField campoPrecio = new JTextField(30);
-	private JLabel labelIni = new JLabel("Fecha Inicial:");
+	private JLabel labelIni = new JLabel("Fecha Inicial(int-int-int/ dd-mm-aaaa):");
 	private JTextField campoIni = new JTextField(30);
 	private JLabel labelnMeses = new JLabel("Numero de meses:");
 	private JTextField camponMeses = new JTextField(10);
 	
 	private Sistema app;
+	
+	private Inmueble i;
 	
 	private JButton bCancelar = new JButton("Cancelar");
 	private JButton bAsociar = new JButton("Asociar");
@@ -65,6 +68,14 @@ public class OfertaResidencialPanel extends JPanel {
 		this.add(bCancelar);
 	}
 
+	public void iniciar(Inmueble i) {
+		this.i= i;
+	}
+	
+	public Inmueble getInmueble() {
+		return this.i;
+	}
+	
 	public JTextField getCampoPrecio() {
 		return campoPrecio;
 	}

@@ -2,6 +2,7 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -13,6 +14,7 @@ import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
 import paneles.ElegirRolPanel;
 import paneles.LoginPanel;
+import usuarios.Ofertante;
 import usuarios.Usuario;
 
 public class ControladorRol implements ActionListener {
@@ -36,11 +38,17 @@ public class ControladorRol implements ActionListener {
 			}
 			for(int i = 0; i< u.getRoles().size(); i++) {
 				if(u.getRoles().get(i).isOfertante() == true) {
+					ventana.getPanelInmuebles().actualizarInmuebles((Ofertante) u.getRoles().get(i));
 					ventana.mostrarPanelInmuebles();
 				}
 			}
 		}else if(event.equals(pRol.getbSalir())) {
 			app.logout();
+			try {
+				app.serializar();
+			} catch (IOException e) {
+				JOptionPane.showMessageDialog(null, "Error al hacer logout");
+			}
 			ventana.mostrarPanelLogin();
 		}else if(event.equals(pRol.getbDemandante())) {
 			if(u == app.getAdmin()) {

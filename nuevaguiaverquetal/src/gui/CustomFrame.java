@@ -18,7 +18,7 @@ import app.Sistema;
 public class CustomFrame  extends JFrame implements ChangeListener{
 	private static final long serialVersionUID = 1L;
 	
-	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol", "invitado", "demandante", "usuario", "pendientes", "oferpendiente", "eleccion", "residencial", "vacacional", "veroferta"};
+	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol", "invitado", "demandante", "usuario", "pendientes", "oferpendiente", "eleccion", "residencial", "vacacional", "veroferta", "comentario", "asociadas", "pendientesuser", "rectificar"};
 	
 	private CardLayout cards;
 	private JPanel principal;
@@ -30,7 +30,6 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	private AdminPanel panelAdmin;
 	private OferPanel panelOfertas;
 	private InmueblesPanel panelInmuebles;
-	private AsociarOfertaPanel panelAsociarOfer;
 	private SubirInmueblePanel panelSubirInmu;
 	private ElegirRolPanel panelRol;
 	private InvitadoPanel panelInvitado;
@@ -42,9 +41,14 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	private OfertaResidencialPanel panelOfertaRes;
 	private OfertaVacacionalPanel panelOfertaVac;
 	private VerOfertaPanel panelVerOferta;
+	private ComentarioPanel panelComentario;
+	private OfertasAsociadasPanel panelAsociadas;
+	private OfertasPendientesPanel panelPendientesUser;
+	private RectificarPanel panelRectificar;
 	
 	private ControladorLogin cLogin;
 	private ControladorAdmin cAdmin;
+	private ControladorInmuebles cInmu;
 	private ControladorSubirInmueble cSubirInmu;
 	private ControladorRol cRol;
 	private ControladorInvitado cInvitado;
@@ -57,6 +61,10 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	private ControladorResidencial cRes;
 	private ControladorVacacional cVac;
 	private ControladorVerOferta cVerOfer;
+	private ControladorComentario cComent;
+	private ControladorAsociadas cAsociadas;
+	private ControladorPendientesUsuario cPenUser;
+	private ControladorRectificar cRect;
 	
 	
 	
@@ -74,7 +82,6 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelAdmin = new AdminPanel(app);
 		panelOfertas = new OferPanel(app);
 		panelInmuebles = new InmueblesPanel(app);
-		panelAsociarOfer = new AsociarOfertaPanel(app);
 		panelSubirInmu = new SubirInmueblePanel(app);
 		panelRol = new ElegirRolPanel(app);
 		panelInvitado = new InvitadoPanel(app);
@@ -86,6 +93,10 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelOfertaRes = new OfertaResidencialPanel(app);
 		panelOfertaVac = new OfertaVacacionalPanel(app);
 		panelVerOferta = new VerOfertaPanel();
+		panelComentario = new ComentarioPanel();
+		panelAsociadas = new OfertasAsociadasPanel(app);
+		panelPendientesUser = new OfertasPendientesPanel(app);
+		panelRectificar = new RectificarPanel();
 		
 		cLogin = new ControladorLogin(this, app);
 		cAdmin = new ControladorAdmin(this, app);
@@ -101,6 +112,11 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		cRes = new ControladorResidencial(this, app);
 		cVac = new ControladorVacacional(this, app);
 		cVerOfer = new ControladorVerOferta(this, app);
+		cComent = new ControladorComentario(this, app);
+		cAsociadas = new ControladorAsociadas(app, this);
+		cPenUser = new ControladorPendientesUsuario(app, this);
+		cInmu = new ControladorInmuebles(app, this);
+		cRect = new ControladorRectificar(this, app);
 		
 		
 		
@@ -108,7 +124,7 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelAdmin.setControlador(cAdmin);
 		panelSubirInmu.setControlador(cSubirInmu);
 		panelRol.setControlador(cRol);
-		panelInvitado.setControlador(cInvitado, cInvitado);
+		panelInvitado.setControlador(cInvitado);
 		panelDemandante.setControlador(cDeman);
 		panelOfertas.setControlador(cOfer);
 		panelUsuario.setControlador(cUser);
@@ -118,12 +134,16 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		panelOfertaRes.setControlador(cRes);
 		panelOfertaVac.setControlador(cVac);
 		panelVerOferta.setControlador(cVerOfer);
+		panelComentario.setControlador(cComent);
+		panelAsociadas.setControlador(cAsociadas);
+		panelPendientesUser.setControlador(cPenUser);
+		panelInmuebles.setControlador(cInmu);
+		panelRectificar.setControlador(cRect);
 		
 		principal.add(panelLogin, ventanas[0]);
 		principal.add(panelAdmin, ventanas[1]);
 		principal.add(panelOfertas, ventanas[2]);
 		principal.add(panelInmuebles, ventanas[3]);
-		principal.add(panelAsociarOfer, ventanas[4]);
 		principal.add(panelSubirInmu, ventanas[5]);
 		principal.add(panelRol, ventanas[6]);
 		principal.add(panelInvitado, ventanas[7]);
@@ -135,6 +155,10 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		principal.add(panelOfertaRes, ventanas[13]);
 		principal.add(panelOfertaVac, ventanas[14]);
 		principal.add(panelVerOferta, ventanas[15]);
+		principal.add(panelComentario, ventanas[16]);
+		principal.add(panelAsociadas, ventanas[17]);
+		principal.add(panelPendientesUser, ventanas[18]);
+		principal.add(panelRectificar, ventanas[19]);
 		
 		cards.show(principal, ventanas[0]);
 		
@@ -186,14 +210,6 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		this.panelInmuebles = panelInmuebles;
 	}
 
-	public AsociarOfertaPanel getPanelAsociarOfer() {
-		return panelAsociarOfer;
-	}
-
-	public void setPanelAsociarOfer(AsociarOfertaPanel panelAsociarOfer) {
-		this.panelAsociarOfer = panelAsociarOfer;
-	}
-
 	public SubirInmueblePanel getPanelSubirInmu() {
 		return panelSubirInmu;
 	}
@@ -213,17 +229,6 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	
 	public CardLayout getCards() {
 		return cards;
-	}
-	@Override
-	public void stateChanged(ChangeEvent arg0) {
-		 // solamente a efectos de seguimiento del programa
-		
-	   	 /*System.out.println( pestañas.getSelectedIndex() );
-	   	 System.out.println( pestañas.getSelectedComponent() );*/
-		
-	   	// this.panelPares.limpiaCampo();
-	   	//this.panelPalindromos.limpiaCampo();
-		
 	}
 
 	public String[] getVentanas() {
@@ -307,6 +312,10 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		cards.show(principal,  ventanas[3]);
 	}
 	
+	public void mostrarPanelSubirInmu() {
+		cards.show(principal,  ventanas[5]);
+	}
+	
 	public void mostrarPanelInvitado() {
 		cards.show(principal, ventanas[7]);
 	}
@@ -339,6 +348,22 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 
 	public void mostrarPanelVerOferta() {
 		cards.show(principal, ventanas[15]);
+	}
+	
+	public void mostrarPanelComentario() {
+		cards.show(principal, ventanas[16]);
+	}
+	
+	public void mostrarPanelAsociadas() {
+		cards.show(principal, ventanas[17]);
+	}
+	
+	public void mostrarPendientesUsuario() {
+		cards.show(principal, ventanas[18]);
+	}
+	
+	public void mostrarPanelRectificar() {
+		cards.show(principal, ventanas[19]);
 	}
 	/**
 	 * @return the panelInvitado
@@ -478,6 +503,68 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	 */
 	public void setPanelVerOferta(VerOfertaPanel panelVerOferta) {
 		this.panelVerOferta = panelVerOferta;
+	}
+
+	/**
+	 * @return the panelComentario
+	 */
+	public ComentarioPanel getPanelComentario() {
+		return panelComentario;
+	}
+
+	/**
+	 * @param panelComentario the panelComentario to set
+	 */
+	public void setPanelComentario(ComentarioPanel panelComentario) {
+		this.panelComentario = panelComentario;
+	}
+
+	/**
+	 * @return the panelOfertasAsociadas
+	 */
+	public OfertasAsociadasPanel getPanelAsociadas() {
+		return panelAsociadas;
+	}
+
+	/**
+	 * @param panelOfertasAsociadas the panelOfertasAsociadas to set
+	 */
+	public void setPanelAsociadas(OfertasAsociadasPanel panelOfertasAsociadas) {
+		this.panelAsociadas = panelOfertasAsociadas;
+	}
+
+	/**
+	 * @return the panelPendientesUser
+	 */
+	public OfertasPendientesPanel getPanelPendientesUser() {
+		return panelPendientesUser;
+	}
+
+	/**
+	 * @param panelPendientesUser the panelPendientesUser to set
+	 */
+	public void setPanelPendientesUser(OfertasPendientesPanel panelPendientesUser) {
+		this.panelPendientesUser = panelPendientesUser;
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	/**
+	 * @return the panelRectificar
+	 */
+	public RectificarPanel getPanelRectificar() {
+		return panelRectificar;
+	}
+
+	/**
+	 * @param panelRectificar the panelRectificar to set
+	 */
+	public void setPanelRectificar(RectificarPanel panelRectificar) {
+		this.panelRectificar = panelRectificar;
 	}
 	
 	

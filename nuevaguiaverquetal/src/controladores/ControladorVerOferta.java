@@ -19,12 +19,13 @@ import paneles.OferPanel;
 import paneles.VerOfertaPanel;
 import usuarios.Demandante;
 import usuarios.Rol;
+import usuarios.Usuario;
 
 public class ControladorVerOferta implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
-	public ControladorVerOferta(CustomFrame ventana, Sistema sist) {
+	public ControladorVerOferta(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;	
 	}
@@ -35,10 +36,10 @@ public class ControladorVerOferta implements ActionListener{
 		VerOfertaPanel panel = ventana.getPanelVerOferta();
 		Oferta o = panel.getOferta();
 		Demandante deman = null;
+		Usuario u = app.getUsuarioActual();
 		
 		if(event.equals(panel.getBotonContratar())) {
-			System.out.println(app.getUsuarioActual() == app.getAdmin());
-			if(app.getUsuarioActual() == app.getAdmin()) {
+			if(u == app.getAdmin()) {
 				return;
 			}
 			for(Rol r: app.getUsuarioActual().getRoles()) {
@@ -63,7 +64,7 @@ public class ControladorVerOferta implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Oh! parece que ha habido un error :)");
 			}
 		}else if(event.equals(panel.getBotonReservar())) {
-			if(app.getUsuarioActual() == app.getAdmin()) {
+			if(u == app.getAdmin()) {
 				return;
 			}
 			try {
@@ -78,7 +79,7 @@ public class ControladorVerOferta implements ActionListener{
 		}else if(event.equals(panel.getBotonComentar())) {
 			
 		}else if(event.equals(panel.getBotonValorar())) {
-			if(app.getUsuarioActual() == app.getAdmin()) {
+			if(u == app.getAdmin()) {
 				return;
 			}
 			int val;
@@ -93,6 +94,9 @@ public class ControladorVerOferta implements ActionListener{
 			OferPanel ofer = ventana.getPanelOfertas();
 			ofer.getOfers().clearSelection();
 			ventana.mostrarPanelOfertas();
+		}else if(event.equals(panel.getBotonComentarios())) {
+			ventana.getPanelComentario().modificarModelo(o.getComentarios());
+			ventana.mostrarPanelComentario();
 		}
 	}
 

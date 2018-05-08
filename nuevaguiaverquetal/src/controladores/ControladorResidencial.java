@@ -11,6 +11,7 @@ import excepciones.ArgumentoNoValido;
 import excepciones.HayOtroUsuarioLogeado;
 import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
+import inmuebles.Inmueble;
 import ofertas.Oferta;
 import ofertas.OfertaResidencial;
 import ofertas.OfertaVacacional;
@@ -41,8 +42,15 @@ public class ControladorResidencial implements ActionListener{
 			pLogin.getCamponMeses().setText("");
 			
 			ventana.mostrarPanelInmuebles();
-		}else if(event.equals(pLogin.getbCancelar())) {
-			Usuario u = app.getUsuarioActual();
+		}else if(event.equals(pLogin.getbAsociar())) {
+			Inmueble i = pLogin.getInmueble();
+			
+			if(pLogin.getCampoPrecio().getText().equals("") || pLogin.getCampoIni().getText().equals("")) {
+				JOptionPane.showMessageDialog(pLogin, "Completar todos los datos.");
+			}else if(pLogin.getCamponMeses().getText().equals("") ) {
+				JOptionPane.showMessageDialog(pLogin, "Completar todos los datos.");
+			}
+			
 			Double precio = Double.parseDouble(pLogin.getCampoPrecio().getText());
 			String inicio = pLogin.getCampoIni().getText();
 			String trozos1[] = inicio.split("-");
@@ -51,6 +59,11 @@ public class ControladorResidencial implements ActionListener{
 			
 			Oferta o = new OfertaResidencial(precio, ini, Integer.parseInt(pLogin.getCamponMeses().getText()));
 			/*Annadir oferta al inmueble*/
+			try {
+				i.asociarOferta(o);
+			} catch (ArgumentoNoValido e) {
+				JOptionPane.showMessageDialog(pLogin, "Oferta no valida.");
+			}
 			
 			pLogin.getCampoPrecio().setText("");
 			pLogin.getCampoIni().setText("");

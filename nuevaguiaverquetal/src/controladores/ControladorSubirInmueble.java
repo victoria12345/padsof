@@ -14,6 +14,7 @@ import inmuebles.CampoAbierto;
 import inmuebles.Inmueble;
 import paneles.SubirInmueblePanel;
 import usuarios.Ofertante;
+import usuarios.Rol;
 import usuarios.Usuario;
 
 public class ControladorSubirInmueble implements ActionListener{
@@ -30,59 +31,44 @@ public class ControladorSubirInmueble implements ActionListener{
 		SubirInmueblePanel pSubir = ventana.getPanelSubirInmu();
 		
 		if(event.equals(pSubir.getbAddCampo())) {
+			
 			Inmueble o = new Inmueble(pSubir.getCampoLoc().getText(),Integer.parseInt(pSubir.getCampoCP().getText()) , pSubir.getCampoDesc().getText());
 			
 			try {
 				o.addCampo(new CampoAbierto(pSubir.getCampoClave().getText(), pSubir.getCampoValor().getText()));
 			} catch (ArgumentoNoValido e) {
-				e.printStackTrace();
+				JOptionPane.showMessageDialog(pSubir, "Introducir correctamente los datos.");
 			}
 			
-			while(event.equals(pSubir.getbAddCampo())) {
-				try {
-					o.addCampo(new CampoAbierto(pSubir.getCampoClave().getText(), pSubir.getCampoValor().getText()));
-				} catch (ArgumentoNoValido e) {
-					e.printStackTrace();
+		}	
+		else if(event.equals(pSubir.getbSubir())){
+				Inmueble i;
+				
+				if(pSubir.getCampoCP().getText().equals("")||pSubir.getCampoLoc().getText().equals("")||pSubir.getCampoDesc().getText().equals("")) {
+					JOptionPane.showMessageDialog(pSubir, "Error con los datos.");
+					return;
 				}
-			}
-			
-			if(event.equals(pSubir.getbSubir())){
+				
+				i = new Inmueble(pSubir.getCampoLoc().getText(),Integer.parseInt(pSubir.getCampoCP().getText()) , pSubir.getCampoDesc().getText());
+				
 				Usuario u = app.getUsuarioActual();
-				for(int i = 0; i < u.getRoles().size(); i++) {
-					if(u.getRoles().get(i).isOfertante() == true) {
-						Ofertante rol = (Ofertante)u.getRoles().get(i);
+				for(Rol r: u.getRoles()) {
+					if(r.isOfertante() == true) {
 						try {
-							rol.addInmueble(o);
+							((Ofertante) r).addInmueble(i);
+							ventana.getPanelInmuebles().actualizarInmuebles((Ofertante) r);
 						} catch (ArgumentoNoValido e) {
-							e.printStackTrace();
+							JOptionPane.showMessageDialog(pSubir, "Error al crear el inmueble.");
 						}
 					}
 				}
+				
 				ventana.mostrarPanelInmuebles();
 			}
 			
-			
-		}
-		else if(event.equals(pSubir.getbSubir())) {
-			Inmueble o = new Inmueble(pSubir.getCampoLoc().getText(),Integer.parseInt(pSubir.getCampoCP().getText()) , pSubir.getCampoDesc().getText());
-		
-			Usuario u = app.getUsuarioActual();
-			for(int i = 0; i < u.getRoles().size(); i++) {
-				if(u.getRoles().get(i).isOfertante() == true) {
-					Ofertante rol = (Ofertante)u.getRoles().get(i);
-					try {
-						rol.addInmueble(o);
-					} catch (ArgumentoNoValido e) {
-						e.printStackTrace();
-					}
-				}
+			else if(event.equals(pSubir.getbCancelar())) {
+				ventana.mostrarPanelInmuebles();
 			}
-			ventana.mostrarPanelInmuebles();
-		}
-		
-		else if(event.equals(pSubir.getbCancelar())) {
-			ventana.mostrarPanelInmuebles();
-		}
 	}
 
 	public CustomFrame getVentana() {

@@ -29,8 +29,10 @@ public class ControladorEleccion implements ActionListener{
 		EleccionOfertaPanel pEleccion = ventana.getPanelEleccion();
 		
 		if(event.equals(pEleccion.getbVacacional())){
+			ventana.getPanelOfertaVac().iniciar(pEleccion.getInmueble());
 			ventana.mostrarPanelOfertaVac();
 		}else if(event.equals(pEleccion.getbResidencial())) {
+			ventana.getPanelOfertaRes().iniciar(pEleccion.getInmueble());
 			ventana.mostrarPanelOfertaRes();
 		}else if((event.equals(pEleccion.getbAtras()))){
 			ventana.mostrarPanelInmuebles();

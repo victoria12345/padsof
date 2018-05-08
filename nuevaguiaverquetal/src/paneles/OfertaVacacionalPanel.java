@@ -5,14 +5,15 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import app.Sistema;
+import inmuebles.Inmueble;
 
 public class OfertaVacacionalPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel labelPrecio = new JLabel("Precio:");
 	private JTextField campoPrecio = new JTextField(30);
-	private JLabel labelIni = new JLabel("Fecha Inicial(Dia-MesAnno, en numero):");
+	private JLabel labelIni = new JLabel("Fecha Inicial(int-int-int/ dd-mm-aaaa):");
 	private JTextField campoIni = new JTextField(10);
-	private JLabel labelFin = new JLabel("Fecha final(Dia-Mes-Anno, en numero):");
+	private JLabel labelFin = new JLabel("Fecha final(int-int-int/ dd-mm-aaaa):");
 	private JTextField campoFin = new JTextField(10);
 	private JLabel labelFianza = new JLabel("Fianza:");
 	private JTextField campoFianza = new JTextField(10);
@@ -21,6 +22,8 @@ public class OfertaVacacionalPanel extends JPanel{
 	private JButton bAsociar = new JButton("Asociar");
 	
 	Sistema app;
+	
+	private Inmueble i;
 	
 	public OfertaVacacionalPanel(Sistema sist) {
 		this.app = sist;
@@ -64,6 +67,11 @@ public class OfertaVacacionalPanel extends JPanel{
 		cons.gridy = 2;	
 		layout.setConstraints(bAsociar, cons);
 		
+		this.campoPrecio.setText("");
+		this.campoFianza.setText("");
+		this.campoIni.setText("");
+		this.campoFin.setText("");
+		
 		this.add(p1);
 		this.add(p2);
 		this.add(p3);
@@ -73,6 +81,14 @@ public class OfertaVacacionalPanel extends JPanel{
 		this.add(bCancelar);
 	}
 
+	public void iniciar(Inmueble i) {
+		this.i= i;
+	}
+	
+	public Inmueble getInmueble() {
+		return this.i;
+	}
+	
 	public JTextField getCampoPrecio() {
 		return campoPrecio;
 	}

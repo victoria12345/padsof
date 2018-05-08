@@ -31,6 +31,7 @@ public class AdminPanel extends JPanel{
 	private JButton botVerUser = new JButton("Ver usuario");
 	
 	private JButton botOfertas = new JButton("Ver ofertas bloqueadas");
+	private JButton botVolver = new JButton("Volver");
 	
 	private Sistema sist;
 	
@@ -57,9 +58,14 @@ public class AdminPanel extends JPanel{
 		botones2.add(botVerUser);
 		panelLista.add(botones2);
 		
+		
+		JPanel botones = new JPanel();
+		botones.setLayout(new FlowLayout());
+		botones.add(botOfertas);
+		botones.add(botVolver);
+		panelLista.add(botones);
+		
 		this.add(panelLista, BorderLayout.CENTER);
-		this.add(botOfertas, BorderLayout.SOUTH);
-
 	}
 
 
@@ -125,6 +131,7 @@ public class AdminPanel extends JPanel{
 		this.botonMostrarTodos.addActionListener(a1);
 		this.botVerUser.addActionListener(a1);
 		this.botOfertas.addActionListener(a1);
+		this.botVolver.addActionListener(a1);
 	}
 
 	/**
@@ -155,6 +162,38 @@ public class AdminPanel extends JPanel{
 	 */
 	public void setBotOfertas(JButton botOfertas) {
 		this.botOfertas = botOfertas;
+	}
+
+
+	/**
+	 * @return the sist
+	 */
+	public Sistema getSist() {
+		return sist;
+	}
+
+
+	/**
+	 * @param sist the sist to set
+	 */
+	public void setSist(Sistema sist) {
+		this.sist = sist;
+	}
+
+
+	/**
+	 * @return the botVolver
+	 */
+	public JButton getBotVolver() {
+		return botVolver;
+	}
+
+
+	/**
+	 * @param botVolver the botVolver to set
+	 */
+	public void setBotVolver(JButton botVolver) {
+		this.botVolver = botVolver;
 	}
 
 

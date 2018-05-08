@@ -35,12 +35,6 @@ public class DemandanteTest {
 
 
 	@Test(expected = ArgumentoNoValido.class)
-	public void testSetOfertas() throws ArgumentoNoValido {
-		deman.setOfertas(null);
-	}
-
-
-	@Test(expected = ArgumentoNoValido.class)
 	public void testAddOferta() throws ArgumentoNoValido {
 		deman.addOferta(null);
 	}

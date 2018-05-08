@@ -21,7 +21,6 @@ public class ComentarioTest {
 	public void before() throws ArgumentoNoValido {
 		u = new Usuario("nick","nombre", "apellido", "contrasenia" );
 		com = new Comentario(u, "texto", 2);
-		com.setRespuestas(respuestas);
 	}
 	@Test
 	public void testComentario() {
@@ -39,10 +38,6 @@ public class ComentarioTest {
 		com.setUsuario(null);
 	}
 
-	@Test(expected = ArgumentoNoValido.class)
-	public void testSetRespuestas() throws ArgumentoNoValido {
-		com.setRespuestas(null);
-	}
 
 	@Test(expected = ArgumentoNoValido.class)
 	public void testAddRespuesta() throws ArgumentoNoValido {

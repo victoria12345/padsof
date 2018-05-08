@@ -11,6 +11,7 @@ import excepciones.ArgumentoNoValido;
 import excepciones.HayOtroUsuarioLogeado;
 import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
+import inmuebles.Inmueble;
 import ofertas.Oferta;
 import ofertas.OfertaVacacional;
 import paneles.LoginPanel;
@@ -39,8 +40,15 @@ public class ControladorVacacional implements ActionListener {
 			pLogin.getCampoFianza().setText("");
 			
 			ventana.mostrarPanelInmuebles();
-		}else if(event.equals(pLogin.getbCancelar())) {
-			Usuario u = app.getUsuarioActual();
+		}else if(event.equals(pLogin.getbAsociar())) {
+			Inmueble i = ventana.getPanelOfertaVac().getInmueble();
+			
+			if(pLogin.getCampoPrecio().getText().equals("") || pLogin.getCampoIni().getText().equals("")) {
+				JOptionPane.showMessageDialog(pLogin, "Completar todos los datos.");
+			}else if(pLogin.getCampoFin().getText().equals("") || pLogin.getCampoFianza().getText().equals("")) {
+				JOptionPane.showMessageDialog(pLogin, "Completar todos los datos.");
+			}
+			
 			Double precio = Double.parseDouble(pLogin.getCampoPrecio().getText());
 			String inicio = pLogin.getCampoIni().getText(), fin = pLogin.getCampoFin().getText();
 			String trozos1[] = inicio.split("-"), trozos2[] = fin.split("-");
@@ -48,8 +56,13 @@ public class ControladorVacacional implements ActionListener {
 			ini = LocalDate.of(Integer.parseInt(trozos1[2]),Integer.parseInt(trozos1[1]),Integer.parseInt(trozos1[0]));
 			fin2 = LocalDate.of(Integer.parseInt(trozos2[2]),Integer.parseInt(trozos2[1]),Integer.parseInt(trozos2[0]));
 			
-			Oferta o = new OfertaVacacional(precio, ini, fin2,Integer.parseInt(pLogin.getCampoFianza().getText()));
+			Oferta o = new OfertaVacacional(precio, ini, fin2,Double.parseDouble(pLogin.getCampoFianza().getText()));
 			/*Annadir oferta al inmueble*/
+			try {
+				i.asociarOferta(o);
+			} catch (ArgumentoNoValido e) {
+				JOptionPane.showMessageDialog(pLogin, "Oferta no valida.");
+			}
 			
 			pLogin.getCampoPrecio().setText("");
 			pLogin.getCampoIni().setText("");

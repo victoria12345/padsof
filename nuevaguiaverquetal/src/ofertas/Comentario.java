@@ -13,7 +13,6 @@ import java.io.*;
 
 public class Comentario implements Serializable{
 	private static final long serialVersionUID = 1L;
-	private int id;
 	private String texto;
 	private Usuario usuario;
 	private Comentario padre = null;
@@ -25,7 +24,7 @@ public class Comentario implements Serializable{
 	 * @param texto texto del comentario
 	 * @param id identificador del comentario
 	 */
-	public Comentario(Usuario usuario, String texto, int id) {
+	public Comentario(Usuario usuario, String texto) {
 		this.usuario = usuario;
 		
 		if(texto == null) {
@@ -33,18 +32,9 @@ public class Comentario implements Serializable{
 		}else {
 			this.texto = texto;
 		}
-		
-		this.id = id;
+
 		
 	}
-	
-	/**
-	 * @return el Identificador
-	 */
-	public int getId() {
-		return id;
-	}
-	
 	/**
 	 * @return texto del comentario
 	 */

@@ -4,15 +4,20 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
+import ofertas.Comentario;
 import ofertas.Oferta;
 import ofertas.OfertaResidencial;
 import ofertas.OfertaVacacional;
 
 public class VerOfertaPanel extends JPanel{
+	private static final long serialVersionUID = 1L;
 	
 	private JLabel oPrecio = new JLabel();
 	private JLabel oIni = new JLabel();
@@ -28,6 +33,7 @@ public class VerOfertaPanel extends JPanel{
 	private JButton botonComentar = new JButton("Comentar");
 	private JButton botonValorar = new JButton("Valorar");
 	private JButton botonVolver = new JButton("Volver");
+	private JButton botonComentarios = new JButton("Ver comentarios");
 	
 	private Oferta oferta;
 	
@@ -41,7 +47,9 @@ public class VerOfertaPanel extends JPanel{
 		botonera.add(botonReservar);
 		botonera.add(botonComentar);
 		botonera.add(botonValorar);
+		botonera.add(botonComentarios);
 		botonera.add(botonVolver);
+		
 		
 		this.add(oPrecio);
 		this.add(oIni);
@@ -74,6 +82,7 @@ public class VerOfertaPanel extends JPanel{
 				fianza.setText("Fianza:" + ovac.getFianza());
 			}
 		}
+		
 	}
 	
 	public void setControlador(ActionListener a1) {
@@ -82,6 +91,7 @@ public class VerOfertaPanel extends JPanel{
 		botonComentar.addActionListener(a1);
 		botonValorar.addActionListener(a1);
 		botonVolver.addActionListener(a1);
+		botonComentarios.addActionListener(a1);
 	}
 
 	/**
@@ -278,6 +288,20 @@ public class VerOfertaPanel extends JPanel{
 	 */
 	public void setOferta(Oferta oferta) {
 		this.oferta = oferta;
+	}
+
+	/**
+	 * @return the botonComentarios
+	 */
+	public JButton getBotonComentarios() {
+		return botonComentarios;
+	}
+
+	/**
+	 * @param botonComentarios the botonComentarios to set
+	 */
+	public void setBotonComentarios(JButton botonComentarios) {
+		this.botonComentarios = botonComentarios;
 	}
 
 }

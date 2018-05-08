@@ -16,8 +16,8 @@ public class DemandantePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private Sistema app;
 	
-	private JLabel rResidencial = new JLabel();
-	private JLabel rVacacional = new JLabel();
+	private JLabel rResidencial = new JLabel("Reserva residencial");
+	private JLabel rVacacional = new JLabel("Reserva vacacional:");
 	private JButton atras = new JButton("Atrás");
 	private Demandante deman;
 	

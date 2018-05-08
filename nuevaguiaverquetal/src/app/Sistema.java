@@ -214,6 +214,7 @@ public class Sistema implements Serializable{
 		
 		if(nick == "admin" && cont == "admin") {
 			uActual = admin;
+			System.out.println(uActual);
 			return;
 		}
 		
@@ -255,16 +256,15 @@ public class Sistema implements Serializable{
 	 * @return lista de ofertas asociadas a un inmueble con ese cp
 	 * @author Victoria Pelayo e Ignacio Rabunnal
 	 */
-	public List<Oferta> filtrar_codigo(int cp) {
-		List<Oferta> ofs = new ArrayList<Oferta>();
-		
+	public List<Oferta> filtrar_codigo(List<Oferta> ofs, int cp) {
+		List<Oferta> nueva = new ArrayList<Oferta>();
 		for(Inmueble i: this.inmuebles) {
 			if(i.getCodigoPostal() == cp) {
-				ofs.addAll(i.getOfertas());
+				nueva.addAll(i.getOfertas());
 			}
 		}
-		this.setFiltradas(ofs);	
-		return ofs;		
+		this.setFiltradas(nueva);	
+		return nueva;		
 	}
 	
 	/**
@@ -273,19 +273,19 @@ public class Sistema implements Serializable{
 	 * @return lista de ofertas cuyo precio es menor o igual al indicado
 	 * @author Victoria Pelayo e Ignacio Rabunnal
 	 */
-	public List<Oferta> filtrar_precio(int precio) {
+	public List<Oferta> filtrar_precio(List<Oferta> ofs, int precio) {
+		List<Oferta> nueva = new ArrayList<Oferta>();
 		if(precio < 0) {
 			return null;
 		}
-		List<Oferta> ofs = new ArrayList<Oferta>();
 		
-		for(Oferta o: this.ofertas) {
+		for(Oferta o: ofs) {
 			if(o.getPrecio() <=  precio) {
-				ofs.add(o);
+				nueva.add(o);
 			}
 		}
-		this.setFiltradas(ofs);	
-		return ofs;		
+		this.setFiltradas(nueva);	
+		return nueva;		
 	}
 	
 	/**
@@ -294,19 +294,19 @@ public class Sistema implements Serializable{
 	 * @return lista de ofertas cuya valoracion es mayor o igual 
 	 * @author Victoria Pelayo e Ignacio Rabunnal
 	 */
-	public List<Oferta> filtrar_valoracion(int valoracion) {
+	public List<Oferta> filtrar_valoracion(List<Oferta> ofs, int valoracion) {
+		List<Oferta> nueva = new ArrayList<Oferta>();
 		if(valoracion <0) {
 			return null;
 		}
-		List<Oferta> ofs = new ArrayList<Oferta>();
 		
-		for(Oferta o: this.ofertas) {
+		for(Oferta o: ofs) {
 			if(o.getValoracion() >=  valoracion) {
-				ofs.add(o);
+				nueva.add(o);
 			}
 		}
-		this.setFiltradas(ofs);	
-		return ofs;		
+		this.setFiltradas(nueva);	
+		return nueva;		
 	}
 	
 	/**
@@ -315,16 +315,15 @@ public class Sistema implements Serializable{
 	 * @return lista de ofertas cuyo estado es el indicado
 	 * @author Victoria Pelayo e Ignacio Rabunnal
 	 */
-	public List<Oferta> filtrar_disp(Disponibilidad estado) {
-		List<Oferta> ofs = new ArrayList<Oferta>();
-		
-		for(Oferta o: this.ofertas) {
+	public List<Oferta> filtrar_disp(List<Oferta> ofs, Disponibilidad estado) {
+		List<Oferta> nueva = new ArrayList<Oferta>();
+		for(Oferta o: ofs) {
 			if(o.getDisp() ==  estado) {
-				ofs.add(o);
+				nueva.add(o);
 			}
 		}
-		this.setFiltradas(ofs);	
-		return ofs;		
+		this.setFiltradas(nueva);	
+		return nueva;		
 	}
 	
 	/**
@@ -333,18 +332,17 @@ public class Sistema implements Serializable{
 	 * @param fin fecha final maxima
 	 * @return lista de ofertas que cumplan esa caracteristica
 	 */
-	public List<Oferta> filtrar_fecha(LocalDate ini, LocalDate fin){
-		List<Oferta> ofs = new ArrayList<Oferta>();
-				
-		for(Oferta o: this.ofertas) {
+	public List<Oferta> filtrar_fecha(List<Oferta> ofs, LocalDate ini, LocalDate fin){	
+		List<Oferta> nueva = new ArrayList<Oferta>();
+		for(Oferta o: ofs) {
 			if(o.getIni().isAfter(ini) == true && o.getFin().isBefore(fin) == true) {
-				ofs.add(o);
+				nueva.add(o);
 			}
 		}
 		
-		this.setFiltradas(ofs);
+		this.setFiltradas(nueva);
 			
-		return ofs;	
+		return nueva;	
 	}
 	
 	/**
@@ -364,7 +362,7 @@ public class Sistema implements Serializable{
 			
 			for(int i = 0; i < ofertas.size(); i++){
 				for(int j = 1; j < (ofertas.size()-i); j++) {
-					if(ofertas.get(j-1).getPrecio() > ofertas.get(j).getPrecio()) {
+					if(ofertas.get(j-1).calcularPrecio() > ofertas.get(j).calcularPrecio()) {
 						Collections.swap(ofertas, j-1, j);
 					}
 				}
@@ -376,7 +374,7 @@ public class Sistema implements Serializable{
 			
 			for(int i = 0; i < ofertas.size(); i++){
 				for(int j = 1; j < (ofertas.size()-i); j++) {
-					if(ofertas.get(j-1).getPrecio() < ofertas.get(j).getPrecio()) {
+					if(ofertas.get(j-1).calcularPrecio() < ofertas.get(j).calcularPrecio()) {
 						Collections.swap(ofertas, j-1, j);
 					}
 				}

@@ -30,6 +30,8 @@ public class ControladorLogin implements ActionListener{
 		if(event.equals(pLogin.getBotonLogin())) {
 				try {
 					app.login(pLogin.getCampoUsuario().getText(), String.valueOf(pLogin.getCampoContrasena().getPassword()));
+					pLogin.getCampoContrasena().setText("");
+					pLogin.getCampoUsuario().setText("");
 					ventana.mostrarPanelRol();
 				} catch (ArgumentoNoValido e) {
 					JOptionPane.showMessageDialog(pLogin, "Los datos introducidos no son validos");
