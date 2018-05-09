@@ -8,8 +8,6 @@ import java.util.List;
 
 import javax.swing.JList;
 import javax.swing.JOptionPane;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import app.Sistema;
 import gui.CustomFrame;
@@ -23,7 +21,7 @@ import usuarios.Usuario;
  * @author Victoria Pelayo e Ignacio Rabunnal
  *
  */
-public class ControladorOfertas implements ActionListener, ListSelectionListener{
+public class ControladorOfertas implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
@@ -37,12 +35,11 @@ public class ControladorOfertas implements ActionListener, ListSelectionListener
 		this.app = app;	
 	}
 
-	@Override
-	public void valueChanged(ListSelectionEvent arg0) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * ofertas
+	 */
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		OferPanel panel = ventana.getPanelOfertas();

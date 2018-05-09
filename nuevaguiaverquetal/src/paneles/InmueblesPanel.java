@@ -6,13 +6,17 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import app.Sistema;
-import inmuebles.Inmueble;
-import ofertas.Oferta;
-import usuarios.Ofertante;
-import usuarios.Rol;
-import usuarios.Usuario;
 
+import inmuebles.Inmueble;
+import usuarios.Ofertante;
+
+
+/**
+ * Descripcion de la clase InmueblesPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class InmueblesPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -25,11 +29,13 @@ public class InmueblesPanel extends JPanel{
 	private JButton bVer = new JButton("Ver Ofertas Asociadas");
 	private JButton bAceptar = new JButton("Pendientes de aceptar");
 	
-	private Sistema sist;
+
 	
-	public InmueblesPanel(Sistema app) {
-		this.sist = app;
-		
+	/**
+	 * Constructor del panel de inmuebles
+	 */
+	public InmueblesPanel() {
+	
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
 		
@@ -119,12 +125,9 @@ public class InmueblesPanel extends JPanel{
 	}
 
 	/**
-	 * @param bAceptar the bAceptar to set
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
 	 */
-	public void setbAceptar(JButton bAceptar) {
-		this.bAceptar = bAceptar;
-	}
-
 	public void setControlador(ActionListener al) {
 		this.bSalir.addActionListener(al);
 		this.bAsociar.addActionListener(al);
@@ -133,6 +136,10 @@ public class InmueblesPanel extends JPanel{
 		this.bAceptar.addActionListener(al);
 	}	
 	
+	/**
+	 * Actualiza los inmuebles del modelo
+	 * @param o ofertante cuyos inmuebles se van a mostrar
+	 */
 	public void actualizarInmuebles(Ofertante o) {
 		modelo.clear();
 		for(Inmueble i: o.getInmuebles()) {

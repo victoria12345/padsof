@@ -5,9 +5,12 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import app.Sistema;
 import inmuebles.Inmueble;
-
+/**
+ * Descripcion de la clase OfertaResidencialPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class OfertaResidencialPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JLabel labelPrecio = new JLabel("Precio:");
@@ -17,15 +20,16 @@ public class OfertaResidencialPanel extends JPanel {
 	private JLabel labelnMeses = new JLabel("Numero de meses:");
 	private JTextField camponMeses = new JTextField(10);
 	
-	private Sistema app;
-	
 	private Inmueble i;
 	
 	private JButton bCancelar = new JButton("Cancelar");
 	private JButton bAsociar = new JButton("Asociar");
-	
-	public OfertaResidencialPanel(Sistema sist) {
-		this.app = sist;
+	/**
+	 * Constructor del panel de oferta residencial
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
+	public OfertaResidencialPanel() {
+
 		
 		GridBagLayout layout = new GridBagLayout();
 		GridBagConstraints cons = new GridBagConstraints();
@@ -80,42 +84,27 @@ public class OfertaResidencialPanel extends JPanel {
 		return campoPrecio;
 	}
 
-	public void setCampoPrecio(JTextField campoPrecio) {
-		this.campoPrecio = campoPrecio;
-	}
-
 	public JTextField getCampoIni() {
 		return campoIni;
-	}
-
-	public void setCampoIni(JTextField campoIni) {
-		this.campoIni = campoIni;
 	}
 
 	public JTextField getCamponMeses() {
 		return camponMeses;
 	}
 
-	public void setCamponMeses(JTextField camponMeses) {
-		this.camponMeses = camponMeses;
-	}
-
 	public JButton getbCancelar() {
 		return bCancelar;
-	}
-
-	public void setbCancelar(JButton bCancelar) {
-		this.bCancelar = bCancelar;
 	}
 
 	public JButton getbAsociar() {
 		return bAsociar;
 	}
 
-	public void setbAsociar(JButton bAsociar) {
-		this.bAsociar = bAsociar;
-	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bAsociar.addActionListener(al);
 		this.bCancelar.addActionListener(al);

@@ -2,8 +2,6 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 
 import app.Sistema;
@@ -30,7 +28,12 @@ public class ControladorOferPendiente implements ActionListener{
 		this.ventana = ventana; 
 		this.app = app;	
 	}
-
+	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * de oferta pendiente
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		OferPendientePanel panel = ventana.getPanelOferPendiente();

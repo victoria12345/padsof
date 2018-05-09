@@ -1,7 +1,6 @@
 package paneles;
 
 import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
@@ -9,21 +8,25 @@ import java.awt.event.ActionListener;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
-import javax.swing.event.ListSelectionListener;
-
 import app.Sistema;
 import ofertas.Oferta;
 
+/**
+ * Descripcion de la clase InvitadoPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"rawtypes", "unchecked"})
 public class InvitadoPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
 	private JScrollPane  listaOfer;
+	
 	private JList ofers = new JList();
 	private DefaultListModel modelo = new DefaultListModel();
 	private JButton salir = new JButton("Salir");
@@ -41,7 +44,10 @@ public class InvitadoPanel extends JPanel{
 	
 	private Sistema sist;
 	
-	
+	/**
+	 * Constructor del panel de invitado
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public InvitadoPanel(Sistema sist) {
 		this.sist = sist;
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -154,14 +160,6 @@ public class InvitadoPanel extends JPanel{
 
 
 	/**
-	 * @param salir the salir to set
-	 */
-	public void setSalir(JButton salir) {
-		this.salir = salir;
-	}
-
-
-	/**
 	 * @return the sist
 	 */
 	public Sistema getSist() {
@@ -176,6 +174,10 @@ public class InvitadoPanel extends JPanel{
 		this.sist = sist;
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		this.salir.addActionListener(a1);
 		botonFiltrar.addActionListener(a1);
@@ -208,26 +210,10 @@ public class InvitadoPanel extends JPanel{
 
 
 	/**
-	 * @param labelCP the labelCP to set
-	 */
-	public void setLabelCP(JLabel labelCP) {
-		this.labelCP = labelCP;
-	}
-
-
-	/**
 	 * @return the labelPrecio
 	 */
 	public JLabel getLabelPrecio() {
 		return labelPrecio;
-	}
-
-
-	/**
-	 * @param labelPrecio the labelPrecio to set
-	 */
-	public void setLabelPrecio(JLabel labelPrecio) {
-		this.labelPrecio = labelPrecio;
 	}
 
 
@@ -240,28 +226,11 @@ public class InvitadoPanel extends JPanel{
 
 
 	/**
-	 * @param labelIni the labelIni to set
-	 */
-	public void setLabelIni(JLabel labelIni) {
-		this.labelIni = labelIni;
-	}
-
-
-	/**
 	 * @return the labelFin
 	 */
 	public JLabel getLabelFin() {
 		return labelFin;
 	}
-
-
-	/**
-	 * @param labelFin the labelFin to set
-	 */
-	public void setLabelFin(JLabel labelFin) {
-		this.labelFin = labelFin;
-	}
-
 
 	/**
 	 * @return the campoCP
@@ -272,42 +241,17 @@ public class InvitadoPanel extends JPanel{
 
 
 	/**
-	 * @param campoCP the campoCP to set
-	 */
-	public void setCampoCP(JTextField campoCP) {
-		this.campoCP = campoCP;
-	}
-
-
-	/**
 	 * @return the campoPrecio
 	 */
 	public JTextField getCampoPrecio() {
 		return campoPrecio;
 	}
 
-
-	/**
-	 * @param campoPrecio the campoPrecio to set
-	 */
-	public void setCampoPrecio(JTextField campoPrecio) {
-		this.campoPrecio = campoPrecio;
-	}
-
-
 	/**
 	 * @return the campoIni
 	 */
 	public JTextField getCampoIni() {
 		return campoIni;
-	}
-
-
-	/**
-	 * @param campoIni the campoIni to set
-	 */
-	public void setCampoIni(JTextField campoIni) {
-		this.campoIni = campoIni;
 	}
 
 
@@ -320,28 +264,11 @@ public class InvitadoPanel extends JPanel{
 
 
 	/**
-	 * @param campoFin the campoFin to set
-	 */
-	public void setCampoFin(JTextField campoFin) {
-		this.campoFin = campoFin;
-	}
-
-
-	/**
 	 * @return the botonFiltrar
 	 */
 	public JButton getBotonFiltrar() {
 		return botonFiltrar;
 	}
-
-
-	/**
-	 * @param botonFiltrar the botonFiltrar to set
-	 */
-	public void setBotonFiltrar(JButton botonFiltrar) {
-		this.botonFiltrar = botonFiltrar;
-	}
-
 
 	/**
 	 * @return the botonMostrarTodas
@@ -349,15 +276,6 @@ public class InvitadoPanel extends JPanel{
 	public JButton getBotonMostrarTodas() {
 		return botonMostrarTodas;
 	}
-
-
-	/**
-	 * @param botonMostrarTodas the botonMostrarTodas to set
-	 */
-	public void setBotonMostrarTodas(JButton botonMostrarTodas) {
-		this.botonMostrarTodas = botonMostrarTodas;
-	}
-
 
 	/**
 	 * @return the modelo

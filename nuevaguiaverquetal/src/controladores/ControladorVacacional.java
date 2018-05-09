@@ -8,16 +8,14 @@ import javax.swing.JOptionPane;
 
 import app.Sistema;
 import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
+
 import gui.CustomFrame;
 import inmuebles.Inmueble;
 import ofertas.Oferta;
 import ofertas.OfertaVacacional;
-import paneles.LoginPanel;
+
 import paneles.OfertaVacacionalPanel;
-import usuarios.Rol;
-import usuarios.Usuario;
+
 
 /**
  * Descripcion de la clase ControladorVacacional
@@ -37,7 +35,12 @@ public class ControladorVacacional implements ActionListener {
 		this.ventana = gui; 
 		this.app = app;
 	}
-
+	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * subir oferta vacacional
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
@@ -84,23 +87,5 @@ public class ControladorVacacional implements ActionListener {
 		}
 		
 	}
-
-	public CustomFrame getVentana() {
-		return ventana;
-	}
-
-	public void setVentana(CustomFrame ventana) {
-		this.ventana = ventana;
-	}
-
-	public Sistema getApp() {
-		return app;
-	}
-
-	public void setApp(Sistema app) {
-		this.app = app;
-	}
-	
-	
 	
 }

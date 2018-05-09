@@ -9,7 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import usuarios.Usuario;
-
+/**
+ * Descripcion de la clase UsuarioPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class UsuarioPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel uNombre = new JLabel();
@@ -23,7 +27,9 @@ public class UsuarioPanel extends JPanel{
 	private JButton volver = new JButton("Volver");
 	
 	private Usuario usuario;
-	
+	/**
+	 * Constructor del panel de usuario
+	 */
 	public UsuarioPanel() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
@@ -48,6 +54,10 @@ public class UsuarioPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * establece un usuario cuyos datos se visualizaran
+	 * @param u usuario que se quiere visualizar
+	 */
 	public void iniciar(Usuario u) {
 		this.usuario = u;
 		if(u != null) {
@@ -58,6 +68,10 @@ public class UsuarioPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		bloquear.addActionListener(a1);
 		desbloquear.addActionListener(a1);
@@ -73,24 +87,10 @@ public class UsuarioPanel extends JPanel{
 	}
 
 	/**
-	 * @param uNombre the uNombre to set
-	 */
-	public void setuNombre(JLabel uNombre) {
-		this.uNombre = uNombre;
-	}
-
-	/**
 	 * @return the uApellido
 	 */
 	public JLabel getuApellido() {
 		return uApellido;
-	}
-
-	/**
-	 * @param uApellido the uApellido to set
-	 */
-	public void setuApellido(JLabel uApellido) {
-		this.uApellido = uApellido;
 	}
 
 	/**
@@ -101,24 +101,10 @@ public class UsuarioPanel extends JPanel{
 	}
 
 	/**
-	 * @param uNick the uNick to set
-	 */
-	public void setuNick(JLabel uNick) {
-		this.uNick = uNick;
-	}
-
-	/**
 	 * @return the uBloq
 	 */
 	public JLabel getuBloq() {
 		return uBloq;
-	}
-
-	/**
-	 * @param uBloq the uBloq to set
-	 */
-	public void setuBloq(JLabel uBloq) {
-		this.uBloq = uBloq;
 	}
 
 	/**
@@ -129,24 +115,10 @@ public class UsuarioPanel extends JPanel{
 	}
 
 	/**
-	 * @param bloquear the bloquear to set
-	 */
-	public void setBloquear(JButton bloquear) {
-		this.bloquear = bloquear;
-	}
-
-	/**
 	 * @return the desbloquear
 	 */
 	public JButton getDesbloquear() {
 		return desbloquear;
-	}
-
-	/**
-	 * @param desbloquear the desbloquear to set
-	 */
-	public void setDesbloquear(JButton desbloquear) {
-		this.desbloquear = desbloquear;
 	}
 
 	/**
@@ -156,25 +128,12 @@ public class UsuarioPanel extends JPanel{
 		return cambiarCard;
 	}
 
-	/**
-	 * @param cambiarCard the cambiarCard to set
-	 */
-	public void setCambiarCard(JButton cambiarCard) {
-		this.cambiarCard = cambiarCard;
-	}
 
 	/**
 	 * @return the volver
 	 */
 	public JButton getVolver() {
 		return volver;
-	}
-
-	/**
-	 * @param volver the volver to set
-	 */
-	public void setVolver(JButton volver) {
-		this.volver = volver;
 	}
 
 	/**

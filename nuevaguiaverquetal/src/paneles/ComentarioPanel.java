@@ -12,10 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 
 import ofertas.Comentario;
-
+/**
+ * Descripcion de la clase ComentarioPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"rawtypes","unchecked"})
 public class ComentarioPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JScrollPane  lista;
+
 	private JList coments;
 	private DefaultListModel modelo = new DefaultListModel();
 	
@@ -24,6 +30,9 @@ public class ComentarioPanel extends JPanel{
 	private JButton volver = new JButton("Volver");
 	
 	
+	/**
+	 * Constructor del panel de comentarios
+	 */
 	
 	public ComentarioPanel() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -43,6 +52,10 @@ public class ComentarioPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * actualiza el modelo de la lista de comentarios
+	 * @param comentarios lista de comentarios a introducir en el modelo
+	 */
 	public void modificarModelo(List<Comentario> comentarios) {
 		this.getModelo().clear();
 		for(Comentario c: comentarios) {
@@ -50,24 +63,14 @@ public class ComentarioPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		responder.addActionListener(a1);
 		respuestas.addActionListener(a1);
 		volver.addActionListener(a1);
-	}
-
-	/**
-	 * @return the lista
-	 */
-	public JScrollPane getLista() {
-		return lista;
-	}
-
-	/**
-	 * @param lista the lista to set
-	 */
-	public void setLista(JScrollPane lista) {
-		this.lista = lista;
 	}
 
 	/**
@@ -106,24 +109,10 @@ public class ComentarioPanel extends JPanel{
 	}
 
 	/**
-	 * @param responder the responder to set
-	 */
-	public void setResponder(JButton responder) {
-		this.responder = responder;
-	}
-
-	/**
 	 * @return the respuestas
 	 */
 	public JButton getRespuestas() {
 		return respuestas;
-	}
-
-	/**
-	 * @param respuestas the respuestas to set
-	 */
-	public void setRespuestas(JButton respuestas) {
-		this.respuestas = respuestas;
 	}
 
 	/**
@@ -133,11 +122,5 @@ public class ComentarioPanel extends JPanel{
 		return volver;
 	}
 
-	/**
-	 * @param volver the volver to set
-	 */
-	public void setVolver(JButton volver) {
-		this.volver = volver;
-	}
 
 }

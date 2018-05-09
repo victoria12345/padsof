@@ -41,6 +41,10 @@ public class ControladorVerOferta implements ActionListener{
 		this.app = app;	
 	}
 
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * ver oferta
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();

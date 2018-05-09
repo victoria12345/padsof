@@ -4,6 +4,11 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+/**
+ * Descripcion de la clase LoginPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class LoginPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel etiquetaUsuario = new JLabel("Usuario:       ");
@@ -16,7 +21,9 @@ public class LoginPanel extends JPanel{
 	// Proposed work: ADD A BUTTON THAT CLOSES THE APPLICATION
 	
 
-	
+	/**
+	 * Constructor del panel de login
+	 */
 	public LoginPanel() {	
 		
 		GridBagLayout layout = new GridBagLayout();
@@ -56,28 +63,14 @@ public class LoginPanel extends JPanel{
 	}
 
 
-	public void setEtiquetaUsuario(JLabel etiquetaUsuario) {
-		this.etiquetaUsuario = etiquetaUsuario;
-	}
-
-
 	public JLabel getEtiquetaContrasena() {
 		return etiquetaContrasena;
 	}
 
 
-	public void setEtiquetaContrasena(JLabel etiquetaContrasena) {
-		this.etiquetaContrasena = etiquetaContrasena;
-	}
-
 
 	public JTextField getCampoUsuario() {
 		return campoUsuario;
-	}
-
-
-	public void setCampoUsuario(JTextField campoUsuario) {
-		this.campoUsuario = campoUsuario;
 	}
 
 
@@ -86,18 +79,8 @@ public class LoginPanel extends JPanel{
 	}
 
 
-	public void setCampoContrasena(JPasswordField campoContrasena) {
-		this.campoContrasena = campoContrasena;
-	}
-
-
 	public JButton getBotonLogin() {
 		return botonLogin;
-	}
-
-
-	public void setBotonLogin(JButton botonLogin) {
-		this.botonLogin = botonLogin;
 	}
 
 
@@ -105,13 +88,11 @@ public class LoginPanel extends JPanel{
 		return botonInvitado;
 	}
 
-
-	public void setBotonInvitado(JButton botonInvitado) {
-		this.botonInvitado = botonInvitado;
-	}
 	
-	
-	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.botonLogin.addActionListener(al);
 		this.botonInvitado.addActionListener(al);

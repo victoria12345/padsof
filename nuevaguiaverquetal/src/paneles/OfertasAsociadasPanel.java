@@ -5,15 +5,15 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import app.Sistema;
 import inmuebles.Inmueble;
 import ofertas.Oferta;
-import usuarios.Ofertante;
-import usuarios.Rol;
-import usuarios.Usuario;
 
-
+/**
+ * Descripcion de la clase OfertasAsociadasPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class OfertasAsociadasPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -23,11 +23,12 @@ public class OfertasAsociadasPanel extends JPanel{
 	private JButton bAtras = new JButton("Atrás");
 	private JButton bElim = new JButton("Elminar oferta");
 	
-	private Sistema sist;
 	private Inmueble i;
-	
-	public OfertasAsociadasPanel(Sistema app) {
-		this.sist = app;
+	/**
+	 * Constructor del panel de ofertas asociadas
+	 */
+	public OfertasAsociadasPanel() {
+
 		
 		BorderLayout layout = new BorderLayout();
 		this.setLayout(layout);
@@ -101,26 +102,9 @@ public class OfertasAsociadasPanel extends JPanel{
 	}
 
 	/**
-	 * @param bAtras the bAtras to set
+	 * añade las ofertas del inmueble que queremos al modelo de la lista
+	 * @param i inmueble cuyas ofertas asociadas queremos mostrar
 	 */
-	public void setbAtras(JButton bAtras) {
-		this.bAtras = bAtras;
-	}
-
-	/**pae
-	 * @return the sist
-	 */
-	public Sistema getSist() {
-		return sist;
-	}
-
-	/**
-	 * @param sist the sist to set
-	 */
-	public void setSist(Sistema sist) {
-		this.sist = sist;
-	}
-
 	public void iniciar(Inmueble i) {
 		this.i= i;
 		modelo.clear();
@@ -129,6 +113,10 @@ public class OfertasAsociadasPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		bAtras.addActionListener(al);
 		bElim.addActionListener(al);
@@ -139,13 +127,6 @@ public class OfertasAsociadasPanel extends JPanel{
 	 */
 	public JButton getbElim() {
 		return bElim;
-	}
-
-	/**
-	 * @param bElim the bElim to set
-	 */
-	public void setbElim(JButton bElim) {
-		this.bElim = bElim;
 	}
 
 	/**

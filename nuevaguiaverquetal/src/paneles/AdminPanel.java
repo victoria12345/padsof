@@ -1,25 +1,30 @@
 package paneles;
 
 import java.awt.BorderLayout;
+
 import java.awt.FlowLayout;
-import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.EventListener;
+
 
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JLabel;
+
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
-import javax.swing.event.ListSelectionListener;
+
 
 import app.Sistema;
-import gui.CustomFrame;
-import ofertas.Oferta;
+
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase AdminPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings("rawtypes")
 public class AdminPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
@@ -35,6 +40,11 @@ public class AdminPanel extends JPanel{
 	
 	private Sistema sist;
 	
+	/**
+	 * Constructor del panel de administrador
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
+	@SuppressWarnings("unchecked")
 	public AdminPanel(Sistema sist) {
 		this.sist = sist;
 		BorderLayout layout = new BorderLayout();
@@ -77,27 +87,11 @@ public class AdminPanel extends JPanel{
 	}
 
 	/**
-	 * @param botonMostrarBloq the botonMostrarBloq to set
-	 */
-	public void setBotonMostrarBloq(JButton botonMostrarBloq) {
-		this.botonMostrarBloq = botonMostrarBloq;
-	}
-
-	/**
 	 * @return the botonMostrarTodos
 	 */
 	public JButton getBotonMostrarTodos() {
 		return botonMostrarTodos;
 	}
-
-	/**
-	 * @param botonMostrarTodos the botonMostrarTodos to set
-	 */
-	public void setBotonMostrarTodos(JButton botonMostrarTodos) {
-		this.botonMostrarTodos = botonMostrarTodos;
-	}
-
-	
 	/**
 	 * @return the modelo
 	 */
@@ -126,6 +120,10 @@ public class AdminPanel extends JPanel{
 		this.users = users;
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		this.botonMostrarBloq.addActionListener(a1);
 		this.botonMostrarTodos.addActionListener(a1);
@@ -142,28 +140,11 @@ public class AdminPanel extends JPanel{
 	}
 
 	/**
-	 * @param botVerUser the botVerUser to set
-	 */
-	public void setBotVerUser(JButton botVerUser) {
-		this.botVerUser = botVerUser;
-	}
-
-
-	/**
 	 * @return the botOfertas
 	 */
 	public JButton getBotOfertas() {
 		return botOfertas;
 	}
-
-
-	/**
-	 * @param botOfertas the botOfertas to set
-	 */
-	public void setBotOfertas(JButton botOfertas) {
-		this.botOfertas = botOfertas;
-	}
-
 
 	/**
 	 * @return the sist
@@ -174,27 +155,12 @@ public class AdminPanel extends JPanel{
 
 
 	/**
-	 * @param sist the sist to set
-	 */
-	public void setSist(Sistema sist) {
-		this.sist = sist;
-	}
-
-
-	/**
 	 * @return the botVolver
 	 */
 	public JButton getBotVolver() {
 		return botVolver;
 	}
 
-
-	/**
-	 * @param botVolver the botVolver to set
-	 */
-	public void setBotVolver(JButton botVolver) {
-		this.botVolver = botVolver;
-	}
 
 
 

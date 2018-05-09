@@ -13,9 +13,14 @@ import app.Sistema;
 import usuarios.Demandante;
 import usuarios.Rol;
 import usuarios.Usuario;
-
+/**
+ * Descripcion de la clase DemandantePanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class DemandantePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
+	@SuppressWarnings("unused")
 	private Sistema app;
 
 	private JLabel rResidencial = new JLabel("Reserva residencial:");
@@ -31,7 +36,9 @@ public class DemandantePanel extends JPanel{
 	
 	private Demandante deman;
 	
-	
+	/**
+	 * Constructor del panel de demandante
+	 */
 	public DemandantePanel() {
 		this.setLayout(new BorderLayout());
 		
@@ -77,6 +84,10 @@ public class DemandantePanel extends JPanel{
 	}
 
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		atras.addActionListener(a1);
 		cancelarRes.addActionListener(a1);
@@ -95,44 +106,18 @@ public class DemandantePanel extends JPanel{
 
 
 	/**
-	 * @param atras the atras to set
-	 */
-	public void setAtras(JButton atras) {
-		this.atras = atras;
-	}
-
-
-	/**
 	 * @return the rResidencial
 	 */
 	public JLabel getrResidencial() {
 		return rResidencial;
 	}
-
-
-	/**
-	 * @param rResidencial the rResidencial to set
-	 */
-	public void setrResidencial(JLabel rResidencial) {
-		this.rResidencial = rResidencial;
-	}
-
-
+	
 	/**
 	 * @return the rVacacional
 	 */
 	public JLabel getrVacacional() {
 		return rVacacional;
 	}
-
-
-	/**
-	 * @param rVacacional the rVacacional to set
-	 */
-	public void setrVacacional(JLabel rVacacional) {
-		this.rVacacional = rVacacional;
-	}
-
 
 	/**
 	 * @return the cancelarRes
@@ -141,30 +126,12 @@ public class DemandantePanel extends JPanel{
 		return cancelarRes;
 	}
 
-
-	/**
-	 * @param cancelarRes the cancelarRes to set
-	 */
-	public void setCancelarRes(JButton cancelarRes) {
-		this.cancelarRes = cancelarRes;
-	}
-
-
 	/**
 	 * @return the cancelarVac
 	 */
 	public JButton getCancelarVac() {
 		return cancelarVac;
 	}
-
-
-	/**
-	 * @param cancelarVac the cancelarVac to set
-	 */
-	public void setCancelarVac(JButton cancelarVac) {
-		this.cancelarVac = cancelarVac;
-	}
-
 
 	/**
 	 * @return the deman
@@ -189,15 +156,6 @@ public class DemandantePanel extends JPanel{
 		return pagarRes;
 	}
 
-
-	/**
-	 * @param pagarRes the pagarRes to set
-	 */
-	public void setPagarRes(JButton pagarRes) {
-		this.pagarRes = pagarRes;
-	}
-
-
 	/**
 	 * @return the pagarVac
 	 */
@@ -205,12 +163,5 @@ public class DemandantePanel extends JPanel{
 		return pagarVac;
 	}
 
-
-	/**
-	 * @param pagarVac the pagarVac to set
-	 */
-	public void setPagarVac(JButton pagarVac) {
-		this.pagarVac = pagarVac;
-	}
 }
 

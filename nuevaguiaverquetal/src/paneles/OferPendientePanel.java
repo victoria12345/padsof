@@ -9,7 +9,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import ofertas.Oferta;
-
+/**
+ * Descripcion de la clase OferPendientePanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class OferPendientePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +26,9 @@ public class OferPendientePanel extends JPanel{
 	private JButton botVolver = new JButton("Volver");
 	
 	private Oferta oferta;
-	
+	/**
+	 * Constructor del panel de oferta pendiente
+	 */
 	public OferPendientePanel() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
@@ -38,7 +44,10 @@ public class OferPendientePanel extends JPanel{
 		this.add(botonera);
 		this.add(botVolver);
 	}
-	
+	/**
+	 * Inicia el panel con la oferta cuyos datos se mostraran
+	 * @param o oferta con la que se va a iniciar el panel
+	 */
 	public void iniciar(Oferta o) {
 		this.oferta = o;
 		
@@ -49,6 +58,10 @@ public class OferPendientePanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		botAceptar.addActionListener(a1);
 		botRect.addActionListener(a1);
@@ -63,25 +76,12 @@ public class OferPendientePanel extends JPanel{
 	}
 
 	/**
-	 * @param oPrecio the oPrecio to set
-	 */
-	public void setoPrecio(JLabel oPrecio) {
-		this.oPrecio = oPrecio;
-	}
-
-	/**
 	 * @return the oIni
 	 */
 	public JLabel getoIni() {
 		return oIni;
 	}
 
-	/**
-	 * @param oIni the oIni to set
-	 */
-	public void setoIni(JLabel oIni) {
-		this.oIni = oIni;
-	}
 
 	/**
 	 * @return the oDesc
@@ -90,25 +90,12 @@ public class OferPendientePanel extends JPanel{
 		return oDesc;
 	}
 
-	/**
-	 * @param oDesc the oDesc to set
-	 */
-	public void setoDesc(JLabel oDesc) {
-		this.oDesc = oDesc;
-	}
 
 	/**
 	 * @return the botAceptar
 	 */
 	public JButton getBotAceptar() {
 		return botAceptar;
-	}
-
-	/**
-	 * @param botAceptar the botAceptar to set
-	 */
-	public void setBotAceptar(JButton botAceptar) {
-		this.botAceptar = botAceptar;
 	}
 
 	/**
@@ -119,24 +106,10 @@ public class OferPendientePanel extends JPanel{
 	}
 
 	/**
-	 * @param botRect the botRect to set
-	 */
-	public void setBotRect(JButton botRect) {
-		this.botRect = botRect;
-	}
-
-	/**
 	 * @return the botVolver
 	 */
 	public JButton getBotVolver() {
 		return botVolver;
-	}
-
-	/**
-	 * @param botVolver the botVolver to set
-	 */
-	public void setBotVolver(JButton botVolver) {
-		this.botVolver = botVolver;
 	}
 
 	/**

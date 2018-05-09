@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JList;
 
-import app.Sistema;
+
 import gui.CustomFrame;
 import ofertas.Oferta;
 import paneles.PendientesPanel;
@@ -17,7 +17,7 @@ import paneles.PendientesPanel;
  */
 public class ControladorPendientes implements ActionListener{
 	private CustomFrame ventana;
-	private Sistema app;
+
 	
 	
 	/**
@@ -25,11 +25,16 @@ public class ControladorPendientes implements ActionListener{
 	 * @param ventana ventana personalizada que contiene a los paneles
 	 * @param app sistema con los datos y funciones pertinentes
 	 */
-	public ControladorPendientes(CustomFrame ventana, Sistema app) {
+	public ControladorPendientes(CustomFrame ventana) {
 		this.ventana = ventana; 
-		this.app = app;
+
 	}
 
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * pendientes
+	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();

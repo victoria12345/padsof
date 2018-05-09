@@ -4,12 +4,15 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.tree.DefaultMutableTreeNode;
 
 import app.Sistema;
 import ofertas.Oferta;
-
+/**
+ * Descripcion de la clase OferPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class OferPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JScrollPane  listaOfer;
@@ -45,7 +48,10 @@ public class OferPanel extends JPanel{
 	
 	private Sistema sist;
 	
-	
+	/**
+	 * Constructor del panel de ofertas
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public OferPanel(Sistema sist) {
 		this.sist = sist;
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -127,7 +133,7 @@ public class OferPanel extends JPanel{
 		ofers = new JList();
 		ofers.setModel(modelo);
 		
-		for(Oferta o: sist.getOfertas()) {
+		for(Oferta o: this.sist.getOfertas()) {
 			modelo.addElement(o);
 		}
 		
@@ -150,6 +156,10 @@ public class OferPanel extends JPanel{
 		this.add(botonera);
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		botonDemandante.addActionListener(a1);
 		botonVer.addActionListener(a1);
@@ -184,30 +194,12 @@ public class OferPanel extends JPanel{
 		return botonDemandante;
 	}
 
-
-	/**
-	 * @param botonDemandante the botonDemandante to set
-	 */
-	public void setBotonDemandante(JButton botonDemandante) {
-		this.botonDemandante = botonDemandante;
-	}
-
-
 	/**
 	 * @return the ordenes
 	 */
 	public String[] getOrdenes() {
 		return ordenes;
 	}
-
-
-	/**
-	 * @param ordenes the ordenes to set
-	 */
-	public void setOrdenes(String[] ordenes) {
-		this.ordenes = ordenes;
-	}
-
 
 	/**
 	 * @return the comboOrdenes
@@ -216,15 +208,6 @@ public class OferPanel extends JPanel{
 		return comboOrdenes;
 	}
 
-
-	/**
-	 * @param comboOrdenes the comboOrdenes to set
-	 */
-	public void setComboOrdenes(JComboBox comboOrdenes) {
-		this.comboOrdenes = comboOrdenes;
-	}
-
-
 	/**
 	 * @return the botonOrdenar
 	 */
@@ -232,13 +215,6 @@ public class OferPanel extends JPanel{
 		return botonOrdenar;
 	}
 
-
-	/**
-	 * @param botonOrdenar the botonOrdenar to set
-	 */
-	public void setBotonOrdenar(JButton botonOrdenar) {
-		this.botonOrdenar = botonOrdenar;
-	}
 	/**
 	 * @return the botonVer
 	 */
@@ -246,30 +222,12 @@ public class OferPanel extends JPanel{
 		return botonVer;
 	}
 
-
-	/**
-	 * @param botonVer the botonVer to set
-	 */
-	public void setBotonVer(JButton botonVer) {
-		this.botonVer = botonVer;
-	}
-
-
 	/**
 	 * @return the botonVolver
 	 */
 	public JButton getBotonVolver() {
 		return botonVolver;
 	}
-
-
-	/**
-	 * @param botonVolver the botonVolver to set
-	 */
-	public void setBotonVolver(JButton botonVolver) {
-		this.botonVolver = botonVolver;
-	}
-
 
 	/**
 	 * @return the ofers
@@ -294,30 +252,12 @@ public class OferPanel extends JPanel{
 		return labelOrden;
 	}
 
-
-	/**
-	 * @param labelOrden the labelOrden to set
-	 */
-	public void setLabelOrden(JLabel labelOrden) {
-		this.labelOrden = labelOrden;
-	}
-
-
 	/**
 	 * @return the disp
 	 */
 	public String[] getDisp() {
 		return disp;
 	}
-
-
-	/**
-	 * @param disp the disp to set
-	 */
-	public void setDisp(String[] disp) {
-		this.disp = disp;
-	}
-
 
 	/**
 	 * @return the labelCP
@@ -326,30 +266,12 @@ public class OferPanel extends JPanel{
 		return labelCP;
 	}
 
-
-	/**
-	 * @param labelCP the labelCP to set
-	 */
-	public void setLabelCP(JLabel labelCP) {
-		this.labelCP = labelCP;
-	}
-
-
 	/**
 	 * @return the labelPrecio
 	 */
 	public JLabel getLabelPrecio() {
 		return labelPrecio;
 	}
-
-
-	/**
-	 * @param labelPrecio the labelPrecio to set
-	 */
-	public void setLabelPrecio(JLabel labelPrecio) {
-		this.labelPrecio = labelPrecio;
-	}
-
 
 	/**
 	 * @return the labelValoracion
@@ -358,15 +280,6 @@ public class OferPanel extends JPanel{
 		return labelValoracion;
 	}
 
-
-	/**
-	 * @param labelValoracion the labelValoracion to set
-	 */
-	public void setLabelValoracion(JLabel labelValoracion) {
-		this.labelValoracion = labelValoracion;
-	}
-
-
 	/**
 	 * @return the labelDisp
 	 */
@@ -374,28 +287,11 @@ public class OferPanel extends JPanel{
 		return labelDisp;
 	}
 
-
-	/**
-	 * @param labelDisp the labelDisp to set
-	 */
-	public void setLabelDisp(JLabel labelDisp) {
-		this.labelDisp = labelDisp;
-	}
-
-
 	/**
 	 * @return the campoCP
 	 */
 	public JTextField getCampoCP() {
 		return campoCP;
-	}
-
-
-	/**
-	 * @param campoCP the campoCP to set
-	 */
-	public void setCampoCP(JTextField campoCP) {
-		this.campoCP = campoCP;
 	}
 
 
@@ -408,27 +304,12 @@ public class OferPanel extends JPanel{
 
 
 	/**
-	 * @param campoPrecio the campoPrecio to set
-	 */
-	public void setCampoPrecio(JTextField campoPrecio) {
-		this.campoPrecio = campoPrecio;
-	}
-
-
-	/**
 	 * @return the campoValoracion
 	 */
 	public JTextField getCampoValoracion() {
 		return campoValoracion;
 	}
 
-
-	/**
-	 * @param campoValoracion the campoValoracion to set
-	 */
-	public void setCampoValoracion(JTextField campoValoracion) {
-		this.campoValoracion = campoValoracion;
-	}
 
 
 	/**
@@ -440,27 +321,12 @@ public class OferPanel extends JPanel{
 
 
 	/**
-	 * @param comboDisp the comboDisp to set
-	 */
-	public void setComboDisp(JComboBox comboDisp) {
-		this.comboDisp = comboDisp;
-	}
-
-
-	/**
 	 * @return the botonFiltrar
 	 */
 	public JButton getBotonFiltrar() {
 		return botonFiltrar;
 	}
 
-
-	/**
-	 * @param botonFiltrar the botonFiltrar to set
-	 */
-	public void setBotonFiltrar(JButton botonFiltrar) {
-		this.botonFiltrar = botonFiltrar;
-	}
 
 	/**
 	 * @return the modelo
@@ -484,24 +350,10 @@ public class OferPanel extends JPanel{
 	}
 
 	/**
-	 * @param labelIni the labelIni to set
-	 */
-	public void setLabelIni(JLabel labelIni) {
-		this.labelIni = labelIni;
-	}
-
-	/**
 	 * @return the labelFin
 	 */
 	public JLabel getLabelFin() {
 		return labelFin;
-	}
-
-	/**
-	 * @param labelFin the labelFin to set
-	 */
-	public void setLabelFin(JLabel labelFin) {
-		this.labelFin = labelFin;
 	}
 
 	/**
@@ -512,13 +364,6 @@ public class OferPanel extends JPanel{
 	}
 
 	/**
-	 * @param campoIni the campoIni to set
-	 */
-	public void setCampoIni(JTextField campoIni) {
-		this.campoIni = campoIni;
-	}
-
-	/**
 	 * @return the campoFin
 	 */
 	public JTextField getCampoFin() {
@@ -526,23 +371,9 @@ public class OferPanel extends JPanel{
 	}
 
 	/**
-	 * @param campoFin the campoFin to set
-	 */
-	public void setCampoFin(JTextField campoFin) {
-		this.campoFin = campoFin;
-	}
-
-	/**
 	 * @return the botonMostrarTodas
 	 */
 	public JButton getBotonMostrarTodas() {
 		return botonMostrarTodas;
-	}
-
-	/**
-	 * @param botonMostrarTodas the botonMostrarTodas to set
-	 */
-	public void setBotonMostrarTodas(JButton botonMostrarTodas) {
-		this.botonMostrarTodas = botonMostrarTodas;
 	}
 }

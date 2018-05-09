@@ -4,18 +4,22 @@ import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.JList;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 
-import ofertas.Comentario;
+import javax.swing.JPanel;
+
+
+
 import ofertas.Oferta;
 import ofertas.OfertaResidencial;
 import ofertas.OfertaVacacional;
-
+/**
+ * Descripcion de la clase VerOfertaPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class VerOfertaPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -36,7 +40,9 @@ public class VerOfertaPanel extends JPanel{
 	private JButton botonComentarios = new JButton("Ver comentarios");
 	
 	private Oferta oferta;
-	
+	/**
+	 * Constructor del panel de ver oferta
+	 */
 	public VerOfertaPanel() {
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
@@ -85,6 +91,10 @@ public class VerOfertaPanel extends JPanel{
 		
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		botonContratar.addActionListener(a1);
 		botonReservar.addActionListener(a1);
@@ -102,24 +112,10 @@ public class VerOfertaPanel extends JPanel{
 	}
 
 	/**
-	 * @param oPrecio the oPrecio to set
-	 */
-	public void setoPrecio(JLabel oPrecio) {
-		this.oPrecio = oPrecio;
-	}
-
-	/**
 	 * @return the oIni
 	 */
 	public JLabel getoIni() {
 		return oIni;
-	}
-
-	/**
-	 * @param oIni the oIni to set
-	 */
-	public void setoIni(JLabel oIni) {
-		this.oIni = oIni;
 	}
 
 	/**
@@ -130,24 +126,10 @@ public class VerOfertaPanel extends JPanel{
 	}
 
 	/**
-	 * @param oDesc the oDesc to set
-	 */
-	public void setoDesc(JLabel oDesc) {
-		this.oDesc = oDesc;
-	}
-
-	/**
 	 * @return the oDisp
 	 */
 	public JLabel getoDisp() {
 		return oDisp;
-	}
-
-	/**
-	 * @param oDisp the oDisp to set
-	 */
-	public void setoDisp(JLabel oDisp) {
-		this.oDisp = oDisp;
 	}
 
 	/**
@@ -158,24 +140,10 @@ public class VerOfertaPanel extends JPanel{
 	}
 
 	/**
-	 * @param precioTotal the precioTotal to set
-	 */
-	public void setPrecioTotal(JLabel precioTotal) {
-		this.precioTotal = precioTotal;
-	}
-
-	/**
 	 * @return the nmeses
 	 */
 	public JLabel getNmeses() {
 		return nmeses;
-	}
-
-	/**
-	 * @param nmeses the nmeses to set
-	 */
-	public void setNmeses(JLabel nmeses) {
-		this.nmeses = nmeses;
 	}
 
 	/**
@@ -186,24 +154,10 @@ public class VerOfertaPanel extends JPanel{
 	}
 
 	/**
-	 * @param fin the fin to set
-	 */
-	public void setFin(JLabel fin) {
-		this.fin = fin;
-	}
-
-	/**
 	 * @return the fianza
 	 */
 	public JLabel getFianza() {
 		return fianza;
-	}
-
-	/**
-	 * @param fianza the fianza to set
-	 */
-	public void setFianza(JLabel fianza) {
-		this.fianza = fianza;
 	}
 
 	/**
@@ -213,12 +167,6 @@ public class VerOfertaPanel extends JPanel{
 		return botonContratar;
 	}
 
-	/**
-	 * @param botonContratar the botonContratar to set
-	 */
-	public void setBotonContratar(JButton botonContratar) {
-		this.botonContratar = botonContratar;
-	}
 
 	/**
 	 * @return the botonReservar
@@ -227,25 +175,12 @@ public class VerOfertaPanel extends JPanel{
 		return botonReservar;
 	}
 
-	/**
-	 * @param botonReservar the botonReservar to set
-	 */
-	public void setBotonReservar(JButton botonReservar) {
-		this.botonReservar = botonReservar;
-	}
 
 	/**
 	 * @return the botonComentar
 	 */
 	public JButton getBotonComentar() {
 		return botonComentar;
-	}
-
-	/**
-	 * @param botonComentar the botonComentar to set
-	 */
-	public void setBotonComentar(JButton botonComentar) {
-		this.botonComentar = botonComentar;
 	}
 
 	/**
@@ -256,24 +191,10 @@ public class VerOfertaPanel extends JPanel{
 	}
 
 	/**
-	 * @param botonValorar the botonValorar to set
-	 */
-	public void setBotonValorar(JButton botonValorar) {
-		this.botonValorar = botonValorar;
-	}
-
-	/**
 	 * @return the botonVolver
 	 */
 	public JButton getBotonVolver() {
 		return botonVolver;
-	}
-
-	/**
-	 * @param botonVolver the botonVolver to set
-	 */
-	public void setBotonVolver(JButton botonVolver) {
-		this.botonVolver = botonVolver;
 	}
 
 	/**
@@ -295,13 +216,6 @@ public class VerOfertaPanel extends JPanel{
 	 */
 	public JButton getBotonComentarios() {
 		return botonComentarios;
-	}
-
-	/**
-	 * @param botonComentarios the botonComentarios to set
-	 */
-	public void setBotonComentarios(JButton botonComentarios) {
-		this.botonComentarios = botonComentarios;
 	}
 
 }

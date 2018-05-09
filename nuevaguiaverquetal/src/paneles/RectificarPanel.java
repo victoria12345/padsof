@@ -10,7 +10,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import ofertas.Oferta;
-
+/**
+ * Descripcion de la clase RectificarPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class RectificarPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +36,9 @@ public class RectificarPanel extends JPanel{
 	
 	private JButton rectificar = new JButton("Rectificar");
 	private JButton volver = new JButton("Volver");
-	
+	/**
+	 * Constructor del panel de rectificar
+	 */
 	public RectificarPanel() {
 		
 		GridBagLayout layout2 = new GridBagLayout();
@@ -122,6 +128,10 @@ public class RectificarPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		rectificar.addActionListener(a1);
 		volver.addActionListener(a1);
@@ -135,24 +145,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param oPrecio the oPrecio to set
-	 */
-	public void setoPrecio(JLabel oPrecio) {
-		this.oPrecio = oPrecio;
-	}
-
-	/**
 	 * @return the oIni
 	 */
 	public JLabel getoIni() {
 		return oIni;
-	}
-
-	/**
-	 * @param oIni the oIni to set
-	 */
-	public void setoIni(JLabel oIni) {
-		this.oIni = oIni;
 	}
 
 	/**
@@ -163,24 +159,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param oDesc the oDesc to set
-	 */
-	public void setoDesc(JLabel oDesc) {
-		this.oDesc = oDesc;
-	}
-
-	/**
 	 * @return the nmeses
 	 */
 	public JLabel getNmeses() {
 		return nmeses;
-	}
-
-	/**
-	 * @param nmeses the nmeses to set
-	 */
-	public void setNmeses(JLabel nmeses) {
-		this.nmeses = nmeses;
 	}
 
 	/**
@@ -191,24 +173,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param fin the fin to set
-	 */
-	public void setFin(JLabel fin) {
-		this.fin = fin;
-	}
-
-	/**
 	 * @return the fianza
 	 */
 	public JLabel getFianza() {
 		return fianza;
-	}
-
-	/**
-	 * @param fianza the fianza to set
-	 */
-	public void setFianza(JLabel fianza) {
-		this.fianza = fianza;
 	}
 
 	/**
@@ -219,24 +187,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param campoPrecio the campoPrecio to set
-	 */
-	public void setCampoPrecio(JTextField campoPrecio) {
-		this.campoPrecio = campoPrecio;
-	}
-
-	/**
 	 * @return the campoIni
 	 */
 	public JTextField getCampoIni() {
 		return campoIni;
-	}
-
-	/**
-	 * @param campoIni the campoIni to set
-	 */
-	public void setCampoIni(JTextField campoIni) {
-		this.campoIni = campoIni;
 	}
 
 	/**
@@ -247,24 +201,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param campoFin the campoFin to set
-	 */
-	public void setCampoFin(JTextField campoFin) {
-		this.campoFin = campoFin;
-	}
-
-	/**
 	 * @return the campoDesc
 	 */
 	public JTextField getCampoDesc() {
 		return campoDesc;
-	}
-
-	/**
-	 * @param campoDesc the campoDesc to set
-	 */
-	public void setCampoDesc(JTextField campoDesc) {
-		this.campoDesc = campoDesc;
 	}
 
 	/**
@@ -275,24 +215,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param campoNmeses the campoNmeses to set
-	 */
-	public void setCampoNmeses(JTextField campoNmeses) {
-		this.campoNmeses = campoNmeses;
-	}
-
-	/**
 	 * @return the campoFianza
 	 */
 	public JTextField getCampoFianza() {
 		return campoFianza;
-	}
-
-	/**
-	 * @param campoFianza the campoFianza to set
-	 */
-	public void setCampoFianza(JTextField campoFianza) {
-		this.campoFianza = campoFianza;
 	}
 
 	/**
@@ -303,24 +229,10 @@ public class RectificarPanel extends JPanel{
 	}
 
 	/**
-	 * @param rectificar the rectificar to set
-	 */
-	public void setRectificar(JButton rectificar) {
-		this.rectificar = rectificar;
-	}
-
-	/**
 	 * @return the volver
 	 */
 	public JButton getVolver() {
 		return volver;
-	}
-
-	/**
-	 * @param volver the volver to set
-	 */
-	public void setVolver(JButton volver) {
-		this.volver = volver;
 	}
 
 	/**

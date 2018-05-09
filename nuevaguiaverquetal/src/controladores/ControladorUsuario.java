@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import app.Sistema;
+
 import excepciones.ArgumentoNoValido;
 import gui.CustomFrame;
 import paneles.AdminPanel;
@@ -22,18 +22,20 @@ import usuarios.Usuario;
  */
 public class ControladorUsuario implements ActionListener{
 	private CustomFrame ventana;
-	private Sistema app;
 	
 	/**
 	 * Constructor del controlador
 	 * @param ventana ventana personalizada que contiene a los paneles
 	 * @param app sistema con los datos y funciones pertinentes
 	 */
-	public ControladorUsuario(CustomFrame ventana, Sistema app) {
+	public ControladorUsuario(CustomFrame ventana) {
 		this.ventana = ventana; 
-		this.app = app;
 	}
 
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * ver usuario
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		UsuarioPanel panel = ventana.getPanelUsuario();

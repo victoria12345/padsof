@@ -6,7 +6,11 @@ import javax.swing.*;
 
 import app.Sistema;
 import inmuebles.Inmueble;
-
+/**
+ * Descripcion de la clase OfertaVacacionalPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class OfertaVacacionalPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	private JLabel labelPrecio = new JLabel("Precio:");
@@ -24,7 +28,10 @@ public class OfertaVacacionalPanel extends JPanel{
 	Sistema app;
 	
 	private Inmueble i;
-	
+	/**
+	 * Constructor del panel de oferta vacacional
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public OfertaVacacionalPanel(Sistema sist) {
 		this.app = sist;
 		
@@ -92,51 +99,31 @@ public class OfertaVacacionalPanel extends JPanel{
 	public JTextField getCampoPrecio() {
 		return campoPrecio;
 	}
-
-	public void setCampoPrecio(JTextField campoPrecio) {
-		this.campoPrecio = campoPrecio;
-	}
-
+	
 	public JTextField getCampoIni() {
 		return campoIni;
-	}
-
-	public void setCampoIni(JTextField campoIni) {
-		this.campoIni = campoIni;
 	}
 
 	public JTextField getCampoFin() {
 		return campoFin;
 	}
 
-	public void setCampoFin(JTextField campoFin) {
-		this.campoFin = campoFin;
-	}
-
 	public JTextField getCampoFianza() {
 		return campoFianza;
-	}
-
-	public void setCampoFianza(JTextField campoFianza) {
-		this.campoFianza = campoFianza;
 	}
 
 	public JButton getbCancelar() {
 		return bCancelar;
 	}
 
-	public void setbCancelar(JButton bCancelar) {
-		this.bCancelar = bCancelar;
-	}
-
 	public JButton getbAsociar() {
 		return bAsociar;
 	}
 
-	public void setbAsociar(JButton bAsociar) {
-		this.bAsociar = bAsociar;
-	}
-	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bCancelar.addActionListener(al);
 		this.bAsociar.addActionListener(al);

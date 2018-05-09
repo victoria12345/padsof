@@ -1,31 +1,20 @@
 package controladores;
 
-import app.Sistema;
-import excepciones.ArgumentoNoValido;
+
 import gui.*;
 import ofertas.Oferta;
-import paneles.AdminPanel;
-import paneles.OfertasPendientesPanel;
-import usuarios.Demandante;
-import usuarios.Ofertante;
-import usuarios.Rol;
-import usuarios.Usuario;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
+import paneles.OfertasPendientesPanel;
+
+
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.util.*;
 
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
+
+
 import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
+
 
 /**
  * Descripcion de la clase ControladorPendientesUsuario
@@ -35,19 +24,22 @@ import javax.swing.JLabel;
 public class ControladorPendientesUsuario implements ActionListener{
 
 	private CustomFrame ventana;
-	private Sistema app;
 	
 	/**
 	 * Constructor del controlador
 	 * @param ventana ventana personalizada que contiene a los paneles
 	 * @param app sistema con los datos y funciones pertinentes
 	 */
-	public ControladorPendientesUsuario(Sistema app, CustomFrame ventana) {
+	public ControladorPendientesUsuario(CustomFrame ventana) {
 		this.ventana = ventana; 
-		this.app = app;
+
 	}
 
-	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * ofertas pendientes de rectificar del usuario
+	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 

@@ -6,9 +6,6 @@ import java.time.LocalDate;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.uam.eps.padsof.telecard.FailedInternetConnectionException;
-import es.uam.eps.padsof.telecard.InvalidCardNumberException;
-import es.uam.eps.padsof.telecard.OrderRejectedException;
 import excepciones.ArgumentoNoValido;
 import excepciones.DemasiadasOfertasReservadas;
 import excepciones.OfertaNoDisponible;
@@ -37,7 +34,7 @@ public class OfertaTest {
 		ovac.setEstado(Estado.ACEPTADA);
 		ores.setDesc("desc");
 		ores.setEstado(Estado.ACEPTADA);
-		c = new Comentario(null, null, 1);
+		c = new Comentario(null, null);
 		coment.add(c);
 		deman = new Demandante("12345");
 	}

@@ -2,15 +2,12 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
+
 
 import javax.swing.JOptionPane;
 
 import app.Sistema;
 import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
 import inmuebles.CampoAbierto;
 import inmuebles.Inmueble;
@@ -38,6 +35,10 @@ public class ControladorSubirInmueble implements ActionListener{
 		this.app = app;
 	}
 	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * subir un inmueble
+	 */
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
 		SubirInmueblePanel pSubir = ventana.getPanelSubirInmu();

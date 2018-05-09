@@ -9,7 +9,11 @@ import javax.swing.JPanel;
 
 import app.Sistema;
 import inmuebles.Inmueble;
-
+/**
+ * Descripcion de la clase EleccionOfertaPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class EleccionOfertaPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	Inmueble i;
@@ -18,7 +22,10 @@ public class EleccionOfertaPanel extends JPanel{
 	private JButton bVacacional = new JButton("Oferta Vacacional");
 	private JButton bResidencial = new JButton("Oferta Residencial");
 	private JButton bAtras = new JButton("Cancelar");
-	
+	/**
+	 * Constructor del panel de eleccion de oferta
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public EleccionOfertaPanel(Sistema sist) {
 		this.app = sist;
 		
@@ -60,32 +67,30 @@ public class EleccionOfertaPanel extends JPanel{
 		return bAtras;
 	}
 
-	public void setbAtras(JButton bAtras) {
-		this.bAtras = bAtras;
-	}
 
 	public JButton getbVacacional() {
 		return bVacacional;
 	}
 
-	public void setbVacacional(JButton bVacacional) {
-		this.bVacacional = bVacacional;
-	}
 
 	public JButton getbResidencial() {
 		return bResidencial;
 	}
 
-	public void setbResidencial(JButton bResidencial) {
-		this.bResidencial = bResidencial;
-	}
-	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bResidencial.addActionListener(al);
 		this.bVacacional.addActionListener(al);
 		this.bAtras.addActionListener(al);
 	}
 	
+	/**
+	 * establece el inmueble al que se va a asociar la oferta
+	 * @param i inmueble al que se va a asociar la oferta
+	 */
 	public void iniciar(Inmueble i) {
 		this.i= i;
 	}

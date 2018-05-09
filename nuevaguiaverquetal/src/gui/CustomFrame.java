@@ -16,7 +16,12 @@ import javax.swing.JPanel;
 
 import app.Sistema;
 
-
+/**
+ * Descripcion de la clase CustomFrame, extension de JFrame
+ * donde contendremos todos los paneles de nuestra app
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class CustomFrame  extends JFrame implements WindowListener{
 	private static final long serialVersionUID = 1L;
 	
@@ -70,7 +75,12 @@ public class CustomFrame  extends JFrame implements WindowListener{
 	
 	
 	
-	
+	/**
+	 * Constructor de la clase
+	 * @param titulo String con el nombre de nuestra app
+	 * @param fecha fecha de inicio de la app
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public CustomFrame(Sistema app, String titulo, LocalDate fecha) {
 		super(titulo);
 		this.fecha = fecha;
@@ -83,8 +93,8 @@ public class CustomFrame  extends JFrame implements WindowListener{
 		panelLogin = new LoginPanel();
 		panelAdmin = new AdminPanel(app);
 		panelOfertas = new OferPanel(app);
-		panelInmuebles = new InmueblesPanel(app);
-		panelSubirInmu = new SubirInmueblePanel(app);
+		panelInmuebles = new InmueblesPanel();
+		panelSubirInmu = new SubirInmueblePanel();
 		panelRol = new ElegirRolPanel(app);
 		panelInvitado = new InvitadoPanel(app);
 		panelDemandante = new DemandantePanel();
@@ -92,11 +102,11 @@ public class CustomFrame  extends JFrame implements WindowListener{
 		panelPendientes = new PendientesPanel(app);
 		panelOferPendiente = new OferPendientePanel();
 		panelEleccion = new EleccionOfertaPanel(app);
-		panelOfertaRes = new OfertaResidencialPanel(app);
+		panelOfertaRes = new OfertaResidencialPanel();
 		panelOfertaVac = new OfertaVacacionalPanel(app);
 		panelVerOferta = new VerOfertaPanel();
 		panelComentario = new ComentarioPanel();
-		panelAsociadas = new OfertasAsociadasPanel(app);
+		panelAsociadas = new OfertasAsociadasPanel();
 		panelPendientesUser = new OfertasPendientesPanel(app);
 		panelRectificar = new RectificarPanel();
 		
@@ -107,16 +117,16 @@ public class CustomFrame  extends JFrame implements WindowListener{
 		cInvitado = new ControladorInvitado(this, app);
 		cOfer = new ControladorOfertas(this, app);
 		cDeman = new ControladorDemandante(this);
-		cUser = new ControladorUsuario(this, app);
+		cUser = new ControladorUsuario(this);
 		cOferPen = new ControladorOferPendiente(this, app);
-		cPendientes = new ControladorPendientes(this, app);
+		cPendientes = new ControladorPendientes(this);
 		cEleccion = new ControladorEleccion(this);
 		cRes = new ControladorResidencial(this, app);
 		cVac = new ControladorVacacional(this, app);
 		cVerOfer = new ControladorVerOferta(this, app);
 		cComent = new ControladorComentario(this, app);
 		cAsociadas = new ControladorAsociadas(app, this);
-		cPenUser = new ControladorPendientesUsuario(app, this);
+		cPenUser = new ControladorPendientesUsuario(this);
 		cInmu = new ControladorInmuebles(this);
 		cRect = new ControladorRectificar(this, app);
 		

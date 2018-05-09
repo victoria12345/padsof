@@ -14,7 +14,12 @@ import usuarios.Ofertante;
 import usuarios.Rol;
 import usuarios.Usuario;
 
-
+/**
+ * Descripcion de la clase OfertasPendientesPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class OfertasPendientesPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -25,7 +30,10 @@ public class OfertasPendientesPanel extends JPanel{
 	private JButton bRectificar = new JButton("Rectificar");
 	
 	private Sistema sist;
-	
+	/**
+	 * Constructor del panel de ofertas pendientes
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public OfertasPendientesPanel(Sistema app) {
 		this.sist = app;
 		
@@ -102,13 +110,6 @@ public class OfertasPendientesPanel extends JPanel{
 	}
 
 	/**
-	 * @param bAtras the bAtras to set
-	 */
-	public void setbAtras(JButton bAtras) {
-		this.bAtras = bAtras;
-	}
-
-	/**
 	 * @return the sist
 	 */
 	public Sistema getSist() {
@@ -122,6 +123,9 @@ public class OfertasPendientesPanel extends JPanel{
 		this.sist = sist;
 	}
 
+	/**
+	 * añade las ofertas pendientes de rectificacion al modelo
+	 */
 	public void iniciar() {
 		Usuario u = sist.getUsuarioActual();
 		for(Rol r: u.getRoles()) {
@@ -138,6 +142,10 @@ public class OfertasPendientesPanel extends JPanel{
 		}
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bAtras.addActionListener(al);
 		this.bRectificar.addActionListener(al);

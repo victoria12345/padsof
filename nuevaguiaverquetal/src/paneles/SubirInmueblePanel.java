@@ -13,9 +13,12 @@ import javax.swing.JTextField;
 
 import inmuebles.CampoAbierto;
 
-import app.Sistema;
 
-
+/**
+ * Descripcion de la clase SubirInmueblePanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class SubirInmueblePanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 	
@@ -36,10 +39,11 @@ public class SubirInmueblePanel extends JPanel{
 	private JButton bCancelar = new JButton("Cancelar");
 	
 	private List<CampoAbierto> campos = new ArrayList<CampoAbierto>();
-	private Sistema sist;
 
-	public SubirInmueblePanel(Sistema sist) {
-		this.sist = sist;
+	/**
+	 * Constructor del panel de SubirInmueble
+	 */
+	public SubirInmueblePanel() {
 		
 		GridBagLayout layout = new GridBagLayout();
 		GridBagConstraints cons = new GridBagConstraints();
@@ -104,66 +108,39 @@ public class SubirInmueblePanel extends JPanel{
 		return bCancelar;
 	}
 
-	public void setbCancelar(JButton bCancelar) {
-		this.bCancelar = bCancelar;
-	}
-
 	public JTextField getCampoDesc() {
 		return campoDesc;
-	}
-
-	public void setCampoDesc(JTextField campoDesc) {
-		this.campoDesc = campoDesc;
 	}
 
 	public JTextField getCampoLoc() {
 		return campoLoc;
 	}
 
-	public void setCampoLoc(JTextField campoLoc) {
-		this.campoLoc = campoLoc;
-	}
-
 	public JTextField getCampoCP() {
 		return campoCP;
-	}
-
-	public void setCampoCP(JTextField campoCP) {
-		this.campoCP = campoCP;
 	}
 
 	public JTextField getCampoClave() {
 		return campoClave;
 	}
 
-	public void setCampoClave(JTextField campoClave) {
-		this.campoClave = campoClave;
-	}
-
 	public JTextField getCampoValor() {
 		return campoValor;
-	}
-
-	public void setCampoValor(JTextField campoValor) {
-		this.campoValor = campoValor;
 	}
 
 	public JButton getbSubir() {
 		return bSubir;
 	}
 
-	public void setbSubir(JButton bSubir) {
-		this.bSubir = bSubir;
-	}
-
 	public JButton getbAddCampo() {
 		return bAddCampo;
 	}
 
-	public void setbAddCampo(JButton bAddCampo) {
-		this.bAddCampo = bAddCampo;
-	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bAddCampo.addActionListener(al);
 		this.bSubir.addActionListener(al);

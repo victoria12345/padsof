@@ -12,7 +12,12 @@ import javax.swing.JScrollPane;
 
 import app.Sistema;
 import ofertas.Oferta;
-
+/**
+ * Descripcion de la clase PendientesPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
+@SuppressWarnings({"unchecked", "rawtypes"})
 public class PendientesPanel extends JPanel{
 	private static final long serialVersionUID = 1L;
 
@@ -25,13 +30,17 @@ public class PendientesPanel extends JPanel{
 	private JScrollPane listPendientes;
 	
 	private Sistema app;
-	
+	/**
+	 * Constructor del panel de pendientes
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public PendientesPanel(Sistema app) {
+		this.app = app;
 		BoxLayout layout = new BoxLayout(this, BoxLayout.Y_AXIS);
 		this.setLayout(layout);
 		
 		pendientes.setModel(modelo);
-		for(Oferta o: app.getPendientes()) {
+		for(Oferta o: this.app.getPendientes()) {
 			modelo.addElement(o);
 		}
 		listPendientes = new JScrollPane(pendientes);
@@ -45,6 +54,10 @@ public class PendientesPanel extends JPanel{
 		this.add(botones2);
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener a1) {
 		botonVer.addActionListener(a1);
 		botonVolver.addActionListener(a1);
@@ -56,26 +69,11 @@ public class PendientesPanel extends JPanel{
 	public JButton getBotonVer() {
 		return botonVer;
 	}
-
-	/**
-	 * @param botonVer the botonVer to set
-	 */
-	public void setBotonVer(JButton botonVer) {
-		this.botonVer = botonVer;
-	}
-
 	/**
 	 * @return the botonVolver
 	 */
 	public JButton getBotonVolver() {
 		return botonVolver;
-	}
-
-	/**
-	 * @param botonVolver the botonVolver to set
-	 */
-	public void setBotonVolver(JButton botonVolver) {
-		this.botonVolver = botonVolver;
 	}
 
 	/**
@@ -113,11 +111,5 @@ public class PendientesPanel extends JPanel{
 		return listPendientes;
 	}
 
-	/**
-	 * @param listPendientes the listPendientes to set
-	 */
-	public void setListPendientes(JScrollPane listPendientes) {
-		this.listPendientes = listPendientes;
-	}
 
 }

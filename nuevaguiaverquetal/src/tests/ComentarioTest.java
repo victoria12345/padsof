@@ -20,11 +20,11 @@ public class ComentarioTest {
 	@Before
 	public void before() throws ArgumentoNoValido {
 		u = new Usuario("nick","nombre", "apellido", "contrasenia" );
-		com = new Comentario(u, "texto", 2);
+		com = new Comentario(u, "texto");
 	}
 	@Test
 	public void testComentario() {
-		Comentario comentario = new Comentario(u, null, 1);
+		Comentario comentario = new Comentario(u, null);
 		assertEquals(comentario.getTexto(), "no texto");
 	}
 
@@ -51,7 +51,7 @@ public class ComentarioTest {
 	
 	@Test(expected = ArgumentoNoValido.class)
 	public void testDelRespuesta2() throws ArgumentoNoValido {
-		Comentario com2 = new Comentario(u, null, 3);
+		Comentario com2 = new Comentario(u, null);
 		com.delRespuesta(com2);
 	}
 

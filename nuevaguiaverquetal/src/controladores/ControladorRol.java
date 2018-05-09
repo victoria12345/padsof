@@ -5,15 +5,14 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
+
 
 import app.Sistema;
 import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
+
 import gui.CustomFrame;
 import paneles.ElegirRolPanel;
-import paneles.LoginPanel;
+
 import usuarios.Ofertante;
 import usuarios.Usuario;
 
@@ -35,7 +34,11 @@ public class ControladorRol implements ActionListener {
 		this.ventana = gui; 
 		this.app = app;
 	}
-		
+	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * eleccion de rol
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();

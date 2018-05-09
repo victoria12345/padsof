@@ -7,6 +7,11 @@ import javax.swing.*;
 import app.Sistema;
 
 
+/**
+ * Descripcion de la clase ElegirRolPanel
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ElegirRolPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -22,7 +27,10 @@ public class ElegirRolPanel extends JPanel {
 	private JButton bCont = new JButton("Cambiar contrasenna");
 	private Sistema sist;
 
-
+	/**
+	 * Constructor del panel de elegir rol
+	 * @param sist sistema con los datos y funciones pertinentes
+	 */
 	public ElegirRolPanel(Sistema sist) {
 		this.sist = sist;
 		
@@ -73,48 +81,27 @@ public class ElegirRolPanel extends JPanel {
 		return campoCont;
 	}
 
-	public void setCampoCont(JTextField campoCont) {
-		this.campoCont = campoCont;
-	}
 
 	public JButton getbOfertante() {
 		return bOfertante;
-	}
-
-	public void setbOfertante(JButton bOfertante) {
-		this.bOfertante = bOfertante;
 	}
 
 	public JButton getbDemandante() {
 		return bDemandante;
 	}
 
-	public void setbDemandante(JButton bDemandante) {
-		this.bDemandante = bDemandante;
-	}
 
 	public JButton getbAdministrador() {
 		return bAdministrador;
 	}
 
-	public void setbAdministrador(JButton bAdministrador) {
-		this.bAdministrador = bAdministrador;
-	}
 
 	public JButton getbSalir() {
 		return bSalir;
 	}
 
-	public void setbSalir(JButton bSalir) {
-		this.bSalir = bSalir;
-	}
-
 	public JButton getbCont() {
 		return bCont;
-	}
-
-	public void setbCont(JButton bCont) {
-		this.bCont = bCont;
 	}
 
 	public Sistema getSist() {
@@ -125,6 +112,10 @@ public class ElegirRolPanel extends JPanel {
 		this.sist = sist;
 	}
 	
+	/**
+	 * Establece un controlador para el panel
+	 * @param a1 controlador del panel
+	 */
 	public void setControlador(ActionListener al) {
 		this.bOfertante.addActionListener(al);
 		this.bAdministrador.addActionListener(al);

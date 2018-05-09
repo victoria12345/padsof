@@ -8,18 +8,14 @@ import javax.swing.JOptionPane;
 
 import app.Sistema;
 import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
+
 import gui.CustomFrame;
 import inmuebles.Inmueble;
 import ofertas.Oferta;
 import ofertas.OfertaResidencial;
-import ofertas.OfertaVacacional;
-import paneles.LoginPanel;
+
 import paneles.OfertaResidencialPanel;
-import paneles.OfertaVacacionalPanel;
-import usuarios.Rol;
-import usuarios.Usuario;
+
 
 /**
  * Descripcion de la clase ControladorResidencial
@@ -41,6 +37,11 @@ public class ControladorResidencial implements ActionListener{
 		this.app = app;
 	}
 	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * asociar oferta residencial
+	 */
+	@SuppressWarnings("unchecked")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
