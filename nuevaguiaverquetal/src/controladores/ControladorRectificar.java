@@ -12,9 +12,20 @@ import gui.CustomFrame;
 import ofertas.*;
 import paneles.RectificarPanel;
 
+/**
+ * Descripcion de la clase ControladorRectificar
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorRectificar implements ActionListener{
 	private Sistema app;
 	private CustomFrame ventana;
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorRectificar(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana;
 		this.app = app;

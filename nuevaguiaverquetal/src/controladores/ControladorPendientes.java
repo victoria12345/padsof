@@ -10,10 +10,21 @@ import gui.CustomFrame;
 import ofertas.Oferta;
 import paneles.PendientesPanel;
 
+/**
+ * Descripcion de la clase ControladorPendientes
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorPendientes implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorPendientes(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;

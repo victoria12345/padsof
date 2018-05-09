@@ -21,8 +21,10 @@ public class OfertasAsociadasPanel extends JPanel{
 	private DefaultListModel modelo = new DefaultListModel();
 	private JScrollPane listaOfertas;
 	private JButton bAtras = new JButton("Atrás");
+	private JButton bElim = new JButton("Elminar oferta");
 	
 	private Sistema sist;
+	private Inmueble i;
 	
 	public OfertasAsociadasPanel(Sistema app) {
 		this.sist = app;
@@ -41,7 +43,7 @@ public class OfertasAsociadasPanel extends JPanel{
 		
 		JPanel botones2 = new JPanel();
 		botones2.setLayout(new FlowLayout());
-		
+		botones2.add(bElim);
 		botones2.add(bAtras);
 		
 		this.add(panelOfertas, BorderLayout.CENTER);
@@ -105,7 +107,7 @@ public class OfertasAsociadasPanel extends JPanel{
 		this.bAtras = bAtras;
 	}
 
-	/**
+	/**pae
 	 * @return the sist
 	 */
 	public Sistema getSist() {
@@ -120,12 +122,43 @@ public class OfertasAsociadasPanel extends JPanel{
 	}
 
 	public void iniciar(Inmueble i) {
+		this.i= i;
+		modelo.clear();
 		for(Oferta o: i.getOfertas()) {
 			modelo.addElement(o);
 		}
 	}
 	
 	public void setControlador(ActionListener al) {
-		this.bAtras.addActionListener(al);
+		bAtras.addActionListener(al);
+		bElim.addActionListener(al);
+	}
+
+	/**
+	 * @return the bElim
+	 */
+	public JButton getbElim() {
+		return bElim;
+	}
+
+	/**
+	 * @param bElim the bElim to set
+	 */
+	public void setbElim(JButton bElim) {
+		this.bElim = bElim;
+	}
+
+	/**
+	 * @return the i
+	 */
+	public Inmueble getI() {
+		return i;
+	}
+
+	/**
+	 * @param i the i to set
+	 */
+	public void setI(Inmueble i) {
+		this.i = i;
 	}
 }

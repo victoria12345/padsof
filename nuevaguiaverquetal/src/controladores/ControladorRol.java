@@ -17,10 +17,20 @@ import paneles.LoginPanel;
 import usuarios.Ofertante;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorRol
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorRol implements ActionListener {
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorRol(CustomFrame gui, Sistema app) {
 		this.ventana = gui; 
 		this.app = app;

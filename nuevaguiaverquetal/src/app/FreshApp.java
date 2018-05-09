@@ -181,14 +181,14 @@ public class FreshApp {
 			airbnb.addOferta(oresI2);
 			
 			System.out.println("\nFiltrando ofertas por código postal");
-			airbnb.filtrar_codigo(28080);
+			//airbnb.filtrar_codigo(28080);
 			System.out.println("Ofertas filtradas:");
 			for(Oferta o : airbnb.getFiltradas()) {
 				System.out.println(o);
 			}
 			
 			System.out.println("\nFiltrando ofertas con un precio maximo de 8");
-			airbnb.filtrar_precio(8);
+			//airbnb.filtrar_precio(8);
 			System.out.println("Ofertas filtradas:");
 			for(Oferta o : airbnb.getFiltradas()) {
 				System.out.println(o);
@@ -196,21 +196,21 @@ public class FreshApp {
 			
 			
 			System.out.println("\nFiltrando ofertas con una valoracion minima de 6");
-			airbnb.filtrar_valoracion(6);
+			//airbnb.filtrar_valoracion(6);
 			System.out.println("Ofertas filtradas:");
 			for(Oferta o : airbnb.getFiltradas()) {
 				System.out.println(o);
 			}
 			
 			System.out.println("\nFiltrando ofertas entre entre el 1 de enero de 2019 y el 31 de diciembre de 2022");
-			airbnb.filtrar_fecha(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 12, 31));
+			//airbnb.filtrar_fecha(LocalDate.of(2019, 1, 1), LocalDate.of(2022, 12, 31));
 			System.out.println("Ofertas filtradas:");
 			for(Oferta o : airbnb.getFiltradas()) {
 				System.out.println(o);
 			}
 			
 			System.out.println("\nMostrando solo ofertas disponibles");
-			airbnb.filtrar_disp(Disponibilidad.DISPONIBLE);
+			//airbnb.filtrar_disp(Disponibilidad.DISPONIBLE);
 			System.out.println("Ofertas filtradas:");
 			for(Oferta o : airbnb.getFiltradas()) {
 				System.out.println(o);
@@ -229,14 +229,14 @@ public class FreshApp {
 			}
 		
 			System.out.println("\nDemandante añadiendo un comentario a la: " + ores2);
-			Comentario c = new Comentario(demandante, "Increible!", 1);
+			Comentario c = new Comentario(demandante, "Increible!");
 			ores2.addComentario(c);
 			System.out.println("Comentario añadido:" + ores2.getComentarios().get(0));
 			
-			Comentario c2 = new Comentario(ofertante, "Esta muy bien", 2);
+			Comentario c2 = new Comentario(ofertante, "Esta muy bien");
 			ores.addComentario(c2);
 			System.out.println("\nDemandante respondiendo a un comentario de la: " + ores);
-			Comentario c3 = new Comentario(demandante, "Pues a mi no me parecio para tanto...!", 3);
+			Comentario c3 = new Comentario(demandante, "Pues a mi no me parecio para tanto...!");
 			ores.getComentarios().get(0).addRespuesta(c3);
 			System.out.println("Comentario añadido:" + ores.getComentarios().get(0).getRespuestas().get(0));
 			System.out.println("respondiendo a: " +  c3.getPadre());

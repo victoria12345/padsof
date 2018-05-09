@@ -12,11 +12,20 @@ import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
 import paneles.LoginPanel;
 
-
+/**
+ * Descripcion de la clase ControladorLogin
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorLogin implements ActionListener{	
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorLogin(CustomFrame gui, Sistema app) {
 		this.ventana = gui; 
 		this.app = app;
@@ -32,6 +41,7 @@ public class ControladorLogin implements ActionListener{
 					app.login(pLogin.getCampoUsuario().getText(), String.valueOf(pLogin.getCampoContrasena().getPassword()));
 					pLogin.getCampoContrasena().setText("");
 					pLogin.getCampoUsuario().setText("");
+					JOptionPane.showMessageDialog(null, "Bienvenido a Fresh, la app con los alquileres más frescos del mercado!");
 					ventana.mostrarPanelRol();
 				} catch (ArgumentoNoValido e) {
 					JOptionPane.showMessageDialog(pLogin, "Los datos introducidos no son validos");

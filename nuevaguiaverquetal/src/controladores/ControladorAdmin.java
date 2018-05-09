@@ -3,34 +3,36 @@ package controladores;
 import app.Sistema;
 import gui.*;
 import paneles.AdminPanel;
-
 import usuarios.Usuario;
-
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import java.util.*;
-
-
 import javax.swing.JList;
 
 
 
-
+/**
+ * Descripcion de la clase ControladorAdmin
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorAdmin implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
-		
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorAdmin(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;
 	}
-
-	public List<Usuario> obtenerUsuarios(){
-		return app.getUsuarios();
-	}
-
+	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * administrador
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -64,6 +66,7 @@ public class ControladorAdmin implements ActionListener{
 			
 		}else if(event.equals(panel.getBotOfertas())) {
 			ventana.mostrarPanelPendientes();
+			
 		}else if(event.equals(panel.getBotVolver())) {
 			ventana.mostrarPanelRol();
 		}

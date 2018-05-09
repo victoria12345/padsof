@@ -3,26 +3,32 @@ package controladores;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
 
-import app.Sistema;
-import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
 import gui.CustomFrame;
 import paneles.EleccionOfertaPanel;
-import paneles.ElegirRolPanel;
 
+/**
+ * Descripcion de la clase ControladorEleccion
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorEleccion implements ActionListener{
 	private CustomFrame ventana;
-	private Sistema app;
 	
-	
-	public ControladorEleccion(CustomFrame gui, Sistema sist) {
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
+	public ControladorEleccion(CustomFrame gui) {
 		this.ventana = gui; 
-		this.app = app;
+
 	}
 	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * eleccion de oferta
+	 */
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();
@@ -37,21 +43,5 @@ public class ControladorEleccion implements ActionListener{
 		}else if((event.equals(pEleccion.getbAtras()))){
 			ventana.mostrarPanelInmuebles();
 		}
-	}
-	
-	public CustomFrame getVentana() {
-		return ventana;
-	}
-
-	public void setVentana(CustomFrame ventana) {
-		this.ventana = ventana;
-	}
-
-	public Sistema getApp() {
-		return app;
-	}
-
-	public void setApp(Sistema app) {
-		this.app = app;
 	}
 }

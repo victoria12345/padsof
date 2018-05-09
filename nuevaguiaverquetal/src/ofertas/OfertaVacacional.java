@@ -112,14 +112,25 @@ public class OfertaVacacional extends Oferta {
 		 this.setCancelacion(null);
 	 }
 	 
+	 /**
+		 * Calcula el precio total de una oferta
+		 * @return el precio total de la oferta
+		 */
 	 public double calcularPrecio() {
 		 return this.getPrecio() + fianza;
 	 }
-	 
+	 /**
+		 * Comprueba si la oferta es residencial
+		 * @return false
+		 */	 
 	 public boolean isResidencial() {
 		 return false;
 	 }
 	 
+	 /**
+		 * Comprueba si la oferta es vacacional
+		 * @return true
+		 */
 	 public boolean isVacacional() {
 		 return true;
 	 }

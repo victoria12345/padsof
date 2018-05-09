@@ -102,14 +102,26 @@ public class OfertaResidencial extends Oferta {
 		 this.setCancelacion(null);
 	 }
 	 
+	/**
+	 * Calcula el precio total de una oferta
+	 * @return el precio total de la oferta
+	 */
 	 public double calcularPrecio() {
 		 return this.getPrecio()*nmeses;
 	 }
 	 
+		/**
+		 * Comprueba si la oferta es residencial
+		 * @return true
+		 */
 	 public boolean isResidencial() {
 		 return true;
 	 }
 	 
+	 /**
+		 * Comprueba si la oferta es vacacional
+		 * @return false
+		 */
 	 public boolean isVacacional() {
 		 return false;
 	 }

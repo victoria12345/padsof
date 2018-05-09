@@ -12,9 +12,20 @@ import ofertas.Oferta;
 import paneles.OferPendientePanel;
 import paneles.PendientesPanel;
 
+/**
+ * Descripcion de la clase ControladoOferPendiente
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorOferPendiente implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorOferPendiente(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;	
@@ -30,6 +41,7 @@ public class ControladorOferPendiente implements ActionListener{
 		
 		if(event.equals(panel.getBotAceptar())) {
 			app.aceptarOferta(o);
+			ventana.getPanelOfertas().getModelo().addElement(o);
 			JOptionPane.showMessageDialog(null, "La oferta ha sido aceptada");
 			pend.getModelo().removeElement(o);
 				

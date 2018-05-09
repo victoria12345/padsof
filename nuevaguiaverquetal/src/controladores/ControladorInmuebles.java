@@ -4,27 +4,36 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
-import app.Sistema;
-import excepciones.ArgumentoNoValido;
-import excepciones.HayOtroUsuarioLogeado;
-import excepciones.UsuarioNoEncontrado;
+
 import gui.CustomFrame;
 import inmuebles.Inmueble;
-import paneles.AdminPanel;
-import paneles.InmueblesPanel;
-import usuarios.Usuario;
 
+import paneles.InmueblesPanel;
+
+
+/**
+ * Descripcion de la clase ControladorInmuebles
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorInmuebles implements ActionListener {
-	private Sistema app;
 	private CustomFrame ventana;
 	
-	public ControladorInmuebles(Sistema app, CustomFrame gui) {
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
+	public ControladorInmuebles(CustomFrame gui) {
 		this.ventana = gui;
-		this.app = app;
 	}
 	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * inmuebles
+	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();

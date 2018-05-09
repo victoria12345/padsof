@@ -21,11 +21,21 @@ import paneles.OfertaVacacionalPanel;
 import usuarios.Rol;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorResidencial
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorResidencial implements ActionListener{
 
-		private Sistema app;
-		private CustomFrame ventana;
+	private Sistema app;
+	private CustomFrame ventana;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorResidencial(CustomFrame gui, Sistema app) {
 		this.ventana = gui; 
 		this.app = app;
@@ -61,6 +71,8 @@ public class ControladorResidencial implements ActionListener{
 			/*Annadir oferta al inmueble*/
 			try {
 				i.asociarOferta(o);
+				app.addPendiente(o);
+				ventana.getPanelPendientes().getModelo().addElement(o);
 			} catch (ArgumentoNoValido e) {
 				JOptionPane.showMessageDialog(pLogin, "Oferta no valida.");
 			}

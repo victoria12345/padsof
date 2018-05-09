@@ -134,6 +134,7 @@ public class InmueblesPanel extends JPanel{
 	}	
 	
 	public void actualizarInmuebles(Ofertante o) {
+		modelo.clear();
 		for(Inmueble i: o.getInmuebles()) {
 			modelo.addElement(i);
 		}

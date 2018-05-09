@@ -18,10 +18,20 @@ import ofertas.Oferta;
 import paneles.OferPanel;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorOfertas
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorOfertas implements ActionListener, ListSelectionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorOfertas(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana;
 		this.app = app;	

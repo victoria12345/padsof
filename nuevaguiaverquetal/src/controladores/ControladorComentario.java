@@ -11,18 +11,31 @@ import excepciones.ArgumentoNoValido;
 import gui.CustomFrame;
 import ofertas.Comentario;
 import paneles.ComentarioPanel;
-import paneles.VerOfertaPanel;
 
+/**
+ * Descripcion de la clase ControladorComentario
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorComentario implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorComentario(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;
 	}
 	
-	
+	/**
+	 * Gestiona las diferentes acciones que se pueden hacer en el panel de
+	 * comentarios
+	 */
+	@SuppressWarnings("rawtypes")
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		Object event = arg0.getSource();

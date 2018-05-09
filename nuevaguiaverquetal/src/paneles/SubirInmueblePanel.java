@@ -3,11 +3,15 @@ package paneles;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import inmuebles.CampoAbierto;
 
 import app.Sistema;
 
@@ -30,6 +34,8 @@ public class SubirInmueblePanel extends JPanel{
 	private JButton bSubir = new JButton("Subir");
 	private JButton bAddCampo = new JButton("Añadir campo abierto");
 	private JButton bCancelar = new JButton("Cancelar");
+	
+	private List<CampoAbierto> campos = new ArrayList<CampoAbierto>();
 	private Sistema sist;
 
 	public SubirInmueblePanel(Sistema sist) {
@@ -162,6 +168,20 @@ public class SubirInmueblePanel extends JPanel{
 		this.bAddCampo.addActionListener(al);
 		this.bSubir.addActionListener(al);
 		this.bCancelar.addActionListener(al);
+	}
+
+	/**
+	 * @return the campos
+	 */
+	public List<CampoAbierto> getCampos() {
+		return campos;
+	}
+
+	/**
+	 * @param campos the campos to set
+	 */
+	public void setCampos(List<CampoAbierto> campos) {
+		this.campos = campos;
 	}
 	
 

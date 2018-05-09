@@ -19,10 +19,20 @@ import paneles.OfertaVacacionalPanel;
 import usuarios.Rol;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorVacacional
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorVacacional implements ActionListener {
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorVacacional(CustomFrame gui, Sistema app) {
 		this.ventana = gui; 
 		this.app = app;
@@ -60,6 +70,8 @@ public class ControladorVacacional implements ActionListener {
 			/*Annadir oferta al inmueble*/
 			try {
 				i.asociarOferta(o);
+				app.addPendiente(o);
+				ventana.getPanelPendientes().getModelo().addElement(o);
 			} catch (ArgumentoNoValido e) {
 				JOptionPane.showMessageDialog(pLogin, "Oferta no valida.");
 			}

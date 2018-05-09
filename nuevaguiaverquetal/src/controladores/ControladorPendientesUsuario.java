@@ -27,12 +27,21 @@ import javax.swing.JPanel;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
 
-
+/**
+ * Descripcion de la clase ControladorPendientesUsuario
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorPendientesUsuario implements ActionListener{
 
 	private CustomFrame ventana;
 	private Sistema app;
-		
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorPendientesUsuario(Sistema app, CustomFrame ventana) {
 		this.ventana = ventana; 
 		this.app = app;

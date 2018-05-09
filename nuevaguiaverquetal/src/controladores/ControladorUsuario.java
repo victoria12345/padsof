@@ -15,10 +15,20 @@ import usuarios.Ofertante;
 import usuarios.Rol;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorUsuario
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorUsuario implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
-		
+	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorUsuario(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;

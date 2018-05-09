@@ -5,17 +5,19 @@ import controladores.*;
 
 import java.awt.CardLayout;
 import java.awt.Container;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
+import java.io.IOException;
 import java.time.LocalDate;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 
 import app.Sistema;
 
 
-public class CustomFrame  extends JFrame implements ChangeListener{
+public class CustomFrame  extends JFrame implements WindowListener{
 	private static final long serialVersionUID = 1L;
 	
 	private String ventanas[] = {"login", "admin", "ofertas", "inmuebles" , "associarOferta", "subirinmueble", "Elegir rol", "invitado", "demandante", "usuario", "pendientes", "oferpendiente", "eleccion", "residencial", "vacacional", "veroferta", "comentario", "asociadas", "pendientesuser", "rectificar"};
@@ -104,18 +106,18 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		cRol = new ControladorRol(this,app);
 		cInvitado = new ControladorInvitado(this, app);
 		cOfer = new ControladorOfertas(this, app);
-		cDeman = new ControladorDemandante(this, app);
+		cDeman = new ControladorDemandante(this);
 		cUser = new ControladorUsuario(this, app);
 		cOferPen = new ControladorOferPendiente(this, app);
 		cPendientes = new ControladorPendientes(this, app);
-		cEleccion = new ControladorEleccion(this, app);
+		cEleccion = new ControladorEleccion(this);
 		cRes = new ControladorResidencial(this, app);
 		cVac = new ControladorVacacional(this, app);
 		cVerOfer = new ControladorVerOferta(this, app);
 		cComent = new ControladorComentario(this, app);
 		cAsociadas = new ControladorAsociadas(app, this);
 		cPenUser = new ControladorPendientesUsuario(app, this);
-		cInmu = new ControladorInmuebles(app, this);
+		cInmu = new ControladorInmuebles(this);
 		cRect = new ControladorRectificar(this, app);
 		
 		
@@ -170,6 +172,7 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 		this.setSize(1050, 400); 
 		this.setVisible(true);
 		this.setResizable(false);
+		this.addWindowListener(this);
 		
 	}
 	
@@ -546,13 +549,7 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	public void setPanelPendientesUser(OfertasPendientesPanel panelPendientesUser) {
 		this.panelPendientesUser = panelPendientesUser;
 	}
-
-	@Override
-	public void stateChanged(ChangeEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	/**
 	 * @return the panelRectificar
 	 */
@@ -565,6 +562,52 @@ public class CustomFrame  extends JFrame implements ChangeListener{
 	 */
 	public void setPanelRectificar(RectificarPanel panelRectificar) {
 		this.panelRectificar = panelRectificar;
+	}
+
+	@Override
+	public void windowActivated(WindowEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+		
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		app.logout();
+		try {
+			app.serializar();
+		} catch (IOException e1) {
+			JOptionPane.showMessageDialog(null, "error en la serializacion");
+		}
+		
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 	

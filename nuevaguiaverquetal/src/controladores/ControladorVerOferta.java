@@ -14,6 +14,7 @@ import excepciones.DemasiadasOfertasReservadas;
 import excepciones.OfertaNoDisponible;
 import excepciones.UsuarioBloqueado;
 import gui.CustomFrame;
+import ofertas.Comentario;
 import ofertas.Oferta;
 import paneles.OferPanel;
 import paneles.VerOfertaPanel;
@@ -21,10 +22,20 @@ import usuarios.Demandante;
 import usuarios.Rol;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorVerOferta
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorVerOferta implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorVerOferta(CustomFrame ventana, Sistema app) {
 		this.ventana = ventana; 
 		this.app = app;	
@@ -53,6 +64,7 @@ public class ControladorVerOferta implements ActionListener{
 			}
 			try {
 				o.pagar(deman, "Pago");
+				JOptionPane.showMessageDialog(null, "La oferta ha sido contratada");
 			} catch (InvalidCardNumberException e) {
 				JOptionPane.showMessageDialog(null, "Número de tarjeta no valido");
 				deman.setBloqueado(true);
@@ -67,8 +79,14 @@ public class ControladorVerOferta implements ActionListener{
 			if(u == app.getAdmin()) {
 				return;
 			}
+			for(Rol r: app.getUsuarioActual().getRoles()) {
+				if(r.isDemandante()) {
+					deman = (Demandante)r;
+				}
+			}
 			try {
 				o.reservar(deman, ventana.getFecha());
+				JOptionPane.showMessageDialog(null, "La oferta ha sido reservada");
 			} catch (UsuarioBloqueado e) {
 				JOptionPane.showMessageDialog(null, "No puedes reservar ofertas estando bloqueado");
 			} catch (OfertaNoDisponible e) {
@@ -77,7 +95,15 @@ public class ControladorVerOferta implements ActionListener{
 				JOptionPane.showMessageDialog(null, "Tienes demasiadas ofertas reservadas");
 			}
 		}else if(event.equals(panel.getBotonComentar())) {
-			
+			Comentario c;
+			String text;
+			text = JOptionPane.showInputDialog("Introduzca el comentarios que desee realizar");
+			c = new Comentario(app.getUsuarioActual(), text);
+			try {
+				o.addComentario(c);
+			} catch (ArgumentoNoValido e) {
+				JOptionPane.showMessageDialog(null, "El comentario que has introducido no es valido");
+			}
 		}else if(event.equals(panel.getBotonValorar())) {
 			if(u == app.getAdmin()) {
 				return;

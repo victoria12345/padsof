@@ -73,4 +73,8 @@ public class CampoAbierto implements Serializable {
 		}
 		this.valor = valor;
 	}
+	
+	public String toString() {
+		return this.getClave() + this.getValor();
+	}
 }

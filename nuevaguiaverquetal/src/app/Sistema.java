@@ -98,6 +98,7 @@ public class Sistema implements Serializable{
 			return;
 		}
 		pendientes.remove(o);
+		ofertas.add(o);
 		o.setEstado(Estado.ACEPTADA);
 		o.setCancelacion(null);
 	}

@@ -2,6 +2,8 @@ package controladores;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.JOptionPane;
 
@@ -17,10 +19,20 @@ import usuarios.Ofertante;
 import usuarios.Rol;
 import usuarios.Usuario;
 
+/**
+ * Descripcion de la clase ControladorSubirInmueble
+ * @author Victoria Pelayo e Ignacio Rabunnal
+ *
+ */
 public class ControladorSubirInmueble implements ActionListener{
 	private CustomFrame ventana;
 	private Sistema app;
 	
+	/**
+	 * Constructor del controlador
+	 * @param ventana ventana personalizada que contiene a los paneles
+	 * @param app sistema con los datos y funciones pertinentes
+	 */
 	public ControladorSubirInmueble(CustomFrame gui, Sistema app) {
 		this.ventana = gui;
 		this.app = app;
@@ -31,15 +43,9 @@ public class ControladorSubirInmueble implements ActionListener{
 		SubirInmueblePanel pSubir = ventana.getPanelSubirInmu();
 		
 		if(event.equals(pSubir.getbAddCampo())) {
-			
-			Inmueble o = new Inmueble(pSubir.getCampoLoc().getText(),Integer.parseInt(pSubir.getCampoCP().getText()) , pSubir.getCampoDesc().getText());
-			
-			try {
-				o.addCampo(new CampoAbierto(pSubir.getCampoClave().getText(), pSubir.getCampoValor().getText()));
-			} catch (ArgumentoNoValido e) {
-				JOptionPane.showMessageDialog(pSubir, "Introducir correctamente los datos.");
-			}
-			
+			CampoAbierto c = new CampoAbierto(pSubir.getCampoClave().getText(), pSubir.getCampoValor().getText());
+			pSubir.getCampos().add(c);
+			JOptionPane.showMessageDialog(null, "Campo añadido");
 		}	
 		else if(event.equals(pSubir.getbSubir())){
 				Inmueble i;
@@ -50,7 +56,16 @@ public class ControladorSubirInmueble implements ActionListener{
 				}
 				
 				i = new Inmueble(pSubir.getCampoLoc().getText(),Integer.parseInt(pSubir.getCampoCP().getText()) , pSubir.getCampoDesc().getText());
-				
+				app.getInmuebles().add(i);
+				for(CampoAbierto c: pSubir.getCampos()) {
+					try {
+						System.out.println(c);
+						i.addCampo(c);
+					} catch (ArgumentoNoValido e) {
+						e.printStackTrace();
+					}
+				}
+				pSubir.getCampos().clear();
 				Usuario u = app.getUsuarioActual();
 				for(Rol r: u.getRoles()) {
 					if(r.isOfertante() == true) {

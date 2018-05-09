@@ -3,7 +3,6 @@ import java.time.*;
 import java.util.*;
 
 import usuarios.Demandante;
-import usuarios.Ofertante;
 import es.uam.eps.padsof.telecard.*;
 import excepciones.ArgumentoNoValido;
 import excepciones.DemasiadasOfertasReservadas;

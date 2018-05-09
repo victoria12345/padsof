@@ -17,8 +17,8 @@ public class Demandante extends Rol{
 	private static final long serialVersionUID = 1L;
 	private String tarjeta;
 	private boolean bloqueado;
-	private OfertaResidencial reservaResidencial;
-	private OfertaVacacional reservaVacacional;
+	private OfertaResidencial reservaResidencial = null;
+	private OfertaVacacional reservaVacacional = null;
 	private List<Oferta> ofertas = new ArrayList<Oferta>();
 	
 	/**
@@ -167,8 +167,6 @@ public class Demandante extends Rol{
 		}
 		
 		o.setDisp(Disponibilidad.CONTRATADA);;
-	}
-	
-		
+	}	
 }
 
